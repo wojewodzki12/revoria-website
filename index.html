@@ -41,14 +41,14 @@
 
     .floating-shot {
       position: absolute;
-      width: 260px;
-      height: 160px;
+      width: 340px;
+      height: 210px;
       object-fit: cover;
-      border: 1px solid rgba(241, 208, 141, 0.18);
+      border: 1px solid rgba(241, 208, 141, 0.35);
       opacity: 0;
-      filter: brightness(0.65) contrast(1.1);
-      box-shadow: 0 0 35px rgba(0,0,0,0.8);
-      animation: floatShot 12s ease-in-out forwards;
+      filter: brightness(0.9) contrast(1.15);
+      box-shadow: 0 0 45px rgba(0,0,0,0.9);
+      animation: floatShot 14s ease-in-out forwards;
     }
 
     @keyframes floatShot {
@@ -57,10 +57,10 @@
         transform: translateY(25px) scale(0.96);
       }
       15% {
-        opacity: 0.18;
+        opacity: 0.42;
       }
       70% {
-        opacity: 0.18;
+        opacity: 0.42;
       }
       100% {
         opacity: 0;
@@ -348,22 +348,22 @@
   </style>
 </head>
 
-<body>
+<body id="top">
 
   <div class="floating-layer" id="floatingLayer"></div>
 
   <nav class="navbar">
     <div class="nav-container">
 
-      <div class="logo">REVORIA</div>
+      <a href="#top" class="logo">REVORIA</a>
 
       <div class="nav-links">
         <a href="#about">ABOUT</a>
         <a href="#focus">FOCUS</a>
-        <a href="#community">COMMUNITY</a>
+        <a href="https://discord.gg/73ADntPraM">COMMUNITY</a>
       </div>
 
-      <a class="discord-btn" href="#">
+      <a class="discord-btn" href="https://discord.gg/73ADntPraM">
         JOIN DISCORD
       </a>
 
@@ -385,7 +385,7 @@
       </p>
 
       <div class="buttons">
-        <a href="#" class="main-btn">JOIN OUR COMMUNITY</a>
+        <a href="https://discord.gg/73ADntPraM" class="main-btn">JOIN OUR COMMUNITY</a>
         <a href="#focus" class="main-btn">CURRENT PROJECT</a>
       </div>
 
@@ -396,7 +396,6 @@
         </div>
 
         <div id="countdown">
-
           <div class="time-box">
             <h3 id="days">14</h3>
             <span>DAYS</span>
@@ -416,7 +415,6 @@
             <h3 id="seconds">00</h3>
             <span>SECONDS</span>
           </div>
-
         </div>
 
       </div>
@@ -531,7 +529,7 @@
       img.src = images[Math.floor(Math.random() * images.length)];
 
       const side = Math.random() > 0.5 ? 'left' : 'right';
-      const top = Math.floor(Math.random() * 75) + 12;
+      const top = Math.floor(Math.random() * 88) + 6;
 
       img.style.top = top + '%';
 
@@ -555,7 +553,7 @@
 
     setInterval(() => {
       spawnFloatingImage();
-    }, 3500);
+    }, 2200);
   </script>
 
 </body>
