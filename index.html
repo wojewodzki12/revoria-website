@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>REVORIA - Oldschool Tibia Network</title>
+  <title>REVORIA - Oldschool Tibia 8.6 Network</title>
   <link rel="icon" type="image/png" href="images/logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,30 +42,30 @@
 
     .floating-shot {
       position: absolute;
-      width: 340px;
-      height: 210px;
+      width: 300px;
+      height: 185px;
       object-fit: cover;
-      border: 1px solid rgba(241, 208, 141, 0.35);
+      border: 1px solid rgba(241, 208, 141, 0.28);
       opacity: 0;
-      filter: brightness(0.9) contrast(1.15);
-      box-shadow: 0 0 45px rgba(0,0,0,0.9);
-      animation: floatShot 14s ease-in-out forwards;
+      filter: brightness(0.82) contrast(1.12);
+      box-shadow: 0 0 45px rgba(0,0,0,0.95);
+      animation: floatShot 12s ease-in-out forwards;
     }
 
     @keyframes floatShot {
       0% {
         opacity: 0;
-        transform: translateY(25px) scale(0.96);
+        transform: translateY(20px) scale(0.96);
       }
-      15% {
-        opacity: 0.42;
+      18% {
+        opacity: 0.40;
       }
-      70% {
-        opacity: 0.42;
+      72% {
+        opacity: 0.40;
       }
       100% {
         opacity: 0;
-        transform: translateY(-25px) scale(1.02);
+        transform: translateY(-20px) scale(1.02);
       }
     }
 
@@ -317,7 +317,7 @@
       color: #b8a27c;
       line-height: 2;
       font-size: 18px;
-      max-width: 900px;
+      max-width: 920px;
       margin: auto;
     }
 
@@ -351,8 +351,8 @@
       }
 
       .floating-shot {
-        width: 180px;
-        height: 110px;
+        width: 170px;
+        height: 105px;
       }
     }
   </style>
@@ -386,10 +386,10 @@
 
       <h1>REVORIA</h1>
 
-      <h2>OLDSCHOOL TIBIA NETWORK</h2>
+      <h2>OLDSCHOOL TIBIA 8.6 NETWORK</h2>
 
       <p>
-        A community driven oldschool Tibia network focused on nostalgia,
+        A community driven oldschool Tibia 8.6 network focused on nostalgia,
         fair gameplay and long-term MMORPG experiences inspired by the
         golden era of Tibia.
       </p>
@@ -407,7 +407,7 @@
 
         <div id="countdown">
           <div class="time-box">
-            <h3 id="days">14</h3>
+            <h3 id="days">00</h3>
             <span>DAYS</span>
           </div>
 
@@ -448,10 +448,10 @@
       </div>
 
       <div class="feature-box">
-        <h3>FAIR GAMEPLAY</h3>
+        <h3>8.6 CLIENT</h3>
         <p>
-          No shortcuts. No pay-to-win.
-          Skill, dedication and rivalry matter again.
+          The first combat environment is built around the classic Tibia 8.6 client
+          and its familiar PvP feeling.
         </p>
       </div>
 
@@ -484,10 +484,12 @@
       <h3>REVORIA COMBAT TEST</h3>
 
       <p>
-  Revoria Combat Test is a temporary war server created to rebuild and improve oldschool Tibia PvP gameplay.
-  The goal is to learn together with the community through real combat, fast iteration and constant feedback.
-  Movement, healing, rune balance, death systems and overall combat feeling will evolve step by step before future Revoria worlds.
-</p>
+        Revoria Combat Test is a temporary 8.6 war server created to learn,
+        test and rebuild the feeling of oldschool Tibia PvP.
+        Players will create their own characters, enter the battlefield quickly
+        and help us improve movement, healing, rune balance, death systems and
+        overall combat through real fights and community feedback.
+      </p>
 
     </div>
 
@@ -504,20 +506,21 @@
       const now = new Date().getTime();
       const distance = countdownDate - now;
 
+      if(distance < 0) {
+        clearInterval(timer);
+        document.getElementById('countdown').innerHTML = 'LIVE';
+        return;
+      }
+
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      document.getElementById('days').innerHTML = days;
+      document.getElementById('days').innerHTML = String(days).padStart(2, '0');
       document.getElementById('hours').innerHTML = String(hours).padStart(2, '0');
       document.getElementById('minutes').innerHTML = String(minutes).padStart(2, '0');
       document.getElementById('seconds').innerHTML = String(seconds).padStart(2, '0');
-
-      if(distance < 0) {
-        clearInterval(timer);
-        document.getElementById('countdown').innerHTML = 'LIVE';
-      }
     }, 1000);
 
     const images = [
@@ -531,60 +534,50 @@
     ];
 
     const floatingLayer = document.getElementById('floatingLayer');
-    const activePositions = [];
 
-    function isTooClose(newTop, side) {
-      for (const pos of activePositions) {
-        const diff = Math.abs(pos.top - newTop);
+    const slots = [
+      { side: 'left', top: 11, x: 2 },
+      { side: 'right', top: 18, x: 2 },
+      { side: 'left', top: 42, x: 3 },
+      { side: 'right', top: 50, x: 3 },
+      { side: 'left', top: 74, x: 2 },
+      { side: 'right', top: 78, x: 2 }
+    ];
 
-        if (pos.side === side && diff < 24) {
-          return true;
-        }
-      }
-
-      return false;
-    }
+    const activeSlots = {};
 
     function spawnFloatingImage() {
+      const availableSlots = slots
+        .map((slot, index) => ({ ...slot, index }))
+        .filter(slot => !activeSlots[slot.index]);
+
+      if(availableSlots.length === 0) {
+        return;
+      }
+
+      const slot = availableSlots[Math.floor(Math.random() * availableSlots.length)];
+      activeSlots[slot.index] = true;
+
       const img = document.createElement('img');
       img.className = 'floating-shot';
       img.src = images[Math.floor(Math.random() * images.length)];
 
-      const side = Math.random() > 0.5 ? 'left' : 'right';
+      img.style.top = slot.top + '%';
 
-      let top;
-      let attempts = 0;
-
-      do {
-        top = Math.floor(Math.random() * 82) + 6;
-        attempts++;
-      } while (isTooClose(top, side) && attempts < 20);
-
-      activePositions.push({ top, side });
-
-      img.style.top = top + '%';
-
-      if(side === 'left') {
-        img.style.left = Math.floor(Math.random() * 6) + 2 + '%';
+      if(slot.side === 'left') {
+        img.style.left = slot.x + '%';
       } else {
-        img.style.right = Math.floor(Math.random() * 6) + 2 + '%';
+        img.style.right = slot.x + '%';
       }
 
-      img.style.animationDuration = (12 + Math.random() * 5) + 's';
+      img.style.animationDuration = (11 + Math.random() * 4) + 's';
 
       floatingLayer.appendChild(img);
 
       setTimeout(() => {
         img.remove();
-
-        const index = activePositions.findIndex(
-          p => p.top === top && p.side === side
-        );
-
-        if(index !== -1) {
-          activePositions.splice(index, 1);
-        }
-      }, 17000);
+        delete activeSlots[slot.index];
+      }, 15500);
     }
 
     spawnFloatingImage();
@@ -592,7 +585,7 @@
 
     setInterval(() => {
       spawnFloatingImage();
-    }, 3200);
+    }, 3600);
   </script>
 
 </body>
