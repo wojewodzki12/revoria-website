@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>REVORIA - Oldschool Tibia Network</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -88,11 +89,20 @@
     }
 
     .logo {
+      display:flex;
+      align-items:center;
+      gap:1px;
       font-family: 'Cinzel', serif;
       font-size: 34px;
       font-weight: 700;
       color: #d6b06b;
       letter-spacing: 3px;
+    }
+
+    .logo-r {
+      font-size: 42px;
+      color: #f1d08d;
+      text-shadow: 0 0 12px rgba(241,208,141,0.45);
     }
 
     .nav-links {
@@ -355,7 +365,7 @@
   <nav class="navbar">
     <div class="nav-container">
 
-      <a href="#top" class="logo">REVORIA</a>
+      <a href="#top" class="logo"><span class="logo-r">R</span>EVORIA</a>
 
       <div class="nav-links">
         <a href="#about">ABOUT</a>
