@@ -1,3 +1,8 @@
+# REVORIA Landing Page
+
+Poniżej wklej cały kod jako `index.html`.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +20,12 @@
       box-sizing:border-box;
     }
 
+    html{
+      scroll-behavior:smooth;
+    }
+
     body{
-      background:#060606;
+      background:#050505;
       color:#d7c29a;
       font-family:'Inter',sans-serif;
       overflow-x:hidden;
@@ -32,7 +41,7 @@
       width:100%;
       z-index:999;
       backdrop-filter:blur(10px);
-      background:rgba(0,0,0,0.75);
+      background:rgba(0,0,0,0.78);
       border-bottom:1px solid rgba(255,215,140,0.08);
     }
 
@@ -97,29 +106,30 @@
       position:absolute;
       inset:0;
       background:
-      linear-gradient(to bottom, rgba(0,0,0,0.75), rgba(0,0,0,0.92)),
+      linear-gradient(to bottom, rgba(0,0,0,0.72), rgba(0,0,0,0.92)),
       url('images/foto1.webp') center/cover no-repeat;
-      filter:brightness(0.7);
+      filter:brightness(0.75);
+      transform:scale(1.03);
     }
 
     .hero-content{
       position:relative;
       z-index:2;
-      max-width:900px;
+      max-width:950px;
       padding:20px;
     }
 
     .hero h1{
       font-family:'Cinzel',serif;
       font-size:110px;
-      letter-spacing:8px;
+      letter-spacing:10px;
       color:#e7c98d;
-      margin-bottom:20px;
+      margin-bottom:15px;
     }
 
     .hero h2{
       font-family:'Cinzel',serif;
-      font-size:28px;
+      font-size:26px;
       font-weight:400;
       letter-spacing:5px;
       margin-bottom:35px;
@@ -131,6 +141,13 @@
       font-size:18px;
       line-height:1.8;
       margin-bottom:40px;
+    }
+
+    .buttons{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
     }
 
     .main-btn{
@@ -146,6 +163,44 @@
     .main-btn:hover{
       background:#8d6730;
       color:white;
+    }
+
+    .countdown-box{
+      margin-top:55px;
+    }
+
+    .countdown-title{
+      font-size:14px;
+      letter-spacing:4px;
+      color:#8e7854;
+      margin-bottom:20px;
+    }
+
+    #countdown{
+      display:flex;
+      justify-content:center;
+      gap:25px;
+      flex-wrap:wrap;
+    }
+
+    .time-box{
+      background:#0c0c0c;
+      border:1px solid rgba(255,215,140,0.08);
+      min-width:110px;
+      padding:22px 10px;
+    }
+
+    .time-box h3{
+      font-size:40px;
+      color:#f1d08d;
+      margin-bottom:8px;
+      font-family:'Cinzel',serif;
+    }
+
+    .time-box span{
+      color:#92754b;
+      font-size:13px;
+      letter-spacing:2px;
     }
 
     .section{
@@ -193,52 +248,46 @@
       line-height:1.8;
     }
 
-    .worlds{
+    .gallery{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-      gap:25px;
+      gap:20px;
     }
 
-    .world-card{
-      position:relative;
-      overflow:hidden;
-      border:1px solid rgba(255,215,140,0.08);
-      background:#0a0a0a;
-    }
-
-    .world-card img{
+    .gallery img{
       width:100%;
-      height:260px;
+      height:240px;
       object-fit:cover;
-      opacity:0.65;
+      border:1px solid rgba(255,215,140,0.08);
       transition:0.4s;
     }
 
-    .world-card:hover img{
-      transform:scale(1.05);
-      opacity:0.85;
+    .gallery img:hover{
+      transform:scale(1.02);
+      border-color:#8d6730;
     }
 
-    .world-overlay{
-      position:absolute;
-      inset:0;
-      background:linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.15));
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      padding:30px;
+    .current-focus{
+      background:#0b0b0b;
+      border:1px solid rgba(255,215,140,0.08);
+      padding:60px;
+      text-align:center;
     }
 
-    .world-overlay h3{
+    .current-focus h3{
       font-family:'Cinzel',serif;
-      color:#e9c987;
-      font-size:28px;
-      margin-bottom:12px;
+      color:#e5c07b;
+      font-size:40px;
+      margin-bottom:25px;
+      letter-spacing:3px;
     }
 
-    .world-overlay p{
-      color:#c4b08c;
-      line-height:1.7;
+    .current-focus p{
+      color:#b8a27c;
+      line-height:2;
+      font-size:18px;
+      max-width:900px;
+      margin:auto;
     }
 
     footer{
@@ -264,6 +313,10 @@
         display:none;
       }
 
+      .current-focus{
+        padding:40px 25px;
+      }
+
     }
 
   </style>
@@ -276,11 +329,10 @@
       <div class="logo">REVORIA</div>
 
       <div class="nav-links">
-        <a href="#">HOME</a>
-        <a href="#">ABOUT</a>
-        <a href="#">WORLDS</a>
-        <a href="#">DEVLOG</a>
-        <a href="#">COMMUNITY</a>
+        <a href="#about">ABOUT</a>
+        <a href="#focus">FOCUS</a>
+        <a href="#gallery">GALLERY</a>
+        <a href="#community">COMMUNITY</a>
       </div>
 
       <a class="discord-btn" href="#">
@@ -304,15 +356,53 @@
         golden era of Tibia.
       </p>
 
-      <a href="#" class="main-btn">
-        JOIN OUR COMMUNITY
-      </a>
+      <div class="buttons">
+        <a href="#" class="main-btn">
+          JOIN OUR COMMUNITY
+        </a>
+
+        <a href="#focus" class="main-btn">
+          CURRENT PROJECT
+        </a>
+      </div>
+
+      <div class="countdown-box">
+
+        <div class="countdown-title">
+          COMBAT TEST STARTS IN
+        </div>
+
+        <div id="countdown">
+
+          <div class="time-box">
+            <h3 id="days">14</h3>
+            <span>DAYS</span>
+          </div>
+
+          <div class="time-box">
+            <h3 id="hours">00</h3>
+            <span>HOURS</span>
+          </div>
+
+          <div class="time-box">
+            <h3 id="minutes">00</h3>
+            <span>MINUTES</span>
+          </div>
+
+          <div class="time-box">
+            <h3 id="seconds">00</h3>
+            <span>SECONDS</span>
+          </div>
+
+        </div>
+
+      </div>
 
     </div>
 
   </section>
 
-  <section class="section">
+  <section class="section" id="about">
 
     <h2 class="section-title">THE VISION</h2>
 
@@ -354,59 +444,91 @@
 
   </section>
 
-  <section class="section">
+  <section class="section" id="focus">
 
-    <h2 class="section-title">FUTURE WORLDS</h2>
+    <h2 class="section-title">CURRENT FOCUS</h2>
 
-    <div class="worlds">
+    <div class="current-focus">
 
-      <div class="world-card">
+      <h3>REVORIA COMBAT TEST</h3>
 
-        <img src="images/foto2.webp">
-
-        <div class="world-overlay">
-          <h3>8.6 LOW RATE</h3>
-          <p>
-            Hardcore oldschool progression inspired by classic Tibia PvP.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="world-card">
-
-        <img src="images/foto3.webp">
-
-        <div class="world-overlay">
-          <h3>RETRO WORLDS</h3>
-          <p>
-            Relive the memories through nostalgic gameplay experiences.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="world-card">
-
-        <img src="images/foto4.webp">
-
-        <div class="world-overlay">
-          <h3>FUTURE PROJECTS</h3>
-          <p>
-            More worlds. More adventures.
-            More stories waiting to happen.
-          </p>
-        </div>
-
-      </div>
+      <p>
+        Our first public project focuses entirely on PvP combat testing and gameplay feedback.
+        
+        The goal is simple:
+        recreate responsive oldschool Tibia combat mechanics players once loved.
+        
+        Movement, healing, exhaust, rune timings and PvP balance will be shaped together with the community.
+      </p>
 
     </div>
 
   </section>
 
-  <footer>
+  <section class="section" id="gallery">
+
+    <h2 class="section-title">SCREENSHOTS</h2>
+
+    <div class="gallery">
+
+      <img src="images/foto2.webp">
+      <img src="images/foto3.webp">
+      <img src="images/foto4.webp">
+      <img src="images/foto5.webp">
+      <img src="images/foto6.webp">
+      <img src="images/foto7.webp">
+      <img src="images/foto8.webp">
+
+    </div>
+
+  </section>
+
+  <footer id="community">
     REVORIA © 2025 — Return to the roots.
   </footer>
 
+  <script>
+
+    const countdownDate = new Date();
+    countdownDate.setDate(countdownDate.getDate() + 14);
+
+    const timer = setInterval(function() {
+
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('days').innerHTML = days;
+      document.getElementById('hours').innerHTML = hours;
+      document.getElementById('minutes').innerHTML = minutes;
+      document.getElementById('seconds').innerHTML = seconds;
+
+      if(distance < 0){
+        clearInterval(timer);
+        document.getElementById('countdown').innerHTML = 'LIVE';
+      }
+
+    }, 1000);
+
+  </script>
+
 </body>
 </html>
+```
+
+Wrzuć teraz 8 screenów do folderu `images` i nazwij je dokładnie:
+
+* foto1.webp
+* foto2.webp
+* foto3.webp
+* foto4.webp
+* foto5.webp
+* foto6.webp
+* foto7.webp
+* foto8.webp
+
+Potem commit → Vercel zrobi deploy automatycznie.
