@@ -240,24 +240,6 @@
       gap: 20px;
       flex-wrap: wrap;
     }
-    .social-links {
-  margin-top: 28px;
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.social-links a {
-  color: #8e7854;
-  font-size: 13px;
-  letter-spacing: 2px;
-  transition: 0.3s;
-}
-
-.social-links a:hover {
-  color: #f1d08d;
-}
 
     .main-btn {
       display: inline-block;
@@ -440,6 +422,74 @@
       text-transform: uppercase;
     }
 
+
+    .floating-socials {
+      position: fixed;
+      right: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 10000;
+      pointer-events: auto;
+    }
+
+    .social-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      background: rgba(10,10,10,0.86);
+      border: 1px solid rgba(255,215,140,0.12);
+      backdrop-filter: blur(6px);
+      transition: 0.3s;
+      box-shadow: 0 0 20px rgba(0,0,0,0.55);
+    }
+
+    .social-icon i {
+      font-size: 25px;
+      line-height: 1;
+    }
+
+    .social-icon:hover {
+      transform: translateX(-5px) scale(1.08);
+      border-color: #8d6730;
+      background: rgba(15,15,15,0.96);
+    }
+
+    .social-icon.tiktok i {
+      color: #ffffff;
+      text-shadow: 1px 1px 0 #ff0050, -1px -1px 0 #00f2ea;
+    }
+
+    .social-icon.instagram i {
+      color: #e4405f;
+    }
+
+    .social-icon.youtube i {
+      color: #ff0000;
+    }
+
+    @media(max-width:900px) {
+      .floating-socials {
+        right: 12px;
+        gap: 12px;
+      }
+
+      .social-icon {
+        width: 46px;
+        height: 46px;
+      }
+
+      .social-icon i {
+        font-size: 21px;
+      }
+    }
+
     footer {
       position: relative;
       z-index: 5;
@@ -475,85 +525,24 @@
       }
     }
   </style>
-  .floating-socials {
-  position: fixed;
-  right: 22px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  z-index: 9999;
-}
-
-.social-icon {
-  width: 54px;
-  height: 54px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  background: rgba(10,10,10,0.82);
-  border: 1px solid rgba(255,215,140,0.08);
-  backdrop-filter: blur(6px);
-  transition: 0.3s;
-  box-shadow: 0 0 20px rgba(0,0,0,0.45);
-}
-
-.social-icon i {
-  font-size: 24px;
-}
-
-.social-icon:hover {
-  transform: translateX(-5px) scale(1.08);
-  border-color: #8d6730;
-}
-
-.tiktok i {
-  color: #ffffff;
-}
-
-.instagram i {
-  color: #ff4fa3;
-}
-
-.youtube i {
-  color: #ff3b3b;
-}
-
-@media(max-width:900px) {
-  .floating-socials {
-    right: 12px;
-    gap: 12px;
-  }
-
-  .social-icon {
-    width: 46px;
-    height: 46px;
-  }
-
-  .social-icon i {
-    font-size: 20px;
-  }
-}
 </head>
-<div class="floating-socials">
 
-  <a href="https://www.tiktok.com/@revoria_online" target="_blank" class="social-icon tiktok">
-    <i class="fab fa-tiktok"></i>
-  </a>
-
-  <a href="https://www.instagram.com/revoria.online" target="_blank" class="social-icon instagram">
-    <i class="fab fa-instagram"></i>
-  </a>
-
-  <a href="https://www.youtube.com/@revoria.online" target="_blank" class="social-icon youtube">
-    <i class="fab fa-youtube"></i>
-  </a>
-
-</div>
 <body id="top">
+
+  <div class="floating-socials">
+    <a href="https://www.tiktok.com/@revoria_online" target="_blank" class="social-icon tiktok" aria-label="TikTok">
+      <i class="fab fa-tiktok"></i>
+    </a>
+
+    <a href="https://www.instagram.com/revoria.online" target="_blank" class="social-icon instagram" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+
+    <a href="https://www.youtube.com/@revoria.online" target="_blank" class="social-icon youtube" aria-label="YouTube">
+      <i class="fab fa-youtube"></i>
+    </a>
+  </div>
+
 
   <div class="floating-layer" id="floatingLayer"></div>
 
