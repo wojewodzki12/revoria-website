@@ -390,51 +390,25 @@
       line-height: 1.8;
     }
 
-    .team-avatar {
-      width: 92px;
-      height: 92px;
-      border-radius: 50%;
-      margin-bottom: 22px;
-      border: 1px solid rgba(241,208,141,0.35);
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 0 30px rgba(0,0,0,0.75);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .team-avatar::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, rgba(0,0,0,0.15), rgba(0,0,0,0.72));
-    }
-
-    .avatar-jakub {
-      background-image: linear-gradient(135deg, rgba(214,176,107,0.18), rgba(0,0,0,0.85)), url('images/team-jakub.webp');
-    }
-
-    .avatar-lucas {
-      background-image: linear-gradient(135deg, rgba(214,176,107,0.18), rgba(0,0,0,0.85)), url('images/team-lucas.webp');
-    }
-
-    .avatar-daan {
-      background-image: linear-gradient(135deg, rgba(214,176,107,0.18), rgba(0,0,0,0.85)), url('images/team-daan.webp');
-    }
-
-    .avatar-maya {
-      background-image: linear-gradient(135deg, rgba(214,176,107,0.18), rgba(0,0,0,0.85)), url('images/team-maya.webp');
-    }
-
-    .nationality {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    .team-intro {
+      max-width: 850px;
+      margin: -25px auto 45px;
+      text-align: center;
       color: #b8a27c;
-      font-size: 13px;
-      letter-spacing: 1px;
-      margin-bottom: 14px;
-      opacity: 0.9;
+      line-height: 1.9;
+      font-size: 18px;
+    }
+
+    .team-icon {
+      width: 54px;
+      height: 54px;
+      margin-bottom: 24px;
+      border-radius: 50%;
+      border: 1px solid rgba(241,208,141,0.28);
+      background:
+        radial-gradient(circle at center, rgba(241,208,141,0.22), rgba(0,0,0,0.8)),
+        linear-gradient(135deg, rgba(214,176,107,0.15), rgba(0,0,0,0.85));
+      box-shadow: 0 0 25px rgba(0,0,0,0.75);
     }
 
     .team-role,
@@ -658,45 +632,47 @@
 
     <h2 class="section-title">REVORIA TEAM</h2>
 
+    <p class="team-intro">
+      Revoria is a small independent oldschool Tibia project built by players and tested with players.
+      Instead of pretending to be a large studio, we focus on transparent development, real combat feedback
+      and a clear direction for future worlds.
+    </p>
+
     <div class="team-grid">
 
       <div class="team-card">
-        <div class="team-avatar avatar-jakub"></div>
-        <h3>Jakub</h3>
-        <span class="nationality">🇵🇱 Poland</span>
-        <span class="team-role">Founder / Project Lead</span>
+        <div class="team-icon"></div>
+        <h3>Project Direction</h3>
+        <span class="team-role">Vision / Gameplay</span>
         <p>
-          Leads the Revoria vision, gameplay direction and long-term network foundation.
+          Defines the Revoria identity, combat test goals and long-term network direction.
         </p>
       </div>
 
       <div class="team-card">
-        <div class="team-avatar avatar-lucas"></div>
-        <h3>Lucas</h3>
-        <span class="nationality">🇧🇷 Brazil</span>
-        <span class="team-role">Combat & Balance</span>
+        <div class="team-icon"></div>
+        <h3>Combat Testing</h3>
+        <span class="team-role">PvP / Balance</span>
         <p>
-          Focuses on PvP feeling, healing values, rune pressure and combat pacing.
+          Focuses on movement, healing, rune pressure, death systems and overall PvP feeling.
         </p>
       </div>
 
       <div class="team-card">
-        <div class="team-avatar avatar-daan"></div>
-        <h3>Daan</h3>
-        <span class="nationality">🇳🇱 Netherlands</span>
-        <span class="team-role">Server Systems</span>
+        <div class="team-icon"></div>
+        <h3>Server Systems</h3>
+        <span class="team-role">Stability / Tools</span>
         <p>
-          Works on server logic, stability, tools and gameplay systems behind the scenes.
+          Handles server logic, test systems, scripts and the technical foundation behind the game.
         </p>
       </div>
 
       <div class="team-card">
-        <div class="team-avatar avatar-maya"></div>
-        <h3>Maya</h3>
-        <span class="nationality">🇺🇸 United States</span>
-        <span class="team-role">Community & QA</span>
+        <div class="team-icon"></div>
+        <h3>Community Feedback</h3>
+        <span class="team-role">Reports / QA</span>
         <p>
-          Collects feedback, tracks issues and helps turn player reports into improvements.
+          Turns player reports, bug reports and balance discussions into practical improvements.
         </p>
       </div>
 
