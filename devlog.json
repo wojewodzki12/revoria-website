@@ -1,17 +1,20 @@
 [
   {
-    "date": "FOUNDATION",
-    "title": "Combat Test Core",
-    "text": "The first playable version focuses on quick entry, random battlefield spawns, starter equipment restoration and infinite supplies for constant PvP testing."
+    "date": "APRIL 2026",
+    "title": "The Idea & Community",
+    "text": "Revoria started as a small oldschool Tibia project focused on rebuilding the feeling of classic PvP gameplay.
+The first goal was simple: create a community, share the vision and prepare a combat environment shaped together with players."
   },
   {
-    "date": "GAMEPLAY",
-    "title": "Learning Through War",
-    "text": "The first public server is intentionally simple: players fight, report issues and help us discover what oldschool PvP should feel like."
+    "date": "CURRENT STATUS",
+    "title": "Combat Test Environment",
+    "text": "The first public war server is now online for testing.
+Players can instantly enter the battlefield, fight continuously and help us test movement, healing, rune balance, death systems and overall PvP pacing."
   },
   {
-    "date": "NEXT",
-    "title": "Reward Systems",
-    "text": "Frag rewards, titles and small progression systems are planned after the first real combat feedback comes in."
+    "date": "NEXT STEPS",
+    "title": "Feedback & Iteration",
+    "text": "The next phase focuses on collecting player feedback, fixing bugs and improving gameplay mechanics based on real combat situations.
+Future updates may include progression systems, frag rewards and additional PvP objectives."
   }
 ]
