@@ -223,10 +223,51 @@ color:white;
 transform:translateY(-2px);
 }
 
+.countdown-box{
+margin-top:46px;
+}
+
+.countdown-title{
+font-size:13px;
+letter-spacing:4px;
+color:#8e7854;
+margin-bottom:18px;
+text-transform:uppercase;
+}
+
+#countdown{
+display:flex;
+justify-content:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.time-box{
+background:rgba(12,12,12,.82);
+border:1px solid rgba(255,215,140,.1);
+min-width:96px;
+padding:20px 10px;
+box-shadow:0 0 26px rgba(0,0,0,.45);
+}
+
+.time-box h3{
+font-family:'Cinzel',serif;
+font-size:34px;
+color:#f1d08d;
+margin-bottom:6px;
+}
+
+.time-box span{
+font-size:11px;
+letter-spacing:2px;
+color:#92754b;
+}
+
+
 .sidebar{
 background:rgba(8,8,8,.88);
 border:1px solid rgba(255,215,140,.1);
-padding:28px;
+padding:23px;
 backdrop-filter:blur(10px);
 }
 
@@ -242,14 +283,14 @@ margin-bottom:18px;
 display:flex;
 align-items:center;
 gap:12px;
-font-size:28px;
+font-size:23px;
 font-family:'Cinzel',serif;
 color:#f1d08d;
-margin-bottom:15px;
+margin-bottom:12px;
 }
 
 .discord-big i{
-font-size:38px;
+font-size:32px;
 color:#5865F2;
 }
 
@@ -275,8 +316,8 @@ color:white;
 }
 
 .news{
-margin-top:30px;
-padding-top:28px;
+margin-top:24px;
+padding-top:22px;
 border-top:1px solid rgba(255,215,140,.08);
 }
 
@@ -429,8 +470,75 @@ border-color:#666;
 color:#777;
 }
 
+
+.content-section{
+max-width:1400px;
+margin:auto;
+padding:85px 30px;
+}
+
+.info-grid,
+.devlog-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.info-card,
+.devlog-card{
+background:rgba(13,13,13,.92);
+border:1px solid rgba(255,215,140,.08);
+padding:38px 30px;
+transition:.3s;
+}
+
+.info-card:hover,
+.devlog-card:hover{
+transform:translateY(-5px);
+border-color:#8d6730;
+}
+
+.info-card h3,
+.devlog-card h3,
+.focus-box h3{
+font-family:'Cinzel',serif;
+color:#e5c07b;
+letter-spacing:2px;
+margin-bottom:18px;
+}
+
+.info-card p,
+.devlog-card p{
+color:#b8a27c;
+line-height:1.8;
+}
+
+.devlog-date{
+display:block;
+color:#8e7854;
+font-size:13px;
+letter-spacing:2px;
+margin-bottom:16px;
+text-transform:uppercase;
+}
+
+.focus-box{
+background:rgba(11,11,11,.94);
+border:1px solid rgba(255,215,140,.08);
+padding:52px;
+text-align:center;
+}
+
+.focus-box p{
+color:#b8a27c;
+font-size:18px;
+line-height:2;
+max-width:920px;
+margin:auto;
+}
+
 footer{
-margin-top:80px;
+margin-top:40px;
 padding:40px 20px;
 text-align:center;
 border-top:1px solid rgba(255,215,140,.08);
@@ -486,10 +594,10 @@ grid-template-columns:1fr;
 <div class="logo">REVORIA</div>
 
 <div class="nav-links">
-<a href="#">ABOUT</a>
-<a href="#">FOCUS</a>
-<a href="#">WORLDS</a>
-<a href="#">DEVLOG</a>
+<a href="#about">ABOUT</a>
+<a href="#focus">FOCUS</a>
+<a href="#worlds">WORLDS</a>
+<a href="#devlog">DEVLOG</a>
 </div>
 
 <div class="nav-right">
@@ -506,9 +614,6 @@ grid-template-columns:1fr;
 <i class="fab fa-youtube"></i>
 </a>
 
-<a href="https://discord.gg/73ADntPraM" target="_blank" class="discord-btn">
-JOIN DISCORD
-</a>
 
 </div>
 </div>
@@ -541,6 +646,32 @@ VIEW WORLDS
 </a>
 </div>
 
+<div class="countdown-box">
+<div class="countdown-title">COMBAT TEST STARTS IN</div>
+
+<div id="countdown">
+<div class="time-box">
+<h3 id="days">00</h3>
+<span>DAYS</span>
+</div>
+
+<div class="time-box">
+<h3 id="hours">00</h3>
+<span>HOURS</span>
+</div>
+
+<div class="time-box">
+<h3 id="minutes">00</h3>
+<span>MINUTES</span>
+</div>
+
+<div class="time-box">
+<h3 id="seconds">00</h3>
+<span>SECONDS</span>
+</div>
+</div>
+</div>
+
 </div>
 
 <div class="sidebar">
@@ -557,7 +688,7 @@ Join the Revoria Discord, follow development and help shape future worlds togeth
 </p>
 
 <a href="https://discord.gg/73ADntPraM" target="_blank" class="panel-button">
-JOIN NOW
+JOIN DISCORD
 </a>
 
 <div class="news">
@@ -603,7 +734,7 @@ JOIN NOW
 
 <div class="tags">
 <span class="tag">TEST</span>
-<span class="tag">PVP</span>
+<span class="tag">WAR</span>
 </div>
 
 <div class="status">Launching Soon</div>
@@ -678,9 +809,114 @@ JOIN DISCORD
 
 </section>
 
+
+<section class="content-section" id="about">
+
+<div class="section-title">
+<h2>ABOUT REVORIA</h2>
+<span>Community-driven oldschool network</span>
+</div>
+
+<div class="info-grid">
+<div class="info-card">
+<h3>COMMUNITY FIRST</h3>
+<p>Revoria is built together with players who still remember the old days of online MMORPGs.</p>
+</div>
+
+<div class="info-card">
+<h3>FAIR GAMEPLAY</h3>
+<p>No shortcuts. No pay-to-win. Skill, dedication and rivalry matter again.</p>
+</div>
+
+<div class="info-card">
+<h3>ONE NETWORK</h3>
+<p>Different worlds, different experiences and one connected community.</p>
+</div>
+</div>
+
+</section>
+
+<section class="content-section" id="focus">
+
+<div class="section-title">
+<h2>CURRENT FOCUS</h2>
+<span>Revoria Combat Test</span>
+</div>
+
+<div class="focus-box">
+<h3>REVORIA COMBAT TEST</h3>
+<p>
+Revoria Combat Test is a temporary 8.6 war server created to test, refine and rebuild the feeling of oldschool Tibia PvP.
+Players will create their own characters, enter the battlefield quickly and help us improve movement, healing, rune balance,
+death systems and overall combat through real fights and community feedback.
+</p>
+</div>
+
+</section>
+
+<section class="content-section" id="devlog">
+
+<div class="section-title">
+<h2>LATEST DEVLOG</h2>
+<span>Loaded from devlog.json</span>
+</div>
+
+<div class="devlog-grid" id="devlogGrid"></div>
+
+</section>
+
 <footer>
 REVORIA © 2026 — Return to the roots.
 </footer>
+
+
+<script>
+const countdownDate = new Date("May 31, 2026 12:00:00").getTime();
+
+setInterval(function() {
+  const now = new Date().getTime();
+  const distance = countdownDate - now;
+
+  if(distance < 0) {
+    document.getElementById('countdown').innerHTML = 'LIVE';
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById('days').innerHTML = String(days).padStart(2, '0');
+  document.getElementById('hours').innerHTML = String(hours).padStart(2, '0');
+  document.getElementById('minutes').innerHTML = String(minutes).padStart(2, '0');
+  document.getElementById('seconds').innerHTML = String(seconds).padStart(2, '0');
+}, 1000);
+
+async function loadDevlog() {
+  try {
+    const response = await fetch('devlog.json', { cache: 'no-store' });
+    if(!response.ok) return;
+
+    const entries = await response.json();
+    const grid = document.getElementById('devlogGrid');
+
+    if(!Array.isArray(entries) || entries.length === 0 || !grid) return;
+
+    grid.innerHTML = entries.slice(0, 3).map(entry => `
+      <div class="devlog-card">
+        <span class="devlog-date">${entry.date || 'UPDATE'}</span>
+        <h3>${entry.title || 'Development Update'}</h3>
+        <p>${entry.text || ''}</p>
+      </div>
+    `).join('');
+  } catch(error) {
+    console.warn('Devlog file not loaded.');
+  }
+}
+
+loadDevlog();
+</script>
 
 </body>
 </html>
