@@ -12,171 +12,166 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-background:#050505;
-color:#d7c29a;
-font-family:'Inter',sans-serif;
-overflow-x:hidden;
-}
+body{background:#050505;color:#d7c29a;font-family:'Inter',sans-serif;overflow-x:hidden}
 a{text-decoration:none}
 
 .navbar{
-position:fixed;
-top:0;
-width:100%;
-z-index:999;
+position:fixed;top:0;width:100%;z-index:999;
 background:rgba(0,0,0,.85);
 backdrop-filter:blur(10px);
-border-bottom:1px solid rgba(255,215,140,.08);
+border-bottom:1px solid rgba(255,215,140,.08)
 }
 .nav-container{
-max-width:1450px;
-margin:auto;
-padding:16px 30px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:25px;
+max-width:1450px;margin:auto;padding:14px 30px;
+display:flex;justify-content:space-between;align-items:center;gap:25px
 }
 .logo{
-font-family:'Cinzel',serif;
-font-size:30px;
-letter-spacing:4px;
-font-weight:700;
-color:#d6b06b;
+font-family:'Cinzel',serif;font-size:29px;letter-spacing:4px;
+font-weight:700;color:#d6b06b
 }
-.nav-links{
-display:flex;
-gap:30px;
-}
-.nav-links a{
-font-size:13px;
-letter-spacing:2px;
-color:#d7c29a;
-transition:.3s;
-}
+.nav-links{display:flex;gap:30px}
+.nav-links a{font-size:13px;letter-spacing:2px;color:#d7c29a;transition:.3s}
 .nav-links a:hover{color:#f1d08d}
-
-.nav-right{
-display:flex;
-align-items:center;
-gap:12px;
-}
+.nav-right{display:flex;align-items:center;gap:12px}
 .social{
-width:38px;
-height:38px;
-border-radius:10px;
-display:flex;
-align-items:center;
-justify-content:center;
+width:36px;height:36px;border-radius:10px;
+display:flex;align-items:center;justify-content:center;
 background:rgba(15,15,15,.9);
 border:1px solid rgba(255,215,140,.08);
-transition:.3s;
+transition:.3s
 }
-.social:hover{
-transform:translateY(-2px);
-border-color:#8d6730;
-}
-.social i{font-size:18px}
-.social.tiktok i{
-color:white;
-text-shadow:1px 1px 0 #ff0050,-1px -1px 0 #00f2ea;
-}
+.social:hover{transform:translateY(-2px);border-color:#8d6730}
+.social i{font-size:17px}
+.social.tiktok i{color:white;text-shadow:1px 1px 0 #ff0050,-1px -1px 0 #00f2ea}
 .social.instagram i{color:#ff4f91}
 .social.youtube i{color:#ff2a2a}
 
 .hero{
-min-height:62vh;
+min-height:52vh;
 position:relative;
 display:flex;
 align-items:center;
-padding:105px 30px 35px;
-overflow:hidden;
+padding:88px 30px 12px;
+overflow:hidden
 }
 .hero:before{
-content:'';
-position:absolute;
-inset:0;
+content:'';position:absolute;inset:0;
 background:
 linear-gradient(to bottom,rgba(0,0,0,.58),rgba(0,0,0,.96)),
 url('images/foto1.webp') center/cover no-repeat;
-filter:brightness(.7);
+filter:brightness(.7)
 }
 .hero-layout{
-position:relative;
-z-index:2;
-max-width:1450px;
-width:100%;
-margin:auto;
+position:relative;z-index:2;
+max-width:1450px;width:100%;margin:auto;
 display:grid;
-grid-template-columns:1fr;
-align-items:center;
+grid-template-columns:1fr 260px;
+gap:30px;
+align-items:center
 }
 .hero-content{text-align:center}
 .hero-small{
-font-size:12px;
-letter-spacing:5px;
-color:#b89659;
-margin-bottom:14px;
+font-size:12px;letter-spacing:5px;color:#b89659;margin-bottom:10px
 }
 .hero h1{
 font-family:'Cinzel',serif;
-font-size:82px;
+font-size:72px;
 letter-spacing:10px;
 color:#f0cf90;
 line-height:1;
-margin-bottom:14px;
+margin-bottom:8px
 }
 .hero h2{
 font-family:'Cinzel',serif;
-font-size:21px;
+font-size:18px;
 font-weight:400;
 letter-spacing:6px;
-margin-bottom:22px;
-color:#d7b97d;
+margin-bottom:12px;
+color:#d7b97d
 }
 .hero p{
-max-width:760px;
+max-width:700px;
 margin:auto;
-line-height:1.7;
-font-size:16px;
-color:#c8b18a;
+line-height:1.65;
+font-size:15px;
+color:#c8b18a
 }
+
+.sidebar{
+background:rgba(8,8,8,.86);
+border:1px solid rgba(255,215,140,.1);
+padding:18px;
+backdrop-filter:blur(10px)
+}
+.sidebar-title{
+font-size:11px;
+letter-spacing:3px;
+text-transform:uppercase;
+color:#8e7854;
+margin-bottom:12px
+}
+.discord-big{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:18px;
+font-family:'Cinzel',serif;
+color:#f1d08d;
+margin-bottom:10px
+}
+.discord-big i{font-size:25px;color:#5865F2}
+.sidebar p{
+font-size:13px;
+color:#b8a27c;
+line-height:1.6;
+margin-bottom:14px
+}
+.panel-button{
+display:block;
+text-align:center;
+padding:10px;
+border:1px solid #8d6730;
+color:#f1d08d;
+letter-spacing:2px;
+font-size:11px;
+transition:.3s
+}
+.panel-button:hover{background:#8d6730;color:white}
 
 .worlds{
 max-width:1450px;
 margin:auto;
-padding:26px 30px 80px;
+padding:18px 30px 75px
 }
 .section-title{
 text-align:center;
-margin-bottom:28px;
+margin-bottom:24px
 }
 .section-title h2{
 font-family:'Cinzel',serif;
-font-size:31px;
+font-size:30px;
 letter-spacing:4px;
 color:#dfbf82;
-margin-bottom:8px;
+margin-bottom:8px
 }
 .section-title span{
 font-size:12px;
 letter-spacing:3px;
 color:#8e7854;
-text-transform:uppercase;
+text-transform:uppercase
 }
 
 .world-grid{
 display:grid;
 grid-template-columns:repeat(5,1fr);
-gap:18px;
+gap:18px
 }
 .world-card{
 position:relative;
-height:245px;
+height:238px;
 overflow:hidden;
 border:1px solid rgba(141,103,48,.55);
-background:#111;
+background:#111
 }
 .world-card:before{
 content:'';
@@ -188,23 +183,19 @@ var(--bg);
 background-size:cover;
 background-position:center;
 filter:brightness(.75);
-transition:.4s;
+transition:.4s
 }
-.world-card.offline:before{
-filter:grayscale(1) brightness(.35);
-}
-.world-card:hover:before{
-transform:scale(1.06);
-}
+.world-card.offline:before{filter:grayscale(1) brightness(.35)}
+.world-card:hover:before{transform:scale(1.06)}
 .world-content{
 position:absolute;
 inset:0;
-padding:22px;
+padding:20px;
 display:flex;
 flex-direction:column;
 justify-content:flex-end;
 text-align:center;
-z-index:2;
+z-index:2
 }
 .world-content h3{
 font-family:'Cinzel',serif;
@@ -213,7 +204,7 @@ letter-spacing:4px;
 font-weight:700;
 margin-bottom:6px;
 color:#f1d08d;
-text-shadow:0 0 20px rgba(0,0,0,.9);
+text-shadow:0 0 20px rgba(0,0,0,.9)
 }
 .world-content small{
 display:block;
@@ -221,14 +212,14 @@ margin-bottom:12px;
 letter-spacing:2px;
 font-size:11px;
 color:#b8a27c;
-text-transform:uppercase;
+text-transform:uppercase
 }
 .tags{
 display:flex;
 justify-content:center;
 gap:8px;
 flex-wrap:wrap;
-margin-bottom:13px;
+margin-bottom:12px
 }
 .tag{
 padding:5px 9px;
@@ -236,77 +227,58 @@ font-size:11px;
 border-radius:3px;
 background:rgba(141,103,48,.75);
 color:white;
-letter-spacing:1px;
+letter-spacing:1px
 }
-.tag.gray{
-background:rgba(90,90,90,.7);
-}
+.tag.gray{background:rgba(90,90,90,.7)}
 .status{
-margin-bottom:13px;
+margin-bottom:12px;
 font-size:13px;
 letter-spacing:1px;
 color:#9bd18f;
-text-transform:uppercase;
+text-transform:uppercase
 }
-.status.development{
-color:#f1d08d;
-}
-.offline .status{
-color:#888;
-}
+.status.development{color:#f1d08d}
+.offline .status{color:#888}
 .world-btn{
 padding:10px;
 border:1px solid rgba(214,176,107,.7);
 color:#f1d08d;
 font-size:12px;
 letter-spacing:2px;
-transition:.3s;
+transition:.3s
 }
-a.world-btn:hover{
-background:#8d6730;
-color:white;
-}
-.offline .world-btn,
-.disabled-btn{
-border-color:#666;
-color:#777;
-}
+a.world-btn:hover{background:#8d6730;color:white}
+.offline .world-btn,.disabled-btn{border-color:#666;color:#777}
 
 .content-section{
 max-width:1400px;
 margin:auto;
-padding:75px 30px;
+padding:70px 30px
 }
-.info-grid,
-.devlog-grid{
+.info-grid,.devlog-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+gap:25px
 }
-.info-card,
-.devlog-card{
+.info-card,.devlog-card{
 background:rgba(13,13,13,.92);
 border:1px solid rgba(255,215,140,.08);
 padding:34px 28px;
-transition:.3s;
+transition:.3s
 }
-.info-card:hover,
-.devlog-card:hover{
+.info-card:hover,.devlog-card:hover{
 transform:translateY(-5px);
-border-color:#8d6730;
+border-color:#8d6730
 }
-.info-card h3,
-.devlog-card h3,
-.focus-box h3{
+.info-card h3,.devlog-card h3,.focus-box h3{
 font-family:'Cinzel',serif;
 color:#e5c07b;
 letter-spacing:2px;
-margin-bottom:18px;
+margin-bottom:18px
 }
-.info-card p,
-.devlog-card p{
+.info-card p,.devlog-card p{
 color:#b8a27c;
-line-height:1.8;
+line-height:1.8
 }
 .devlog-date{
 display:block;
@@ -314,20 +286,20 @@ color:#8e7854;
 font-size:13px;
 letter-spacing:2px;
 margin-bottom:16px;
-text-transform:uppercase;
+text-transform:uppercase
 }
 .focus-box{
 background:rgba(11,11,11,.94);
 border:1px solid rgba(255,215,140,.08);
 padding:46px;
-text-align:center;
+text-align:center
 }
 .focus-box p{
 color:#b8a27c;
 font-size:17px;
 line-height:1.9;
 max-width:940px;
-margin:auto;
+margin:auto
 }
 footer{
 margin-top:40px;
@@ -335,34 +307,21 @@ padding:40px 20px;
 text-align:center;
 border-top:1px solid rgba(255,215,140,.08);
 color:#826f4d;
-background:rgba(0,0,0,.85);
+background:rgba(0,0,0,.85)
 }
 
 @media(max-width:1100px){
-.world-grid{
-grid-template-columns:repeat(2,1fr);
-}
-.hero h1{
-font-size:68px;
-}
+.hero-layout{grid-template-columns:1fr}
+.sidebar{max-width:360px;margin:auto}
+.world-grid{grid-template-columns:repeat(2,1fr)}
+.hero h1{font-size:64px}
 }
 @media(max-width:850px){
 .nav-links{display:none}
-.hero{
-min-height:auto;
-padding:105px 24px 45px;
-}
-.hero h1{
-font-size:52px;
-letter-spacing:6px;
-}
-.hero h2{
-font-size:17px;
-letter-spacing:4px;
-}
-.world-grid{
-grid-template-columns:1fr;
-}
+.hero{min-height:auto;padding:95px 24px 35px}
+.hero h1{font-size:52px;letter-spacing:6px}
+.hero h2{font-size:17px;letter-spacing:4px}
+.world-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -381,21 +340,16 @@ grid-template-columns:1fr;
 </div>
 
 <div class="nav-right">
-<a href="https://www.tiktok.com/@revoria_online" target="_blank" class="social tiktok">
-<i class="fab fa-tiktok"></i>
-</a>
-<a href="https://www.instagram.com/revoria.online" target="_blank" class="social instagram">
-<i class="fab fa-instagram"></i>
-</a>
-<a href="https://www.youtube.com/@revoria.online" target="_blank" class="social youtube">
-<i class="fab fa-youtube"></i>
-</a>
+<a href="https://www.tiktok.com/@revoria_online" target="_blank" class="social tiktok"><i class="fab fa-tiktok"></i></a>
+<a href="https://www.instagram.com/revoria.online" target="_blank" class="social instagram"><i class="fab fa-instagram"></i></a>
+<a href="https://www.youtube.com/@revoria.online" target="_blank" class="social youtube"><i class="fab fa-youtube"></i></a>
 </div>
 </div>
 </nav>
 
 <section class="hero">
 <div class="hero-layout">
+
 <div class="hero-content">
 <div class="hero-small">WELCOME TO</div>
 <h1>REVORIA</h1>
@@ -406,6 +360,21 @@ long-term progression and live experimental MMORPG worlds inspired by
 the golden era of Tibia.
 </p>
 </div>
+
+<div class="sidebar">
+<div class="sidebar-title">COMMUNITY</div>
+<div class="discord-big">
+<i class="fab fa-discord"></i>
+DISCORD
+</div>
+<p>
+Follow development, join discussions and help shape Lumera together with the community.
+</p>
+<a href="https://discord.gg/73ADntPraM" target="_blank" class="panel-button">
+JOIN DISCORD
+</a>
+</div>
+
 </div>
 </section>
 
@@ -427,9 +396,7 @@ the golden era of Tibia.
 <span class="tag">THAIS ONLY</span>
 </div>
 <div class="status">ONLINE</div>
-<a href="https://furia.revoria.online" target="_blank" class="world-btn">
-VISIT WEBSITE
-</a>
+<a href="https://furia.revoria.online" target="_blank" class="world-btn">VISIT WEBSITE</a>
 </div>
 </div>
 
@@ -451,9 +418,7 @@ VISIT WEBSITE
 <div class="world-content">
 <h3>RETRO</h3>
 <small>Classic Experience</small>
-<div class="tags">
-<span class="tag gray">TBA</span>
-</div>
+<div class="tags"><span class="tag gray">TBA</span></div>
 <div class="status">Offline</div>
 <div class="world-btn">TBA</div>
 </div>
@@ -463,9 +428,7 @@ VISIT WEBSITE
 <div class="world-content">
 <h3>HIGHRATE</h3>
 <small>Fast Progression</small>
-<div class="tags">
-<span class="tag gray">TBA</span>
-</div>
+<div class="tags"><span class="tag gray">TBA</span></div>
 <div class="status">Offline</div>
 <div class="world-btn">TBA</div>
 </div>
@@ -475,9 +438,7 @@ VISIT WEBSITE
 <div class="world-content">
 <h3>EXPERIMENTAL</h3>
 <small>Community Ideas</small>
-<div class="tags">
-<span class="tag gray">TBA</span>
-</div>
+<div class="tags"><span class="tag gray">TBA</span></div>
 <div class="status">Offline</div>
 <div class="world-btn">TBA</div>
 </div>
@@ -497,12 +458,10 @@ VISIT WEBSITE
 <h3>COMMUNITY FIRST</h3>
 <p>Revoria is built together with players who still remember the old days of online MMORPGs.</p>
 </div>
-
 <div class="info-card">
 <h3>FAIR GAMEPLAY</h3>
 <p>No shortcuts. No pay-to-win. Skill, dedication and rivalry matter again.</p>
 </div>
-
 <div class="info-card">
 <h3>ONE NETWORK</h3>
 <p>Different worlds, different experiences and one connected community.</p>
