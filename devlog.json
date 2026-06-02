@@ -1,17 +1,17 @@
 [
   {
-    "date": "APRIL 2026",
-    "title": "The Idea & Community",
-    "text": "Revoria started as a small oldschool Tibia project focused on rebuilding the feeling of classic PvP gameplay.\nThe first goal was simple: create a community, share the vision and prepare a combat environment shaped together with players."
+    "date": "JUNE 2026",
+    "title": "Lumera Announcement",
+    "text": "As you may know, since the beginning we have been planning to create a classic Tibia 8.6 RPG server. That's also why we created Furia — a testing environment where we could experiment with different mechanics, ideas and systems."
   },
   {
     "date": "CURRENT STATUS",
-    "title": "Combat Test Environment",
-    "text": "The first public war server will be online soon for testing.\nPlayers can instantly enter the battlefield, fight continuously and help us test movement, healing, rune balance, death systems and overall PvP pacing."
+    "title": "Furia & Lumera",
+    "text": "Furia is now stable and serves as our dedicated testing world, which means we can finally introduce Lumera. Lumera will be a classic Tibia 8.6 RPG x1 PvP world."
   },
   {
-    "date": "NEXT STEPS",
-    "title": "Feedback & Iteration",
-    "text": "The next phase focuses on collecting player feedback, fixing bugs and improving gameplay mechanics based on real combat situations.\nFuture updates may include progression systems, frag rewards and additional PvP objectives."
+    "date": "CURRENT FOCUS",
+    "title": "Building The Foundation",
+    "text": "Our current focus is testing and reviewing the engine, mechanics, quests, NPCs, monster balance and overall gameplay consistency. Furia will remain online while Lumera is being developed."
   }
 ]
