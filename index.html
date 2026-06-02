@@ -10,26 +10,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
 background:#050505;
 color:#d7c29a;
 font-family:'Inter',sans-serif;
 overflow-x:hidden;
 }
-
-a{
-text-decoration:none;
-}
+a{text-decoration:none}
 
 .navbar{
 position:fixed;
@@ -40,50 +29,42 @@ background:rgba(0,0,0,.85);
 backdrop-filter:blur(10px);
 border-bottom:1px solid rgba(255,215,140,.08);
 }
-
 .nav-container{
 max-width:1450px;
 margin:auto;
-padding:18px 30px;
+padding:16px 30px;
 display:flex;
 justify-content:space-between;
 align-items:center;
 gap:25px;
 }
-
 .logo{
 font-family:'Cinzel',serif;
-font-size:34px;
+font-size:30px;
 letter-spacing:4px;
 font-weight:700;
 color:#d6b06b;
 }
-
 .nav-links{
 display:flex;
 gap:30px;
 }
-
 .nav-links a{
 font-size:13px;
 letter-spacing:2px;
 color:#d7c29a;
 transition:.3s;
 }
-
-.nav-links a:hover{
-color:#f1d08d;
-}
+.nav-links a:hover{color:#f1d08d}
 
 .nav-right{
 display:flex;
 align-items:center;
 gap:12px;
 }
-
 .social{
-width:40px;
-height:40px;
+width:38px;
+height:38px;
 border-radius:10px;
 display:flex;
 align-items:center;
@@ -92,62 +73,35 @@ background:rgba(15,15,15,.9);
 border:1px solid rgba(255,215,140,.08);
 transition:.3s;
 }
-
 .social:hover{
 transform:translateY(-2px);
 border-color:#8d6730;
 }
-
-.social i{
-font-size:18px;
-}
-
+.social i{font-size:18px}
 .social.tiktok i{
 color:white;
 text-shadow:1px 1px 0 #ff0050,-1px -1px 0 #00f2ea;
 }
-
-.social.instagram i{
-color:#ff4f91;
-}
-
-.social.youtube i{
-color:#ff2a2a;
-}
-
-.discord-btn{
-padding:12px 18px;
-border:1px solid #8d6730;
-color:#f1d08d;
-letter-spacing:2px;
-font-size:12px;
-transition:.3s;
-}
-
-.discord-btn:hover{
-background:#8d6730;
-color:white;
-}
+.social.instagram i{color:#ff4f91}
+.social.youtube i{color:#ff2a2a}
 
 .hero{
-min-height:100vh;
+min-height:62vh;
 position:relative;
 display:flex;
 align-items:center;
-padding:140px 30px 80px;
+padding:105px 30px 35px;
 overflow:hidden;
 }
-
 .hero:before{
 content:'';
 position:absolute;
 inset:0;
 background:
-linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.94)),
+linear-gradient(to bottom,rgba(0,0,0,.58),rgba(0,0,0,.96)),
 url('images/foto1.webp') center/cover no-repeat;
 filter:brightness(.7);
 }
-
 .hero-layout{
 position:relative;
 z-index:2;
@@ -155,209 +109,56 @@ max-width:1450px;
 width:100%;
 margin:auto;
 display:grid;
-grid-template-columns:1fr 320px;
-gap:45px;
+grid-template-columns:1fr;
 align-items:center;
 }
-
-.hero-content{
-text-align:center;
-}
-
+.hero-content{text-align:center}
 .hero-small{
-font-size:13px;
+font-size:12px;
 letter-spacing:5px;
 color:#b89659;
-margin-bottom:18px;
+margin-bottom:14px;
 }
-
 .hero h1{
 font-family:'Cinzel',serif;
-font-size:110px;
+font-size:82px;
 letter-spacing:10px;
 color:#f0cf90;
 line-height:1;
-margin-bottom:20px;
+margin-bottom:14px;
 }
-
 .hero h2{
 font-family:'Cinzel',serif;
-font-size:26px;
+font-size:21px;
 font-weight:400;
 letter-spacing:6px;
-margin-bottom:35px;
+margin-bottom:22px;
 color:#d7b97d;
 }
-
 .hero p{
-max-width:850px;
+max-width:760px;
 margin:auto;
-line-height:1.9;
-font-size:18px;
+line-height:1.7;
+font-size:16px;
 color:#c8b18a;
-margin-bottom:40px;
-}
-
-.buttons{
-display:flex;
-justify-content:center;
-gap:16px;
-flex-wrap:wrap;
-}
-
-.primary-btn,
-.secondary-btn{
-padding:18px 36px;
-border:1px solid #8d6730;
-color:#f1d08d;
-letter-spacing:2px;
-font-size:13px;
-transition:.3s;
-background:rgba(0,0,0,.35);
-}
-
-.primary-btn:hover,
-.secondary-btn:hover{
-background:#8d6730;
-color:white;
-transform:translateY(-2px);
-}
-
-.countdown-box{
-margin-top:46px;
-}
-
-.countdown-title{
-font-size:13px;
-letter-spacing:4px;
-color:#8e7854;
-margin-bottom:18px;
-text-transform:uppercase;
-}
-
-#countdown{
-display:flex;
-justify-content:center;
-gap:18px;
-flex-wrap:wrap;
-}
-
-.time-box{
-background:rgba(12,12,12,.82);
-border:1px solid rgba(255,215,140,.1);
-min-width:96px;
-padding:20px 10px;
-box-shadow:0 0 26px rgba(0,0,0,.45);
-}
-
-.time-box h3{
-font-family:'Cinzel',serif;
-font-size:34px;
-color:#f1d08d;
-margin-bottom:6px;
-}
-
-.time-box span{
-font-size:11px;
-letter-spacing:2px;
-color:#92754b;
-}
-
-
-.sidebar{
-background:rgba(8,8,8,.88);
-border:1px solid rgba(255,215,140,.1);
-padding:23px;
-backdrop-filter:blur(10px);
-}
-
-.sidebar-title{
-font-size:12px;
-letter-spacing:3px;
-text-transform:uppercase;
-color:#8e7854;
-margin-bottom:18px;
-}
-
-.discord-big{
-display:flex;
-align-items:center;
-gap:12px;
-font-size:23px;
-font-family:'Cinzel',serif;
-color:#f1d08d;
-margin-bottom:12px;
-}
-
-.discord-big i{
-font-size:32px;
-color:#5865F2;
-}
-
-.sidebar p{
-color:#b8a27c;
-line-height:1.8;
-margin-bottom:18px;
-}
-
-.panel-button{
-display:block;
-text-align:center;
-padding:13px;
-border:1px solid #8d6730;
-color:#f1d08d;
-letter-spacing:2px;
-transition:.3s;
-}
-
-.panel-button:hover{
-background:#8d6730;
-color:white;
-}
-
-.news{
-margin-top:24px;
-padding-top:22px;
-border-top:1px solid rgba(255,215,140,.08);
-}
-
-.news-item{
-margin-bottom:18px;
-}
-
-.news-item span{
-display:block;
-font-size:11px;
-letter-spacing:2px;
-color:#8e7854;
-margin-bottom:5px;
-text-transform:uppercase;
-}
-
-.news-item p{
-font-size:14px;
-line-height:1.6;
 }
 
 .worlds{
 max-width:1450px;
 margin:auto;
-padding:40px 30px 90px;
+padding:26px 30px 80px;
 }
-
 .section-title{
 text-align:center;
-margin-bottom:40px;
+margin-bottom:28px;
 }
-
 .section-title h2{
 font-family:'Cinzel',serif;
-font-size:34px;
+font-size:31px;
 letter-spacing:4px;
 color:#dfbf82;
-margin-bottom:10px;
+margin-bottom:8px;
 }
-
 .section-title span{
 font-size:12px;
 letter-spacing:3px;
@@ -370,36 +171,31 @@ display:grid;
 grid-template-columns:repeat(5,1fr);
 gap:18px;
 }
-
 .world-card{
 position:relative;
-height:260px;
+height:245px;
 overflow:hidden;
 border:1px solid rgba(141,103,48,.55);
 background:#111;
 }
-
 .world-card:before{
 content:'';
 position:absolute;
 inset:0;
 background:
-linear-gradient(to bottom,rgba(0,0,0,.1),rgba(0,0,0,.9)),
+linear-gradient(to bottom,rgba(0,0,0,.08),rgba(0,0,0,.92)),
 var(--bg);
 background-size:cover;
 background-position:center;
 filter:brightness(.75);
 transition:.4s;
 }
-
 .world-card.offline:before{
 filter:grayscale(1) brightness(.35);
 }
-
 .world-card:hover:before{
 transform:scale(1.06);
 }
-
 .world-content{
 position:absolute;
 inset:0;
@@ -410,94 +206,95 @@ justify-content:flex-end;
 text-align:center;
 z-index:2;
 }
-
 .world-content h3{
 font-family:'Cinzel',serif;
-font-size:18px;
-letter-spacing:2px;
-margin-bottom:8px;
+font-size:28px;
+letter-spacing:4px;
+font-weight:700;
+margin-bottom:6px;
 color:#f1d08d;
+text-shadow:0 0 20px rgba(0,0,0,.9);
 }
-
 .world-content small{
 display:block;
 margin-bottom:12px;
 letter-spacing:2px;
+font-size:11px;
 color:#b8a27c;
+text-transform:uppercase;
 }
-
 .tags{
 display:flex;
 justify-content:center;
 gap:8px;
 flex-wrap:wrap;
-margin-bottom:14px;
+margin-bottom:13px;
 }
-
 .tag{
 padding:5px 9px;
 font-size:11px;
 border-radius:3px;
-background:rgba(141,103,48,.7);
+background:rgba(141,103,48,.75);
 color:white;
 letter-spacing:1px;
 }
-
 .tag.gray{
 background:rgba(90,90,90,.7);
 }
-
 .status{
-margin-bottom:14px;
+margin-bottom:13px;
 font-size:13px;
+letter-spacing:1px;
 color:#9bd18f;
+text-transform:uppercase;
 }
-
+.status.development{
+color:#f1d08d;
+}
 .offline .status{
 color:#888;
 }
-
 .world-btn{
-padding:11px;
+padding:10px;
 border:1px solid rgba(214,176,107,.7);
 color:#f1d08d;
 font-size:12px;
 letter-spacing:2px;
+transition:.3s;
 }
-
-.offline .world-btn{
+a.world-btn:hover{
+background:#8d6730;
+color:white;
+}
+.offline .world-btn,
+.disabled-btn{
 border-color:#666;
 color:#777;
 }
 
-
 .content-section{
 max-width:1400px;
 margin:auto;
-padding:85px 30px;
+padding:75px 30px;
 }
-
 .info-grid,
 .devlog-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
 }
-
 .info-card,
 .devlog-card{
 background:rgba(13,13,13,.92);
 border:1px solid rgba(255,215,140,.08);
-padding:38px 30px;
+padding:34px 28px;
 transition:.3s;
 }
-
 .info-card:hover,
 .devlog-card:hover{
 transform:translateY(-5px);
 border-color:#8d6730;
 }
-
 .info-card h3,
 .devlog-card h3,
 .focus-box h3{
@@ -506,13 +303,11 @@ color:#e5c07b;
 letter-spacing:2px;
 margin-bottom:18px;
 }
-
 .info-card p,
 .devlog-card p{
 color:#b8a27c;
 line-height:1.8;
 }
-
 .devlog-date{
 display:block;
 color:#8e7854;
@@ -521,22 +316,19 @@ letter-spacing:2px;
 margin-bottom:16px;
 text-transform:uppercase;
 }
-
 .focus-box{
 background:rgba(11,11,11,.94);
 border:1px solid rgba(255,215,140,.08);
-padding:52px;
+padding:46px;
 text-align:center;
 }
-
 .focus-box p{
 color:#b8a27c;
-font-size:18px;
-line-height:2;
-max-width:920px;
+font-size:17px;
+line-height:1.9;
+max-width:940px;
 margin:auto;
 }
-
 footer{
 margin-top:40px;
 padding:40px 20px;
@@ -547,42 +339,31 @@ background:rgba(0,0,0,.85);
 }
 
 @media(max-width:1100px){
-
-.hero-layout{
-grid-template-columns:1fr;
-}
-
 .world-grid{
 grid-template-columns:repeat(2,1fr);
 }
-
-.sidebar{
-max-width:520px;
-margin:auto;
-}
-
-}
-
-@media(max-width:850px){
-
-.nav-links{
-display:none;
-}
-
 .hero h1{
-font-size:58px;
+font-size:68px;
 }
-
+}
+@media(max-width:850px){
+.nav-links{display:none}
+.hero{
+min-height:auto;
+padding:105px 24px 45px;
+}
+.hero h1{
+font-size:52px;
+letter-spacing:6px;
+}
 .hero h2{
-font-size:18px;
+font-size:17px;
+letter-spacing:4px;
 }
-
 .world-grid{
 grid-template-columns:1fr;
 }
-
 }
-
 </style>
 </head>
 
@@ -590,7 +371,6 @@ grid-template-columns:1fr;
 
 <nav class="navbar">
 <div class="nav-container">
-
 <a href="#top" class="logo">REVORIA</a>
 
 <div class="nav-links">
@@ -601,124 +381,35 @@ grid-template-columns:1fr;
 </div>
 
 <div class="nav-right">
-
 <a href="https://www.tiktok.com/@revoria_online" target="_blank" class="social tiktok">
 <i class="fab fa-tiktok"></i>
 </a>
-
 <a href="https://www.instagram.com/revoria.online" target="_blank" class="social instagram">
 <i class="fab fa-instagram"></i>
 </a>
-
 <a href="https://www.youtube.com/@revoria.online" target="_blank" class="social youtube">
 <i class="fab fa-youtube"></i>
 </a>
-
-
 </div>
 </div>
 </nav>
 
 <section class="hero">
-
 <div class="hero-layout">
-
 <div class="hero-content">
-
 <div class="hero-small">WELCOME TO</div>
-
 <h1>REVORIA</h1>
-
 <h2>OLDSCHOOL TIBIA NETWORK</h2>
-
 <p>
-A community driven oldschool Tibia network focused on nostalgia, fair gameplay and live experimental MMORPG experiences inspired by the golden era of Tibia.
+A community-driven oldschool Tibia network focused on fair gameplay,
+long-term progression and live experimental MMORPG worlds inspired by
+the golden era of Tibia.
 </p>
-
-<div class="buttons">
-<a href="https://discord.gg/73ADntPraM" target="_blank" class="primary-btn">
-JOIN OUR COMMUNITY
-</a>
-
-<a href="#worlds" class="secondary-btn">
-VIEW WORLDS
-</a>
-</div>
-
-<div class="countdown-box">
-<div class="countdown-title">FURIA STARTS IN</div>
-
-<div id="countdown">
-<div class="time-box">
-<h3 id="days">00</h3>
-<span>DAYS</span>
-</div>
-
-<div class="time-box">
-<h3 id="hours">00</h3>
-<span>HOURS</span>
-</div>
-
-<div class="time-box">
-<h3 id="minutes">00</h3>
-<span>MINUTES</span>
-</div>
-
-<div class="time-box">
-<h3 id="seconds">00</h3>
-<span>SECONDS</span>
 </div>
 </div>
-</div>
-
-</div>
-
-<div class="sidebar">
-
-<div class="sidebar-title">OUR COMMUNITY</div>
-
-<div class="discord-big">
-<i class="fab fa-discord"></i>
-DISCORD
-</div>
-
-<p>
-Join the Revoria Discord, follow development and help shape future worlds together with the community.
-</p>
-
-<a href="https://discord.gg/73ADntPraM" target="_blank" class="panel-button">
-JOIN DISCORD
-</a>
-
-<div class="news">
-
-<div class="sidebar-title">LATEST NEWS</div>
-
-<div class="news-item">
-<span>WORLD ACTIVITY</span>
-<p>Random monsters now appear around the city during the whole day.</p>
-</div>
-
-<div class="news-item">
-<span>RAID EVENTS</span>
-<p>Demon raids and stronger encounters will happen every few hours.</p>
-</div>
-
-<div class="news-item">
-<span>DISCORD</span>
-<p>Special events, tests and surprise activities will be announced on Discord.</p>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 </section>
 
 <section class="worlds" id="worlds">
-
 <div class="section-title">
 <h2>OUR WORLDS</h2>
 <span>Choose your future experience</span>
@@ -730,88 +421,72 @@ JOIN DISCORD
 <div class="world-content">
 <h3>FURIA</h3>
 <small>Live Experimental World</small>
-
 <div class="tags">
 <span class="tag">8.6</span>
-<span class="tag">WAR</span>
+<span class="tag">PVP-E</span>
 <span class="tag">THAIS ONLY</span>
 </div>
-
-<div class="status">Starting Sunday 12:00 CET</div>
-
+<div class="status">ONLINE</div>
 <a href="https://furia.revoria.online" target="_blank" class="world-btn">
 VISIT WEBSITE
 </a>
 </div>
 </div>
 
-<div class="world-card offline" style="--bg:url('images/foto3.webp')">
+<div class="world-card" style="--bg:url('images/foto3.webp')">
 <div class="world-content">
-<h3>REVORIA 8.6 RPG</h3>
-<small>Future MMORPG</small>
-
+<h3>LUMERA</h3>
+<small>Main RPG World</small>
 <div class="tags">
-<span class="tag gray">TBA</span>
+<span class="tag">8.6</span>
+<span class="tag">X1</span>
+<span class="tag">RPG</span>
 </div>
-
-<div class="status">Offline</div>
-
-<div class="world-btn">TBA</div>
+<div class="status development">IN DEVELOPMENT</div>
+<div class="world-btn disabled-btn">COMING SOON</div>
 </div>
 </div>
 
 <div class="world-card offline" style="--bg:url('images/foto4.webp')">
 <div class="world-content">
-<h3>REVORIA RETRO</h3>
+<h3>RETRO</h3>
 <small>Classic Experience</small>
-
 <div class="tags">
 <span class="tag gray">TBA</span>
 </div>
-
 <div class="status">Offline</div>
-
 <div class="world-btn">TBA</div>
 </div>
 </div>
 
 <div class="world-card offline" style="--bg:url('images/foto5.webp')">
 <div class="world-content">
-<h3>REVORIA HIGHRATE</h3>
+<h3>HIGHRATE</h3>
 <small>Fast Progression</small>
-
 <div class="tags">
 <span class="tag gray">TBA</span>
 </div>
-
 <div class="status">Offline</div>
-
 <div class="world-btn">TBA</div>
 </div>
 </div>
 
 <div class="world-card offline" style="--bg:url('images/foto6.webp')">
 <div class="world-content">
-<h3>REVORIA EXPERIMENTAL</h3>
+<h3>EXPERIMENTAL</h3>
 <small>Community Ideas</small>
-
 <div class="tags">
 <span class="tag gray">TBA</span>
 </div>
-
 <div class="status">Offline</div>
-
 <div class="world-btn">TBA</div>
 </div>
 </div>
 
 </div>
-
 </section>
 
-
 <section class="content-section" id="about">
-
 <div class="section-title">
 <h2>ABOUT REVORIA</h2>
 <span>Community-driven oldschool network</span>
@@ -833,70 +508,37 @@ VISIT WEBSITE
 <p>Different worlds, different experiences and one connected community.</p>
 </div>
 </div>
-
 </section>
 
 <section class="content-section" id="focus">
-
 <div class="section-title">
 <h2>CURRENT FOCUS</h2>
-<span>Furia Experimental World</span>
+<span>Furia Experimental World & Lumera Development</span>
 </div>
 
 <div class="focus-box">
-<h3>FURIA EXPERIMENTAL</h3>
+<h3>LIVE TESTING & LONG-TERM RPG DEVELOPMENT</h3>
 <p>
-Furia is a closed Thais experimental world built around oldschool 8.6 gameplay.
-
-Players start at level 80 with skills ready for instant action. Random monsters appear around the city during the whole day while raid events bring stronger challenges every few hours.
-
-Special rewards can be earned through participation, PvP and monster hunting. Additional events and experimental tests may be announced at any time through Discord.
-
-The goal is simple: create a living world where something is always happening, even for solo players, while building the future of Revoria together with the community.
+Furia is our live experimental world where we test PvP, mechanics, balance changes,
+events and community ideas. Lumera is our planned main RPG world — a slow-paced
+Tibia 8.6 x1 experience focused on progression, exploration, economy and meaningful
+character development.
 </p>
 </div>
-
 </section>
 
 <section class="content-section" id="devlog">
-
 <div class="section-title">
 <h2>LATEST DEVLOG</h2>
-
 </div>
-
 <div class="devlog-grid" id="devlogGrid"></div>
-
 </section>
 
 <footer>
 REVORIA © 2026 — Return to the roots.
 </footer>
 
-
 <script>
-const countdownDate = new Date("May 31, 2026 12:00:00").getTime();
-
-setInterval(function() {
-  const now = new Date().getTime();
-  const distance = countdownDate - now;
-
-  if(distance < 0) {
-    document.getElementById('countdown').innerHTML = 'LIVE';
-    return;
-  }
-
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  document.getElementById('days').innerHTML = String(days).padStart(2, '0');
-  document.getElementById('hours').innerHTML = String(hours).padStart(2, '0');
-  document.getElementById('minutes').innerHTML = String(minutes).padStart(2, '0');
-  document.getElementById('seconds').innerHTML = String(seconds).padStart(2, '0');
-}, 1000);
-
 async function loadDevlog() {
   try {
     const response = await fetch('devlog.json', { cache: 'no-store' });
