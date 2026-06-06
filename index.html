@@ -6,7 +6,7 @@
 <title>REVORIA — Oldschool Tibia Network</title>
 <link rel="icon" type="image/png" href="/favicon.png">
 <meta property="og:title" content="REVORIA">
-<meta property="og:description" content="Oldschool Tibia Network — Lumera in active development">
+<meta property="og:description" content="Oldschool Tibia Network">
 <meta property="og:image" content="https://revoria.online/favicon.png">
 <meta property="og:type" content="website">
 
@@ -17,88 +17,52 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:#080808;color:#e8edf5;font-family:'Inter',sans-serif;overflow-x:hidden}
+body{background:#070707;color:#e9e0cf;font-family:'Inter',sans-serif;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
 :root{
-  --bg:#080808;
-  --panel:#121212;
-  --panel2:#191919;
+  --bg:#070707;
+  --panel:#101010;
+  --panel2:#151515;
+  --soft:#1b1b1b;
   --gold:#d6b06b;
-  --gold2:#e8c982;
-  --text:#e8edf5;
-  --muted:#9da7b6;
-  --line:rgba(255,255,255,.09);
-  --red:#d84c4c;
+  --gold2:#f0cf90;
+  --text:#eadcc1;
+  --muted:#a79678;
+  --line:rgba(214,176,107,.13);
+  --red:#c94c4c;
   --green:#4caf50;
-  --gray:#6d737c;
+  --gray:#6d6d6d;
   --discord:#5865F2;
 }
 
-.navbar{position:fixed;top:0;left:0;width:100%;z-index:999;background:rgba(16,18,22,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav-container{max-width:1500px;margin:auto;padding:14px 30px;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.navbar{position:fixed;top:0;left:0;width:100%;z-index:999;background:rgba(7,7,7,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(214,176,107,.10)}
+.nav-container{max-width:1440px;margin:auto;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;gap:22px}
 .logo{font-family:'Cinzel',serif;font-size:28px;letter-spacing:4px;font-weight:800;color:var(--gold)}
 .nav-links{display:flex;gap:28px;align-items:center}
-.nav-links a{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#b8c0cc;transition:.25s}
-.nav-links a:hover{color:var(--gold2)}
-.nav-right{display:flex;align-items:center;gap:10px}
-.social{width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#202631;border:1px solid var(--line);transition:.25s}
-.social:hover{transform:translateY(-2px);border-color:rgba(224,179,94,.55)}
-.social.tiktok i{color:white;text-shadow:1px 1px 0 #ff0050,-1px -1px 0 #00f2ea}
-.social.instagram i{color:#ff4f91}.social.youtube i{color:#ff2a2a}
-.discord-pill{height:36px;padding:0 15px;border-radius:999px;display:flex;align-items:center;gap:8px;background:var(--discord);color:white;font-weight:800;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;transition:.25s}
-.discord-pill:hover{background:#6d78ff;transform:translateY(-2px)}
+.nav-links a{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#c8b890;transition:.25s}.nav-links a:hover{color:var(--gold2)}
+.nav-right{display:flex;align-items:center;gap:10px}.social{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#111;border:1px solid var(--line);transition:.25s}.social:hover{transform:translateY(-2px);border-color:rgba(214,176,107,.45)}
+.social.tiktok i{color:white;text-shadow:1px 1px 0 #ff0050,-1px -1px 0 #00f2ea}.social.instagram i{color:#ff4f91}.social.youtube i{color:#ff2a2a}
+.discord-pill{height:36px;padding:0 15px;border-radius:999px;display:flex;align-items:center;gap:8px;background:var(--discord);color:white;font-weight:800;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;transition:.25s}.discord-pill:hover{background:#6d78ff;transform:translateY(-2px)}
 
-.hero{min-height:760px;padding-top:65px;background:radial-gradient(circle at 82% 10%,rgba(214,176,107,.10),transparent 28%),linear-gradient(135deg,#080808 0%,#111111 55%,#050505 100%);display:grid;grid-template-columns:360px 1fr;position:relative;overflow:hidden}
-.hero:after{content:"";position:absolute;right:-120px;bottom:-160px;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle,rgba(214,176,107,.10),transparent 62%);pointer-events:none}
-.hero-side{background:linear-gradient(180deg,#d6b06b,#b98b42);color:#12100c;padding:54px 38px 44px;display:flex;flex-direction:column;justify-content:space-between;position:relative;z-index:2;box-shadow:25px 0 70px rgba(0,0,0,.18)}
-.hero-side:before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.18),transparent 28%,rgba(0,0,0,.08));pointer-events:none}
-.side-top,.side-bottom{position:relative;z-index:1}
-.kicker{font-size:12px;letter-spacing:3.5px;text-transform:uppercase;font-weight:800;margin-bottom:18px;opacity:.84}
-.side-title{font-family:'Cinzel',serif;font-size:54px;letter-spacing:5px;line-height:.95;font-weight:800;margin-bottom:18px}
-.side-sub{font-size:14px;line-height:1.7;font-weight:600;color:rgba(18,16,12,.78)}
-.side-stats{display:grid;gap:10px;margin-top:34px}
-.side-stat{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(18,16,12,.18);padding-top:10px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:800}
-.side-stat strong{font-size:15px}
-.hero-cta{display:flex;flex-direction:column;gap:12px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 18px;border-radius:999px;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:800;transition:.25s;border:1px solid transparent;cursor:pointer}
-.btn-dark{background:#111;color:#f4d388}.btn-dark:hover{background:#252017;transform:translateY(-2px)}
-.btn-outline-dark{border-color:rgba(18,16,12,.32);color:#12100c}.btn-outline-dark:hover{background:rgba(18,16,12,.12)}
-.btn-gold{background:var(--gold);color:#111}.btn-gold:hover{background:var(--gold2);transform:translateY(-2px)}
-.btn-discord{background:var(--discord);color:white}.btn-discord:hover{background:#6d78ff;transform:translateY(-2px)}
-.btn-outline{border-color:rgba(224,179,94,.38);color:var(--gold2)}.btn-outline:hover{background:rgba(224,179,94,.1)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 18px;border-radius:999px;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:800;transition:.25s;border:1px solid transparent;cursor:pointer;white-space:nowrap}.btn-gold{background:var(--gold);color:#111}.btn-gold:hover{background:var(--gold2);transform:translateY(-2px)}.btn-discord{background:var(--discord);color:white}.btn-discord:hover{background:#6d78ff;transform:translateY(-2px)}.btn-outline{border-color:rgba(214,176,107,.35);color:var(--gold2)}.btn-outline:hover{background:rgba(214,176,107,.08);transform:translateY(-2px)}
 
-.hero-main{padding:76px 54px 48px;position:relative;z-index:2}
-.hero-grid{display:grid;grid-template-columns:1fr 320px;gap:34px;align-items:start}
-.hero-copy{max-width:760px}
-.hero-copy .eyebrow{font-size:12px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;font-weight:800;margin-bottom:22px}
-h1{font-family:'Cinzel',serif;font-size:76px;letter-spacing:7px;line-height:.93;color:#f2f5fb;margin-bottom:24px;text-shadow:0 20px 70px rgba(0,0,0,.35)}
-.lead{font-size:18px;line-height:1.8;color:#c2cad8;max-width:720px;margin-bottom:28px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:34px}
-.trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px;max-width:850px}
-.trust{background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:18px;padding:18px}
-.trust strong{display:block;color:#fff;font-size:18px;margin-bottom:5px}.trust span{color:var(--muted);font-size:13px;line-height:1.5}
-.discord-card{background:#202631;border:1px solid rgba(224,179,94,.16);border-radius:24px;padding:24px;box-shadow:0 25px 80px rgba(0,0,0,.28)}
-.discord-card i{font-size:34px;color:var(--discord);margin-bottom:16px}.discord-card h3{font-family:'Cinzel',serif;letter-spacing:2px;color:var(--gold2);margin-bottom:12px}.discord-card p{color:#aeb7c7;font-size:14px;line-height:1.7;margin-bottom:18px}
+.hero{min-height:720px;padding:100px 30px 44px;position:relative;overflow:hidden;background:linear-gradient(to bottom,rgba(0,0,0,.38),rgba(7,7,7,.94)),url('images/foto1.webp') center/cover no-repeat}.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 72% 22%,rgba(214,176,107,.12),transparent 30%),linear-gradient(90deg,rgba(7,7,7,.94),rgba(7,7,7,.72),rgba(7,7,7,.92));pointer-events:none}.hero-inner{position:relative;z-index:2;max-width:1440px;margin:auto;display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:end;min-height:560px}.hero-copy{max-width:760px}.eyebrow{font-size:12px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;font-weight:800;margin-bottom:20px}h1{font-family:'Cinzel',serif;font-size:78px;letter-spacing:8px;line-height:.93;color:#f5d99b;margin-bottom:20px;text-shadow:0 18px 70px rgba(0,0,0,.65)}.lead{font-size:18px;line-height:1.75;color:#d2c1a0;max-width:680px;margin-bottom:26px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.network-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px;max-width:790px}.network-card{background:rgba(12,12,12,.72);border:1px solid var(--line);border-radius:18px;padding:17px}.network-card strong{display:block;color:#fff0ca;font-size:17px;margin-bottom:5px}.network-card span{color:#a99776;font-size:13px;line-height:1.45}
 
-.status-board{margin-top:46px;background:rgba(18,18,18,.94);border:1px solid var(--line);border-radius:24px;overflow:hidden}
-.board-head{display:flex;justify-content:space-between;gap:18px;align-items:center;padding:20px 24px;border-bottom:1px solid var(--line);background:#111}
-.board-head h2{font-family:'Cinzel',serif;letter-spacing:3px;color:#fff;font-size:24px}.board-head span{font-size:12px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:800}
-.rows{display:grid}
-.row{display:grid;grid-template-columns:170px 1fr 135px;gap:18px;align-items:center;padding:18px 24px;border-bottom:1px solid var(--line)}
-.row:last-child{border-bottom:0}.task-name{font-weight:800;letter-spacing:1.5px;text-transform:uppercase;font-size:13px}.task-note{color:#a8b1c0;font-size:13px;line-height:1.5}.progress{height:10px;border-radius:999px;background:#2a303a;overflow:hidden;position:relative}.progress i{display:block;height:100%;border-radius:999px}.red i{background:var(--red);width:64%}.green i{background:var(--green);width:100%}.gray i{background:var(--gray);width:0%}.badge{justify-self:start;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:800;border-radius:999px;padding:8px 10px}.badge.red{background:rgba(214,77,77,.14);color:#ff8787}.badge.green{background:rgba(85,199,122,.14);color:#7eee9e}.badge.gray{background:rgba(115,125,139,.18);color:#c0c7d1}
+.focus-panel{background:rgba(12,12,12,.86);border:1px solid rgba(214,176,107,.18);border-radius:24px;padding:24px;box-shadow:0 24px 90px rgba(0,0,0,.42)}.focus-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:20px}.focus-top small{display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:800;margin-bottom:7px}.focus-top h2{font-family:'Cinzel',serif;font-size:36px;letter-spacing:4px;color:#fff0ca}.status-dot{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:800;color:#ff8c8c;border:1px solid rgba(201,76,76,.35);background:rgba(201,76,76,.12);border-radius:999px;padding:8px 10px}.focus-short{color:#b7a684;line-height:1.65;margin-bottom:22px}.mini-worlds{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}.mini-world{background:#111;border:1px solid var(--line);border-radius:18px;padding:16px}.mini-world b{display:block;font-family:'Cinzel',serif;color:#f0cf90;letter-spacing:2px;margin-bottom:6px}.mini-world span{font-size:13px;color:#a79678;line-height:1.5}.mini-world .online{color:#80df92;font-weight:800}.progress-note{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:800;margin-bottom:10px}
 
-section{max-width:1500px;margin:auto;padding:84px 30px}.section-title{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px}.section-title h2{font-family:'Cinzel',serif;font-size:34px;letter-spacing:4px;color:#fff}.section-title p{max-width:560px;color:var(--muted);line-height:1.7}
-.world-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}.world-card{min-height:380px;border-radius:26px;overflow:hidden;position:relative;border:1px solid rgba(224,179,94,.18);background:#111}.world-card:before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(16,18,22,.96),rgba(16,18,22,.42),rgba(16,18,22,.16)),var(--bg);background-size:cover;background-position:center;filter:brightness(.85);transition:.45s}.world-card:hover:before{transform:scale(1.05)}.world-card.lumera{box-shadow:0 28px 90px rgba(224,179,94,.12)}.world-content{position:absolute;inset:0;padding:30px;display:flex;flex-direction:column;justify-content:flex-end;z-index:2}.world-content h3{font-family:'Cinzel',serif;font-size:42px;letter-spacing:4px;color:#fff;margin-bottom:6px}.world-content small{color:var(--gold2);font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:800}.tags{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.tag{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:800;border-radius:999px;background:rgba(224,179,94,.15);border:1px solid rgba(224,179,94,.25);color:#f3d28c;padding:8px 10px}.world-text{max-width:560px;color:#b8c1d0;line-height:1.7;margin-bottom:20px}.world-actions{display:flex;gap:10px;flex-wrap:wrap}.world-status{position:absolute;top:24px;right:24px;z-index:3;border-radius:999px;padding:9px 12px;background:rgba(16,18,22,.75);border:1px solid rgba(255,255,255,.12);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:800;color:#8ff0a6}.world-status.dev{color:#ffd27b}
+.status-board{background:#101010;border:1px solid var(--line);border-radius:18px;overflow:hidden}.row{display:grid;grid-template-columns:120px 1fr 104px;gap:12px;align-items:center;padding:13px 15px;border-bottom:1px solid rgba(214,176,107,.09)}.row:last-child{border-bottom:0}.task-name{font-weight:800;letter-spacing:1.3px;text-transform:uppercase;font-size:12px}.progress{height:8px;border-radius:999px;background:#292929;overflow:hidden}.progress i{display:block;height:100%;border-radius:999px}.green i{background:var(--green);width:100%}.red i{background:var(--red);width:58%}.gray i{background:var(--gray);width:0%}.badge{justify-self:start;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;border-radius:999px;padding:7px 8px}.badge.green{background:rgba(76,175,80,.14);color:#8af29b}.badge.red{background:rgba(201,76,76,.16);color:#ff8d8d}.badge.gray{background:rgba(109,109,109,.18);color:#b8b8b8}
 
-.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.info-card{background:#171b22;border:1px solid var(--line);border-radius:22px;padding:28px;min-height:210px}.info-card h3{font-family:'Cinzel',serif;color:var(--gold2);letter-spacing:2px;margin-bottom:16px}.info-card p{color:#aeb7c7;line-height:1.8}.info-card i{font-size:28px;color:var(--gold);margin-bottom:18px}
+section{max-width:1440px;margin:auto;padding:68px 30px}.section-title{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:24px}.section-title h2{font-family:'Cinzel',serif;font-size:32px;letter-spacing:4px;color:#f0cf90}.section-title p{max-width:560px;color:var(--muted);line-height:1.65}.world-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.world-card{min-height:310px;border-radius:22px;overflow:hidden;position:relative;border:1px solid rgba(214,176,107,.16);background:#111}.world-card:before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(7,7,7,.95),rgba(7,7,7,.46),rgba(7,7,7,.12)),var(--bg);background-size:cover;background-position:center;filter:brightness(.83);transition:.45s}.world-card:hover:before{transform:scale(1.04)}.world-content{position:absolute;inset:0;padding:26px;display:flex;flex-direction:column;justify-content:flex-end;z-index:2}.world-status{position:absolute;top:20px;right:20px;z-index:3;border-radius:999px;padding:8px 11px;background:rgba(7,7,7,.72);border:1px solid rgba(255,255,255,.10);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:800;color:#8af29b}.world-status.dev{color:#ff8d8d}.world-content small{color:var(--gold);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:800}.world-content h3{font-family:'Cinzel',serif;font-size:38px;letter-spacing:4px;color:#fff0ca;margin:5px 0 12px}.tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:15px}.tag{font-size:10px;letter-spacing:1.3px;text-transform:uppercase;font-weight:800;border-radius:999px;background:rgba(214,176,107,.12);border:1px solid rgba(214,176,107,.20);color:#f0cf90;padding:7px 9px}.world-text{max-width:520px;color:#b7a684;line-height:1.65;margin-bottom:17px}.world-actions{display:flex;gap:10px;flex-wrap:wrap}
 
-.devlog-section{padding-top:30px}.devlog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.devlog-card{background:#171b22;border:1px solid var(--line);border-radius:22px;padding:26px;min-height:210px}.devlog-date{display:block;color:var(--gold);font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:800;margin-bottom:14px}.devlog-card h3{font-family:'Cinzel',serif;letter-spacing:2px;color:#fff;margin-bottom:12px}.devlog-card p{color:#aeb7c7;line-height:1.75}.empty-devlog{grid-column:1/-1;color:#aeb7c7;background:#171b22;border:1px dashed rgba(224,179,94,.25);border-radius:22px;padding:28px;text-align:center}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.info-card{background:#111;border:1px solid var(--line);border-radius:20px;padding:24px;min-height:165px}.info-card i{font-size:24px;color:var(--gold);margin-bottom:15px}.info-card h3{font-family:'Cinzel',serif;color:#f0cf90;letter-spacing:2px;margin-bottom:12px}.info-card p{color:#a79678;line-height:1.7;font-size:14px}
 
-.join-banner{margin:60px auto 0;max-width:1500px;padding:0 30px 90px}.join-inner{border-radius:30px;background:linear-gradient(135deg,var(--gold),#f4d690);color:#111;padding:42px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;box-shadow:0 30px 100px rgba(224,179,94,.12)}.join-inner h2{font-family:'Cinzel',serif;font-size:34px;letter-spacing:3px;margin-bottom:12px}.join-inner p{max-width:760px;line-height:1.75;color:rgba(17,17,17,.72);font-weight:600}
-footer{padding:38px 20px;text-align:center;color:#737d8b;border-top:1px solid var(--line);background:#0c0e12}.footer-logo{font-family:'Cinzel',serif;letter-spacing:4px;color:var(--gold);font-weight:800;margin-bottom:8px}
+.devlog-section{padding-top:30px}.devlog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.devlog-card{background:#111;border:1px solid var(--line);border-radius:20px;padding:23px;min-height:180px}.devlog-date{display:block;color:var(--gold);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:800;margin-bottom:12px}.devlog-card h3{font-family:'Cinzel',serif;letter-spacing:2px;color:#fff0ca;margin-bottom:10px}.devlog-card p{color:#a79678;line-height:1.65;font-size:14px}.empty-devlog{grid-column:1/-1;color:#a79678;background:#111;border:1px dashed rgba(214,176,107,.22);border-radius:20px;padding:26px;text-align:center}
 
-@media(max-width:1120px){.hero{grid-template-columns:1fr}.hero-side{min-height:370px}.hero-main{padding:50px 30px}.hero-grid{grid-template-columns:1fr}.discord-card{max-width:520px}.world-grid,.info-grid,.devlog-grid{grid-template-columns:1fr}.trust-row{grid-template-columns:1fr 1fr}.join-inner{grid-template-columns:1fr}}
-@media(max-width:820px){.nav-links{display:none}.nav-container{padding:12px 18px}.discord-pill span{display:none}.hero{padding-top:61px}.hero-side{padding:38px 24px}.side-title{font-size:42px}h1{font-size:46px;letter-spacing:4px}.lead{font-size:16px}.hero-main{padding:38px 20px}.trust-row{grid-template-columns:1fr}.board-head{display:block}.board-head h2{margin-bottom:8px}.row{grid-template-columns:1fr;gap:10px}.world-card{min-height:430px}.section-title{display:block}.section-title h2{font-size:28px;margin-bottom:12px}.join-inner{padding:30px 22px}section{padding:62px 20px}.join-banner{padding:0 20px 70px}}
+.join-banner{max-width:1440px;margin:0 auto;padding:24px 30px 78px}.join-inner{border-radius:24px;background:#111;border:1px solid rgba(88,101,242,.35);padding:30px;display:flex;justify-content:space-between;align-items:center;gap:20px}.join-inner h2{font-family:'Cinzel',serif;color:#fff0ca;letter-spacing:3px;margin-bottom:8px}.join-inner p{color:#a79678;line-height:1.6;max-width:760px}
+footer{padding:38px 20px;text-align:center;color:#7f725b;border-top:1px solid rgba(214,176,107,.10);background:#050505}.footer-logo{font-family:'Cinzel',serif;letter-spacing:4px;color:var(--gold);font-weight:800;margin-bottom:8px}
+
+@media(max-width:1120px){.hero-inner{grid-template-columns:1fr;align-items:start}.focus-panel{max-width:760px}.world-grid,.info-grid,.devlog-grid{grid-template-columns:1fr}.network-strip{grid-template-columns:1fr 1fr}.join-inner{align-items:flex-start;flex-direction:column}}
+@media(max-width:820px){.nav-links{display:none}.nav-container{padding:12px 18px}.discord-pill span{display:none}.hero{padding:86px 20px 36px}.hero-inner{min-height:auto}.eyebrow{font-size:11px;letter-spacing:3px}h1{font-size:48px;letter-spacing:4px}.lead{font-size:16px}.network-strip,.mini-worlds{grid-template-columns:1fr}.focus-top{display:block}.status-dot{display:inline-flex;margin-top:12px}.row{grid-template-columns:1fr;gap:8px}.world-card{min-height:390px}.section-title{display:block}.section-title h2{font-size:28px;margin-bottom:10px}section{padding:56px 20px}.join-banner{padding:18px 20px 64px}}
 </style>
 </head>
 <body id="top">
@@ -107,8 +71,8 @@ footer{padding:38px 20px;text-align:center;color:#737d8b;border-top:1px solid va
   <div class="nav-container">
     <a href="#top" class="logo">REVORIA</a>
     <div class="nav-links">
-      <a href="#status">Status</a>
       <a href="#worlds">Worlds</a>
+      <a href="#status">Progress</a>
       <a href="#about">About</a>
       <a href="#devlog">Devlog</a>
     </div>
@@ -122,109 +86,74 @@ footer{padding:38px 20px;text-align:center;color:#737d8b;border-top:1px solid va
 </nav>
 
 <header class="hero">
-  <aside class="hero-side">
-    <div class="side-top">
-      <div class="kicker">Project status</div>
-      <div class="side-title">LUMERA</div>
-      <p class="side-sub">Classic Tibia 8.6 RPG x1 PvP world. Built slowly, tested publicly and prepared for long-term gameplay.</p>
-      <div class="side-stats">
-        <div class="side-stat"><span>Rates</span><strong>x1</strong></div>
-        <div class="side-stat"><span>Client</span><strong>8.6</strong></div>
-        <div class="side-stat"><span>Status</span><strong>Dev</strong></div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow">Oldschool Tibia Network</div>
+      <h1>REVORIA</h1>
+      <p class="lead">A network of oldschool worlds built around fair gameplay, live testing and long-term community progression.</p>
+      <div class="hero-actions">
+        <a href="#worlds" class="btn btn-gold">Explore Worlds</a>
+        <a href="https://discord.gg/73ADntPraM" target="_blank" class="btn btn-discord"><i class="fab fa-discord"></i> Join Discord</a>
       </div>
-    </div>
-    <div class="side-bottom hero-cta">
-      <a href="https://discord.gg/73ADntPraM" target="_blank" class="btn btn-dark"><i class="fab fa-discord"></i> Join Discord</a>
-      <a href="#status" class="btn btn-outline-dark">View Progress</a>
-    </div>
-  </aside>
-
-  <main class="hero-main">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <div class="eyebrow">Oldschool Tibia Network</div>
-        <h1>WHAT IS BEING BUILT?</h1>
-        <p class="lead">Revoria is a long-term oldschool network focused on fair gameplay, real testing and a community that helps shape the world before the gates open.</p>
-        <div class="hero-actions">
-          <a href="#worlds" class="btn btn-gold">Explore Worlds</a>
-          <a href="#devlog" class="btn btn-outline">Latest Devlog</a>
-        </div>
-        <div class="trust-row">
-          <div class="trust"><strong>No P2W</strong><span>Fair gameplay and meaningful progression.</span></div>
-          <div class="trust"><strong>Live Testing</strong><span>Furia is used to test systems before Lumera.</span></div>
-          <div class="trust"><strong>Long Term</strong><span>Built for years, not for a short seasonal spike.</span></div>
-        </div>
-      </div>
-
-      <div class="discord-card">
-        <i class="fab fa-discord"></i>
-        <h3>Join the Founders</h3>
-        <p>Follow development, discuss systems, report issues and help shape Lumera together with the community.</p>
-        <a href="https://discord.gg/73ADntPraM" target="_blank" class="btn btn-discord">Join Discord</a>
+      <div class="network-strip">
+        <div class="network-card"><strong>Furia</strong><span>Online testing world.</span></div>
+        <div class="network-card"><strong>Lumera</strong><span>Current RPG focus.</span></div>
+        <div class="network-card"><strong>Network</strong><span>Future worlds under one community.</span></div>
       </div>
     </div>
 
-    <div class="status-board" id="status">
-      <div class="board-head">
-        <h2>Development Board</h2>
-        <span>Green done • Red in progress • Gray not started</span>
+    <aside class="focus-panel" id="status">
+      <div class="focus-top">
+        <div>
+          <small>Current focus</small>
+          <h2>LUMERA</h2>
+        </div>
+        <div class="status-dot">In progress</div>
       </div>
-      <div class="rows">
-        <div class="row">
-          <div class="task-name">Engine</div>
-          <div><div class="progress red"><i></i></div><div class="task-note">Currently being worked on: audit, stability and mechanic consistency.</div></div>
-          <div class="badge red">In Progress</div>
-        </div>
-        <div class="row">
-          <div class="task-name">Quests</div>
-          <div><div class="progress green"><i></i></div><div class="task-note">Completed baseline validation: rewards, access and broken flow checks.</div></div>
-          <div class="badge green">Done</div>
-        </div>
-        <div class="row">
-          <div class="task-name">NPCs</div>
-          <div><div class="progress gray"><i></i></div><div class="task-note">Not started yet: dialogues, trades, travel and mission behavior.</div></div>
-          <div class="badge gray">Not Started</div>
-        </div>
-        <div class="row">
-          <div class="task-name">Monsters</div>
-          <div><div class="progress gray"><i></i></div><div class="task-note">Not started yet: spawns, loot, damage profiles and balance pass.</div></div>
-          <div class="badge gray">Not Started</div>
-        </div>
-        <div class="row">
-          <div class="task-name">Economy</div>
-          <div><div class="progress gray"><i></i></div><div class="task-note">Not started yet: gold flow, item value and progression pacing.</div></div>
-          <div class="badge gray">Not Started</div>
-        </div>
+      <p class="focus-short">The team is currently preparing Lumera while Furia remains available for live testing and experiments.</p>
+
+      <div class="mini-worlds">
+        <div class="mini-world"><b>FURIA</b><span><span class="online">Online</span> — testing & experiments</span></div>
+        <div class="mini-world"><b>LUMERA</b><span>8.6 RPG x1 PvP — in development</span></div>
       </div>
-    </div>
-  </main>
+
+      <div class="progress-note">Development progress</div>
+      <div class="status-board">
+        <div class="row"><div class="task-name">Quests</div><div class="progress green"><i></i></div><div class="badge green">Done</div></div>
+        <div class="row"><div class="task-name">Engine</div><div class="progress red"><i></i></div><div class="badge red">Doing</div></div>
+        <div class="row"><div class="task-name">NPCs</div><div class="progress gray"><i></i></div><div class="badge gray">Not yet</div></div>
+        <div class="row"><div class="task-name">Monsters</div><div class="progress gray"><i></i></div><div class="badge gray">Not yet</div></div>
+        <div class="row"><div class="task-name">Economy</div><div class="progress gray"><i></i></div><div class="badge gray">Not yet</div></div>
+      </div>
+    </aside>
+  </div>
 </header>
 
 <section id="worlds">
   <div class="section-title">
     <h2>Worlds</h2>
-    <p>One network, different experiences. Furia keeps testing alive while Lumera is prepared as the main RPG world.</p>
+    <p>Revoria is not a single server. It is a network with separate worlds, roles and stages of development.</p>
   </div>
   <div class="world-grid">
-    <article class="world-card lumera" style="--bg:url('images/foto3.webp')">
-      <div class="world-status dev">In Development</div>
-      <div class="world-content">
-        <small>Flagship World</small>
-        <h3>LUMERA</h3>
-        <div class="tags"><span class="tag">8.6</span><span class="tag">x1</span><span class="tag">RPG</span><span class="tag">PvP</span><span class="tag">No P2W</span></div>
-        <p class="world-text">A classic oldschool RPG world focused on slow progression, fair competition and long-term community gameplay.</p>
-        <div class="world-actions"><a href="https://discord.gg/73ADntPraM" target="_blank" class="btn btn-gold">Follow Development</a></div>
-      </div>
-    </article>
-
     <article class="world-card" style="--bg:url('images/foto2.webp')">
       <div class="world-status">Online</div>
       <div class="world-content">
         <small>Testing World</small>
         <h3>FURIA</h3>
         <div class="tags"><span class="tag">8.6</span><span class="tag">PvP-E</span><span class="tag">Thais Only</span></div>
-        <p class="world-text">Our experimental environment for ideas, mechanics and systems before they become part of Lumera.</p>
+        <p class="world-text">Experimental world for testing mechanics, systems and ideas with real players.</p>
         <div class="world-actions"><a href="https://furia.revoria.online" target="_blank" class="btn btn-outline">Visit Website</a></div>
+      </div>
+    </article>
+
+    <article class="world-card" style="--bg:url('images/foto3.webp')">
+      <div class="world-status dev">In Development</div>
+      <div class="world-content">
+        <small>Current Focus</small>
+        <h3>LUMERA</h3>
+        <div class="tags"><span class="tag">8.6</span><span class="tag">x1</span><span class="tag">RPG</span><span class="tag">PvP</span></div>
+        <p class="world-text">Classic RPG world currently being prepared for long-term oldschool gameplay.</p>
+        <div class="world-actions"><a href="https://discord.gg/73ADntPraM" target="_blank" class="btn btn-gold">Follow Progress</a></div>
       </div>
     </article>
   </div>
@@ -233,19 +162,19 @@ footer{padding:38px 20px;text-align:center;color:#737d8b;border-top:1px solid va
 <section id="about">
   <div class="section-title">
     <h2>Why Revoria</h2>
-    <p>Not every server deserves your time. Revoria is designed around credibility, testing and a fair oldschool experience.</p>
+    <p>Simple direction: oldschool gameplay, tested systems and a community that sees the project grow.</p>
   </div>
   <div class="info-grid">
-    <div class="info-card"><i class="fas fa-shield-halved"></i><h3>Fair Gameplay</h3><p>No shortcuts, no pay-to-win direction and no systems that destroy long-term progression.</p></div>
-    <div class="info-card"><i class="fas fa-flask"></i><h3>Tested First</h3><p>Furia gives us a live testing ground before mechanics are moved into the main RPG experience.</p></div>
-    <div class="info-card"><i class="fas fa-users"></i><h3>Community Driven</h3><p>Feedback, reports and discussion matter. The earliest players help shape the final world.</p></div>
+    <div class="info-card"><i class="fas fa-shield-halved"></i><h3>Fair Gameplay</h3><p>No pay-to-win direction. Progression should matter.</p></div>
+    <div class="info-card"><i class="fas fa-flask"></i><h3>Live Testing</h3><p>Furia lets us test ideas before they reach larger worlds.</p></div>
+    <div class="info-card"><i class="fas fa-users"></i><h3>Community</h3><p>Development is easier to trust when players can follow it.</p></div>
   </div>
 </section>
 
 <section class="devlog-section" id="devlog">
   <div class="section-title">
-    <h2>Latest Devlog</h2>
-    <p>Follow the progress and see what changed before Lumera opens its gates.</p>
+    <h2>Devlog</h2>
+    <p>Short updates from development. Loaded automatically from <b>devlog.json</b>.</p>
   </div>
   <div class="devlog-grid" id="devlogGrid">
     <div class="empty-devlog">Loading development updates...</div>
@@ -255,10 +184,10 @@ footer{padding:38px 20px;text-align:center;color:#737d8b;border-top:1px solid va
 <div class="join-banner">
   <div class="join-inner">
     <div>
-      <h2>Join Before The Gates Open</h2>
-      <p>The earliest members follow development, test ideas, discuss systems and help decide what Revoria becomes.</p>
+      <h2>Join the community</h2>
+      <p>Follow progress, test ideas and stay close to the next Revoria world.</p>
     </div>
-    <a href="https://discord.gg/73ADntPraM" target="_blank" class="btn btn-dark"><i class="fab fa-discord"></i> Join Discord</a>
+    <a href="https://discord.gg/73ADntPraM" target="_blank" class="btn btn-discord"><i class="fab fa-discord"></i> Join Discord</a>
   </div>
 </div>
 
