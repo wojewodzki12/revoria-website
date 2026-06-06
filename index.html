@@ -9,26 +9,31 @@
 <meta property="og:description" content="Oldschool Tibia Network" />
 <meta property="og:image" content="https://revoria.online/favicon.png" />
 <meta property="og:type" content="website" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
 <style>
 :root{
-  --bg:#070707;
-  --panel:#101010;
-  --panel2:#151515;
-  --line:rgba(214,176,107,.16);
+  --bg:#060606;
+  --panel:rgba(12,12,12,.80);
+  --panel-soft:rgba(18,18,18,.70);
+  --line:rgba(255,255,255,.08);
+  --line-gold:rgba(214,176,107,.22);
   --gold:#d6b06b;
-  --gold2:#f1d08d;
+  --gold-2:#f1d08d;
   --text:#d8c5a1;
-  --muted:#95846a;
+  --muted:#9b8b70;
+  --muted-2:#736754;
   --discord:#5865F2;
   --green:#4caf50;
   --amber:#d6a84f;
   --gray:#555;
 }
+
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%}
+html,body{min-height:100%}
 body{
   background:var(--bg);
   color:var(--text);
@@ -36,12 +41,15 @@ body{
   overflow:hidden;
 }
 a{text-decoration:none;color:inherit}
+
 .page{
   min-height:100vh;
+  position:relative;
   display:grid;
-  grid-template-rows:auto 1fr;
+  grid-template-rows:72px 1fr;
   background:
-    linear-gradient(to bottom,rgba(0,0,0,.38),rgba(0,0,0,.92)),
+    linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.50) 48%,rgba(0,0,0,.84)),
+    linear-gradient(to bottom,rgba(0,0,0,.15),rgba(0,0,0,.88)),
     url('images/foto1.webp') center/cover no-repeat;
 }
 .page:before{
@@ -50,316 +58,486 @@ a{text-decoration:none;color:inherit}
   inset:0;
   pointer-events:none;
   background:
-    radial-gradient(circle at 75% 35%,rgba(88,101,242,.16),transparent 28%),
-    radial-gradient(circle at 25% 80%,rgba(214,176,107,.10),transparent 34%),
-    rgba(0,0,0,.2);
+    radial-gradient(circle at 72% 28%,rgba(88,101,242,.08),transparent 25%),
+    radial-gradient(circle at 18% 80%,rgba(214,176,107,.07),transparent 34%),
+    linear-gradient(90deg,rgba(0,0,0,.16),transparent 40%,rgba(0,0,0,.20));
 }
+.page:after{
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.016) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.50),transparent 78%);
+}
+
 .nav{
   position:relative;
-  z-index:2;
-  height:76px;
+  z-index:5;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 38px;
+  padding:0 34px;
   border-bottom:1px solid rgba(255,255,255,.06);
-  background:rgba(5,5,5,.72);
+  background:rgba(5,5,5,.74);
   backdrop-filter:blur(14px);
 }
 .logo{
+  display:flex;
+  align-items:center;
+  gap:14px;
   font-family:'Cinzel',serif;
-  font-size:28px;
+  font-size:27px;
   font-weight:800;
   letter-spacing:5px;
-  color:var(--gold2);
+  color:var(--gold-2);
+  user-select:none;
 }
-.nav-links{display:flex;align-items:center;gap:16px}
-.nav-links a{
-  font-size:12px;
-  letter-spacing:2px;
-  color:#bfae8d;
-  transition:.2s;
+.logo-dot{
+  width:9px;height:9px;border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 16px rgba(214,176,107,.55);
 }
-.nav-links a:hover{color:var(--gold2)}
-.socials{display:flex;gap:10px;margin-left:10px}
+.socials{display:flex;gap:8px}
 .social{
-  width:34px;height:34px;
+  width:36px;height:36px;
   display:grid;place-items:center;
   border:1px solid rgba(255,255,255,.08);
-  background:rgba(15,15,15,.75);
-  border-radius:9px;
+  background:rgba(18,18,18,.82);
+  border-radius:10px;
+  transition:.18s;
 }
-.social.discord{background:var(--discord);border-color:transparent;color:white}
-.social.instagram i{color:#ff4f91}.social.youtube i{color:#ff2a2a}.social.tiktok i{color:#fff}
+.social:hover{transform:translateY(-2px);border-color:rgba(214,176,107,.35)}
+.social.instagram i{color:#ff4f91}
+.social.youtube i{color:#ff2a2a}
+.social.tiktok i{color:white;text-shadow:1px 1px 0 #ff0050,-1px -1px 0 #00f2ea}
+
 .main{
   position:relative;
   z-index:2;
-  height:calc(100vh - 76px);
-  padding:24px 38px 30px;
+  height:calc(100vh - 72px);
+  padding:22px 34px 28px;
   display:grid;
-  grid-template-columns:minmax(360px,1.06fr) minmax(540px,.94fr);
-  gap:24px;
+  grid-template-columns:minmax(350px,.88fr) minmax(560px,1.12fr);
+  gap:22px;
 }
-.left{
+
+.hero{
   display:grid;
   grid-template-rows:1fr auto;
-  gap:20px;
+  gap:16px;
   min-height:0;
 }
 .hero-card{
-  background:linear-gradient(135deg,rgba(10,10,10,.82),rgba(18,18,18,.76));
-  border:1px solid var(--line);
-  padding:44px;
+  min-height:0;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  min-height:0;
-  box-shadow:0 25px 80px rgba(0,0,0,.35);
+  padding:42px;
+  border:1px solid var(--line-gold);
+  background:linear-gradient(135deg,rgba(10,10,10,.86),rgba(18,18,18,.62));
+  box-shadow:0 26px 90px rgba(0,0,0,.38);
+  position:relative;
+  overflow:hidden;
+}
+.hero-card:before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(115deg,transparent 0 57%,rgba(214,176,107,.045));
+  pointer-events:none;
 }
 .kicker{
-  font-size:12px;
-  letter-spacing:5px;
+  position:relative;
+  font-size:11px;
+  letter-spacing:4px;
   color:var(--gold);
   margin-bottom:12px;
+  text-transform:uppercase;
+  font-weight:700;
 }
 h1{
+  position:relative;
   font-family:'Cinzel',serif;
-  font-size:clamp(58px,8vw,108px);
-  line-height:.88;
+  font-size:clamp(62px,8vw,112px);
+  line-height:.86;
   letter-spacing:10px;
-  color:var(--gold2);
-  text-shadow:0 8px 40px rgba(0,0,0,.65);
+  color:var(--gold-2);
+  text-shadow:0 12px 42px rgba(0,0,0,.72);
 }
 .subtitle{
-  margin-top:16px;
+  position:relative;
+  margin-top:17px;
+  max-width:680px;
   font-family:'Cinzel',serif;
-  letter-spacing:4px;
-  font-size:18px;
+  letter-spacing:3.2px;
+  font-size:17px;
   color:#c9ae78;
 }
 .copy{
-  max-width:650px;
-  margin-top:20px;
-  color:#cbb996;
-  line-height:1.75;
-  font-size:15px;
+  position:relative;
+  max-width:590px;
+  margin-top:18px;
+  color:#c7b694;
+  line-height:1.7;
+  font-size:14px;
 }
-.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  min-height:44px;
-  padding:0 18px;
-  border-radius:10px;
-  font-size:12px;
-  letter-spacing:2px;
-  font-weight:800;
-  transition:.2s;
-}
-.btn:hover{transform:translateY(-2px)}
-.btn.discord{background:var(--discord);color:#fff}
-.btn.gold{border:1px solid rgba(214,176,107,.45);color:var(--gold2);background:rgba(214,176,107,.08)}
+
 .why{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:14px;
+  gap:12px;
 }
 .why-card{
-  background:rgba(13,13,13,.82);
-  border:1px solid rgba(255,255,255,.07);
-  padding:18px;
-  min-height:116px;
+  min-height:108px;
+  background:rgba(13,13,13,.78);
+  border:1px solid rgba(255,255,255,.075);
+  padding:16px;
 }
 .why-card h3{
   font-family:'Cinzel',serif;
-  font-size:15px;
-  letter-spacing:2px;
-  color:var(--gold2);
-  margin-bottom:9px;
+  font-size:14px;
+  letter-spacing:1.7px;
+  color:var(--gold-2);
+  margin-bottom:8px;
 }
-.why-card p{font-size:13px;line-height:1.55;color:#aa9b81}
-.right{
+.why-card p{font-size:12px;line-height:1.52;color:#a99a81}
+
+.dashboard{
   display:grid;
-  grid-template-rows:1fr auto;
+  grid-template-rows:minmax(0,1fr) auto;
   gap:16px;
   min-height:0;
 }
-.worlds-panel{
-  background:rgba(8,8,8,.78);
-  border:1px solid var(--line);
-  padding:20px;
-  display:grid;
-  grid-template-rows:auto 1fr;
+.worlds{
   min-height:0;
-}
-.panel-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:14px}
-.panel-head h2{
-  font-family:'Cinzel',serif;
-  font-size:24px;
-  letter-spacing:4px;
-  color:var(--gold2);
-}
-.panel-head span{font-size:11px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
-.world-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  grid-template-rows:1fr 1fr;
+  grid-template-columns:1.12fr .88fr;
   gap:14px;
-  min-height:0;
 }
 .world-card{
   position:relative;
-  overflow:hidden;
-  border:1px solid rgba(214,176,107,.18);
-  background:#111;
   min-height:0;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  background:#111;
+  box-shadow:0 20px 70px rgba(0,0,0,.34);
 }
 .world-card:before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(0,0,0,.08),rgba(0,0,0,.90)),var(--bgimg);
-  background-size:cover;background-position:center;
-  filter:brightness(.72);
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,.06),rgba(0,0,0,.90)),var(--img);
+  background-size:cover;
+  background-position:center;
+  filter:brightness(.76);
   transition:.25s;
 }
-.world-card:hover:before{transform:scale(1.04);filter:brightness(.82)}
-.world-card.focus{grid-row:span 2;border-color:rgba(214,176,107,.42)}
-.world-card.locked:before{filter:grayscale(1) brightness(.36)}
-.world-content{position:absolute;inset:0;padding:18px;display:flex;flex-direction:column;justify-content:flex-end}
-.world-top{position:absolute;top:16px;left:16px;right:16px;display:flex;justify-content:space-between;align-items:center}
-.badge{font-size:10px;letter-spacing:2px;padding:7px 9px;border-radius:999px;background:rgba(0,0,0,.62);border:1px solid rgba(255,255,255,.08);color:#cbb996;text-transform:uppercase}
-.badge.green{color:#b8f0b9;border-color:rgba(76,175,80,.4)}
-.badge.amber{color:#ffd88a;border-color:rgba(214,168,79,.45)}
-.world-content h3{font-family:'Cinzel',serif;font-size:30px;letter-spacing:4px;color:var(--gold2);margin-bottom:6px}
-.world-content p{font-size:13px;line-height:1.55;color:#b8a98c;max-width:320px}
-.world-actions{display:flex;gap:9px;margin-top:13px;flex-wrap:wrap}
-.mini-btn{font-size:10px;letter-spacing:1.5px;padding:9px 10px;border:1px solid rgba(214,176,107,.35);color:var(--gold2);background:rgba(0,0,0,.35)}
-.progress-discord{
+.world-card:hover:before{transform:scale(1.035);filter:brightness(.84)}
+.world-card.lumera{border-color:rgba(214,176,107,.36)}
+.side-stack{display:grid;grid-template-rows:1fr 1fr;gap:14px;min-height:0}
+.world-card.future:before{filter:grayscale(1) brightness(.36)}
+.world-inner{
+  position:absolute;
+  inset:0;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+.world-head{
+  position:absolute;
+  top:16px;left:16px;right:16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:7px 9px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(0,0,0,.55);
+  color:#c8b996;
+  border-radius:999px;
+  font-size:9px;
+  letter-spacing:1.4px;
+  font-weight:800;
+  text-transform:uppercase;
+}
+.badge.green{color:#b8f0b9;border-color:rgba(76,175,80,.34);background:rgba(25,55,27,.40)}
+.badge.amber{color:#ffdc94;border-color:rgba(214,168,79,.38);background:rgba(71,52,18,.34)}
+.badge.gray{color:#aaa;border-color:rgba(255,255,255,.12)}
+.world-name{
+  font-family:'Cinzel',serif;
+  font-size:clamp(28px,4vw,48px);
+  letter-spacing:4px;
+  color:var(--gold-2);
+  margin-bottom:7px;
+}
+.world-card:not(.lumera) .world-name{font-size:30px}
+.world-desc{max-width:370px;color:#b9ab8d;font-size:13px;line-height:1.55}
+.world-meta{
+  margin-top:12px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.meta-pill{
+  min-height:31px;
+  display:inline-flex;
+  align-items:center;
+  padding:0 10px;
+  border-radius:7px;
+  border:1px solid rgba(214,176,107,.25);
+  background:rgba(0,0,0,.34);
+  color:#d5bf91;
+  font-size:10px;
+  letter-spacing:1.2px;
+  font-weight:800;
+  text-transform:uppercase;
+}
+
+.bottom{
   display:grid;
-  grid-template-columns:1fr 250px;
-  gap:16px;
+  grid-template-columns:1fr;
+  gap:14px;
 }
-.progress,.discord-box{
-  background:rgba(13,13,13,.84);
-  border:1px solid rgba(255,255,255,.07);
-  padding:18px;
+.progress{
+  background:rgba(13,13,13,.82);
+  border:1px solid rgba(255,255,255,.075);
+  padding:17px;
 }
-.box-title{font-family:'Cinzel',serif;color:var(--gold2);font-size:16px;letter-spacing:2px;margin-bottom:14px}
-.task{display:grid;grid-template-columns:124px 1fr 74px;gap:10px;align-items:center;margin:10px 0;font-size:12px;color:#bcae91}
-.bar{height:8px;background:#242424;border-radius:999px;overflow:hidden}
-.fill{height:100%;width:0;background:var(--gray)}
-.task.done .fill{background:var(--green);width:100%}.task.active .fill{background:var(--amber);width:58%}.task.todo .fill{background:#555;width:18%}
-.task.done .state{color:#87e08b}.task.active .state{color:#ffd88a}.task.todo .state{color:#8d8d8d}
-.state{text-align:right;font-weight:800;font-size:10px;letter-spacing:1px;text-transform:uppercase}
-.discord-box{border-color:rgba(88,101,242,.38);background:linear-gradient(135deg,rgba(88,101,242,.16),rgba(13,13,13,.88))}
-.discord-box .icon{font-size:30px;color:var(--discord);margin-bottom:8px}
-.discord-box p{font-size:13px;line-height:1.55;color:#bdb5a7;margin-bottom:14px}
-.discord-box .btn{width:100%;min-height:42px}
-@media(max-width:1100px){
-  body{overflow:auto}.page{min-height:100vh}.main{height:auto;grid-template-columns:1fr;padding:20px}.hero-card{padding:32px}.progress-discord{grid-template-columns:1fr}.world-grid{min-height:540px}.nav{padding:0 20px}.nav-links a:not(.keep){display:none}
+.box-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:13px;
 }
-@media(max-width:700px){
-  .nav{height:68px}.logo{font-size:22px}.main{padding:14px}.hero-card{padding:24px}.copy{font-size:14px}.why{grid-template-columns:1fr}.world-grid{grid-template-columns:1fr;grid-template-rows:none;min-height:auto}.world-card{min-height:230px}.world-card.focus{grid-row:auto}.task{grid-template-columns:96px 1fr 62px}.socials{display:none}
+.box-title h2{
+  font-family:'Cinzel',serif;
+  font-size:16px;
+  letter-spacing:2px;
+  color:var(--gold-2);
+}
+.box-title span{font-size:10px;letter-spacing:1.5px;color:var(--muted-2);text-transform:uppercase;font-weight:800}
+.tasks{display:grid;gap:9px}
+.task{
+  display:grid;
+  grid-template-columns:126px 1fr 82px;
+  gap:10px;
+  align-items:center;
+  color:#bfae8d;
+  font-size:12px;
+}
+.bar{height:8px;border-radius:999px;background:#252525;overflow:hidden}
+.fill{height:100%;border-radius:999px;background:#555;width:16%}
+.task.done .fill{width:100%;background:var(--green)}
+.task.active .fill{width:58%;background:var(--amber)}
+.task.todo .fill{width:14%;background:#555}
+.state{text-align:right;font-size:10px;letter-spacing:1px;font-weight:800;text-transform:uppercase;color:#8e8e8e}
+.task.done .state{color:#86df8a}.task.active .state{color:#ffd98d}
+
+.discord-drawer{
+  position:fixed;
+  z-index:20;
+  right:0;
+  top:50%;
+  transform:translateY(-50%) translateX(222px);
+  width:278px;
+  min-height:154px;
+  display:grid;
+  grid-template-columns:56px 1fr;
+  border:1px solid rgba(88,101,242,.34);
+  border-right:0;
+  background:linear-gradient(135deg,rgba(88,101,242,.18),rgba(12,12,12,.94));
+  box-shadow:0 20px 70px rgba(0,0,0,.42);
+  transition:.28s ease;
+}
+.discord-drawer:hover,
+.discord-drawer:focus-within{
+  transform:translateY(-50%) translateX(0);
+}
+.drawer-handle{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--discord);
+  color:white;
+  font-size:25px;
+}
+.drawer-content{
+  padding:17px 16px 16px;
+}
+.drawer-content h2{
+  font-family:'Cinzel',serif;
+  font-size:15px;
+  letter-spacing:1.7px;
+  color:var(--gold-2);
+  margin-bottom:7px;
+}
+.drawer-content p{
+  font-size:12px;
+  line-height:1.45;
+  color:#bcb4a4;
+  margin-bottom:13px;
+}
+.drawer-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:38px;
+  border-radius:8px;
+  background:var(--discord);
+  color:#fff;
+  font-size:11px;
+  letter-spacing:1.5px;
+  font-weight:800;
+  text-transform:uppercase;
+}
+.drawer-note{
+  display:block;
+  margin-top:8px;
+  font-size:9px;
+  letter-spacing:1.2px;
+  color:#827c90;
+  text-transform:uppercase;
+}
+
+@media(max-width:1160px){
+  body{overflow:auto}
+  .page{min-height:100vh;grid-template-rows:68px auto}
+  .main{height:auto;grid-template-columns:1fr;padding:18px;min-height:calc(100vh - 68px)}
+  .worlds{min-height:560px}
+  .discord-drawer{top:auto;right:14px;bottom:14px;transform:none;width:252px;min-height:auto;grid-template-columns:46px 1fr;border-right:1px solid rgba(88,101,242,.34)}
+  .discord-drawer:hover,.discord-drawer:focus-within{transform:none}
+}
+@media(max-width:760px){
+  .nav{padding:0 16px}.logo{font-size:21px;letter-spacing:3px}.logo-dot{display:none}.socials .social{width:34px;height:34px}
+  .main{padding:14px;gap:14px;padding-bottom:128px}
+  .hero-card{padding:25px;min-height:360px}
+  h1{font-size:54px;letter-spacing:6px}.subtitle{font-size:14px;letter-spacing:2px}.copy{font-size:13px}
+  .why{grid-template-columns:1fr}
+  .worlds{grid-template-columns:1fr;min-height:auto}.side-stack{grid-template-rows:none}.world-card{min-height:245px}.world-card.lumera{min-height:310px}
+  .task{grid-template-columns:94px 1fr 64px;font-size:11px}.box-title{align-items:flex-start;flex-direction:column;gap:3px}
+  .discord-drawer{left:14px;right:14px;width:auto;grid-template-columns:44px 1fr}.drawer-content{padding:13px}.drawer-content p{display:none}.drawer-note{display:none}
 }
 </style>
 </head>
+
 <body>
 <div class="page">
   <nav class="nav">
-    <a href="#" class="logo">REVORIA</a>
-    <div class="nav-links">
-      <a href="#" class="keep">ABOUT</a>
-      <a href="#devlog" class="keep">DEVLOG</a>
-      <div class="socials">
-        <a class="social discord" href="https://discord.gg/73ADntPraM" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
-        <a class="social tiktok" href="https://www.tiktok.com/@revoria_online" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a class="social instagram" href="https://www.instagram.com/revoria.online" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a class="social youtube" href="https://www.youtube.com/@revoria.online" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-      </div>
+    <div class="logo"><span class="logo-dot"></span>REVORIA</div>
+
+    <div class="socials">
+      <a class="social tiktok" href="https://www.tiktok.com/@revoria_online" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a class="social instagram" href="https://www.instagram.com/revoria.online" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a class="social youtube" href="https://www.youtube.com/@revoria.online" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
     </div>
   </nav>
 
   <main class="main">
-    <section class="left">
+    <section class="hero">
       <div class="hero-card">
-        <div class="kicker">RETURN TO THE ROOTS</div>
+        <div class="kicker">Oldschool Tibia Network</div>
         <h1>REVORIA</h1>
-        <div class="subtitle">A NETWORK OF OLDSCHOOL TIBIA WORLDS</div>
-        <p class="copy">One community, multiple worlds, long-term development. Revoria is built around fair gameplay, oldschool progression and live testing before major releases.</p>
-        <div class="cta-row">
-          <a class="btn discord" href="https://discord.gg/73ADntPraM" target="_blank"><i class="fab fa-discord"></i> JOIN DISCORD</a>
-          <a class="btn gold" href="https://furia.revoria.online" target="_blank">VISIT FURIA</a>
-        </div>
+        <div class="subtitle">ONE COMMUNITY. MULTIPLE WORLDS.</div>
+        <p class="copy">
+          Revoria connects oldschool Tibia worlds built around fair gameplay, long-term progression and live community testing.
+        </p>
       </div>
 
       <div class="why">
         <div class="why-card">
-          <h3>FAIR GAMEPLAY</h3>
-          <p>No shortcuts, no pay-to-win direction. Progress should feel earned.</p>
+          <h3>Fair Gameplay</h3>
+          <p>No pay-to-win direction. Progress should feel earned.</p>
         </div>
         <div class="why-card">
-          <h3>LONG TERM</h3>
-          <p>Worlds are planned around stability, economy and player retention.</p>
+          <h3>Long-Term Worlds</h3>
+          <p>Built around stability, economy and retention.</p>
         </div>
         <div class="why-card">
-          <h3>COMMUNITY</h3>
-          <p>Testing, feedback and development updates stay close to players.</p>
+          <h3>Community First</h3>
+          <p>Testing and updates stay close to players.</p>
         </div>
       </div>
     </section>
 
-    <section class="right">
-      <div class="worlds-panel">
-        <div class="panel-head">
-          <h2>WORLDS</h2>
-          <span>Network status</span>
-        </div>
-        <div class="world-grid">
-          <div class="world-card focus" style="--bgimg:url('images/foto3.webp')">
-            <div class="world-top"><span class="badge amber">Current focus</span></div>
-            <div class="world-content">
-              <h3>LUMERA</h3>
-              <p>Classic 8.6 RPG x1 PvP world currently in development.</p>
-              <div class="world-actions"><span class="mini-btn">IN DEVELOPMENT</span></div>
+    <section class="dashboard">
+      <div class="worlds">
+        <article class="world-card lumera" style="--img:url('images/foto3.webp')">
+          <div class="world-head">
+            <span class="badge amber">Current focus</span>
+          </div>
+          <div class="world-inner">
+            <div class="world-name">LUMERA</div>
+            <p class="world-desc">Classic 8.6 RPG x1 PvP world currently in development.</p>
+            <div class="world-meta">
+              <span class="meta-pill">8.6</span>
+              <span class="meta-pill">x1</span>
+              <span class="meta-pill">RPG</span>
+              <span class="meta-pill">PvP</span>
             </div>
           </div>
-          <div class="world-card" style="--bgimg:url('images/foto2.webp')">
-            <div class="world-top"><span class="badge green">Online</span></div>
-            <div class="world-content">
-              <h3>FURIA</h3>
-              <p>Testing and experimental world for live mechanics.</p>
-              <div class="world-actions"><a class="mini-btn" href="https://furia.revoria.online" target="_blank">VISIT WEBSITE</a></div>
+        </article>
+
+        <div class="side-stack">
+          <article class="world-card furia" style="--img:url('images/foto2.webp')">
+            <div class="world-head">
+              <span class="badge green">Online</span>
             </div>
-          </div>
-          <div class="world-card locked" style="--bgimg:url('images/foto5.webp')">
-            <div class="world-top"><span class="badge">Locked</span></div>
-            <div class="world-content">
-              <h3>FUTURE</h3>
-              <p>More worlds will appear when the network is ready.</p>
+            <div class="world-inner">
+              <div class="world-name">FURIA</div>
+              <p class="world-desc">Testing and experimental world for live mechanics.</p>
             </div>
-          </div>
+          </article>
+
+          <article class="world-card future" style="--img:url('images/foto5.webp')">
+            <div class="world-head">
+              <span class="badge gray">Locked</span>
+            </div>
+            <div class="world-inner">
+              <div class="world-name">NETWORK</div>
+              <p class="world-desc">More worlds will appear when the network is ready.</p>
+            </div>
+          </article>
         </div>
       </div>
 
-      <div class="progress-discord">
+      <div class="bottom">
         <div class="progress">
-          <div class="box-title">CURRENT DEVELOPMENT</div>
-          <div class="task done"><span>Engine audit</span><div class="bar"><div class="fill"></div></div><span class="state">Done</span></div>
-          <div class="task active"><span>Quest review</span><div class="bar"><div class="fill"></div></div><span class="state">Active</span></div>
-          <div class="task todo"><span>NPC systems</span><div class="bar"><div class="fill"></div></div><span class="state">Soon</span></div>
-          <div class="task todo"><span>Balance pass</span><div class="bar"><div class="fill"></div></div><span class="state">Soon</span></div>
-        </div>
-        <div class="discord-box">
-          <i class="fab fa-discord icon"></i>
-          <div class="box-title">JOIN THE COMMUNITY</div>
-          <p>Follow progress, testing and announcements directly on Discord.</p>
-          <a class="btn discord" href="https://discord.gg/73ADntPraM" target="_blank">JOIN DISCORD</a>
+          <div class="box-title">
+            <h2>Current Development</h2>
+            <span>Green done / amber active / gray not started</span>
+          </div>
+          <div class="tasks">
+            <div class="task done"><span>Engine audit</span><div class="bar"><div class="fill"></div></div><span class="state">Done</span></div>
+            <div class="task active"><span>Quest review</span><div class="bar"><div class="fill"></div></div><span class="state">Active</span></div>
+            <div class="task todo"><span>NPC systems</span><div class="bar"><div class="fill"></div></div><span class="state">Soon</span></div>
+            <div class="task todo"><span>Balance pass</span><div class="bar"><div class="fill"></div></div><span class="state">Soon</span></div>
+          </div>
         </div>
       </div>
     </section>
   </main>
 </div>
+
+<aside class="discord-drawer" aria-label="Discord community">
+  <div class="drawer-handle"><i class="fab fa-discord"></i></div>
+  <div class="drawer-content">
+    <h2>Join Community</h2>
+    <p>Development updates, testing discussions and announcements in one place.</p>
+    <a class="drawer-btn" href="https://discord.gg/73ADntPraM" target="_blank">Join Discord</a>
+    <span class="drawer-note">Hover to open</span>
+  </div>
+</aside>
 
 <script>
 async function loadDevlog(){
@@ -367,7 +545,7 @@ async function loadDevlog(){
     const response = await fetch('devlog.json', { cache:'no-store' });
     if(!response.ok) return;
     await response.json();
-  }catch(e){}
+  }catch(error){}
 }
 loadDevlog();
 </script>
