@@ -40,13 +40,14 @@ body{
   font-family:'Inter',sans-serif;
   overflow:hidden;
 }
+a.world-card{display:block;color:inherit}
 a{text-decoration:none;color:inherit}
 
 .page{
   min-height:100vh;
   position:relative;
   display:grid;
-  grid-template-rows:72px 1fr;
+  grid-template-rows:0 1fr;
   background:
     linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.50) 48%,rgba(0,0,0,.84)),
     linear-gradient(to bottom,rgba(0,0,0,.15),rgba(0,0,0,.88)),
@@ -74,17 +75,7 @@ a{text-decoration:none;color:inherit}
   mask-image:linear-gradient(to bottom,rgba(0,0,0,.50),transparent 78%);
 }
 
-.nav{
-  position:relative;
-  z-index:5;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 34px;
-  border-bottom:1px solid rgba(255,255,255,.06);
-  background:rgba(5,5,5,.74);
-  backdrop-filter:blur(14px);
-}
+.nav{display:none}
 .logo{
   display:flex;
   align-items:center;
@@ -118,8 +109,8 @@ a{text-decoration:none;color:inherit}
 .main{
   position:relative;
   z-index:2;
-  height:calc(100vh - 72px);
-  padding:22px 34px 28px;
+  height:100vh;
+  padding:28px 98px 28px 48px;
   display:grid;
   grid-template-columns:minmax(350px,.88fr) minmax(560px,1.12fr);
   gap:22px;
@@ -215,7 +206,7 @@ h1{
 .worlds{
   min-height:0;
   display:grid;
-  grid-template-columns:1.12fr .88fr;
+  grid-template-columns:1.08fr .92fr;
   gap:14px;
 }
 .world-card{
@@ -240,6 +231,22 @@ h1{
 .world-card.lumera{border-color:rgba(214,176,107,.36)}
 .side-stack{display:grid;grid-template-rows:1fr 1fr;gap:14px;min-height:0}
 .world-card.future:before{filter:grayscale(1) brightness(.36)}
+.world-card.discord-world{
+  border-color:rgba(88,101,242,.48);
+  background:linear-gradient(135deg,rgba(88,101,242,.22),rgba(10,10,10,.90));
+}
+.world-card.discord-world:before{
+  background:
+    radial-gradient(circle at 68% 28%,rgba(88,101,242,.42),transparent 34%),
+    linear-gradient(to bottom,rgba(0,0,0,.15),rgba(0,0,0,.86)),
+    var(--img);
+  background-size:cover;
+  background-position:center;
+  filter:brightness(.68) saturate(1.08);
+}
+.world-card.discord-world:hover:before{filter:brightness(.78) saturate(1.14)}
+.world-card.discord-world .world-name{font-size:30px}
+.world-card.discord-world .drawer-btn{margin-top:14px;max-width:190px}
 .world-inner{
   position:absolute;
   inset:0;
@@ -271,6 +278,13 @@ h1{
   text-transform:uppercase;
 }
 .badge.green{color:#b8f0b9;border-color:rgba(76,175,80,.34);background:rgba(25,55,27,.40)}
+.badge.online{
+  color:#eaffea;
+  border-color:rgba(76,255,92,.66);
+  background:linear-gradient(135deg,rgba(23,105,31,.82),rgba(13,54,18,.66));
+  box-shadow:0 0 22px rgba(76,255,92,.28);
+}
+.badge.online i{font-size:8px;filter:drop-shadow(0 0 7px rgba(76,255,92,.75))}
 .badge.amber{color:#ffdc94;border-color:rgba(214,168,79,.38);background:rgba(71,52,18,.34)}
 .badge.gray{color:#aaa;border-color:rgba(255,255,255,.12)}
 .world-name{
@@ -302,6 +316,24 @@ h1{
   font-weight:800;
   text-transform:uppercase;
 }
+.world-link{
+  margin-top:13px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:max-content;
+  min-height:36px;
+  padding:0 14px;
+  border-radius:8px;
+  border:1px solid rgba(76,255,92,.38);
+  background:linear-gradient(135deg,rgba(76,175,80,.24),rgba(0,0,0,.36));
+  color:#ddffdd;
+  font-size:10px;
+  letter-spacing:1.4px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+.world-link:hover{border-color:rgba(76,255,92,.70);box-shadow:0 0 24px rgba(76,255,92,.18)}
 
 .bottom{
   display:grid;
@@ -344,37 +376,26 @@ h1{
 .state{text-align:right;font-size:10px;letter-spacing:1px;font-weight:800;text-transform:uppercase;color:#8e8e8e}
 .task.done .state{color:#86df8a}.task.active .state{color:#ffd98d}
 
-.discord-drawer{
+.social-rail{
   position:fixed;
   z-index:20;
-  right:0;
+  right:22px;
   top:50%;
-  transform:translateY(-50%) translateX(222px);
-  width:278px;
-  min-height:154px;
+  transform:translateY(-50%);
   display:grid;
-  grid-template-columns:56px 1fr;
-  border:1px solid rgba(88,101,242,.34);
-  border-right:0;
-  background:linear-gradient(135deg,rgba(88,101,242,.18),rgba(12,12,12,.94));
-  box-shadow:0 20px 70px rgba(0,0,0,.42);
-  transition:.28s ease;
+  gap:10px;
 }
-.discord-drawer:hover,
-.discord-drawer:focus-within{
-  transform:translateY(-50%) translateX(0);
+.social-rail .social{
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  background:rgba(12,12,12,.86);
+  backdrop-filter:blur(12px);
+  box-shadow:0 12px 36px rgba(0,0,0,.36);
 }
-.drawer-handle{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:var(--discord);
-  color:white;
-  font-size:25px;
-}
-.drawer-content{
-  padding:17px 16px 16px;
-}
+.social-rail .social.discord i{color:#fff}
+.social-rail .social.discord{background:var(--discord);border-color:rgba(255,255,255,.18)}
+.drawer-content{padding:17px 16px 16px}
 .drawer-content h2{
   font-family:'Cinzel',serif;
   font-size:15px;
@@ -401,47 +422,30 @@ h1{
   font-weight:800;
   text-transform:uppercase;
 }
-.drawer-note{
-  display:block;
-  margin-top:8px;
-  font-size:9px;
-  letter-spacing:1.2px;
-  color:#827c90;
-  text-transform:uppercase;
-}
-
+.drawer-btn:hover{filter:brightness(1.08)}
 @media(max-width:1160px){
   body{overflow:auto}
-  .page{min-height:100vh;grid-template-rows:68px auto}
-  .main{height:auto;grid-template-columns:1fr;padding:18px;min-height:calc(100vh - 68px)}
+  .page{min-height:100vh;grid-template-rows:0 auto}
+  .main{height:auto;grid-template-columns:1fr;padding:18px 86px 18px 18px;min-height:100vh}
   .worlds{min-height:560px}
-  .discord-drawer{top:auto;right:14px;bottom:14px;transform:none;width:252px;min-height:auto;grid-template-columns:46px 1fr;border-right:1px solid rgba(88,101,242,.34)}
-  .discord-drawer:hover,.discord-drawer:focus-within{transform:none}
+  .social-rail{right:16px}
 }
 @media(max-width:760px){
-  .nav{padding:0 16px}.logo{font-size:21px;letter-spacing:3px}.logo-dot{display:none}.socials .social{width:34px;height:34px}
-  .main{padding:14px;gap:14px;padding-bottom:128px}
+  .nav{display:none}
+  .main{padding:14px 70px 22px 14px;gap:14px}
   .hero-card{padding:25px;min-height:360px}
   h1{font-size:54px;letter-spacing:6px}.subtitle{font-size:14px;letter-spacing:2px}.copy{font-size:13px}
   .why{grid-template-columns:1fr}
   .worlds{grid-template-columns:1fr;min-height:auto}.side-stack{grid-template-rows:none}.world-card{min-height:245px}.world-card.lumera{min-height:310px}
   .task{grid-template-columns:94px 1fr 64px;font-size:11px}.box-title{align-items:flex-start;flex-direction:column;gap:3px}
-  .discord-drawer{left:14px;right:14px;width:auto;grid-template-columns:44px 1fr}.drawer-content{padding:13px}.drawer-content p{display:none}.drawer-note{display:none}
+  .social-rail{right:12px;gap:8px}.social-rail .social{width:42px;height:42px}.drawer-content{padding:13px}.drawer-content p{display:none}
 }
 </style>
 </head>
 
 <body>
 <div class="page">
-  <nav class="nav">
-    <div class="logo"><span class="logo-dot"></span>REVORIA</div>
-
-    <div class="socials">
-      <a class="social tiktok" href="https://www.tiktok.com/@revoria_online" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-      <a class="social instagram" href="https://www.instagram.com/revoria.online" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a class="social youtube" href="https://www.youtube.com/@revoria.online" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-    </div>
-  </nav>
+  <nav class="nav" aria-hidden="true"></nav>
 
   <main class="main">
     <section class="hero">
@@ -489,23 +493,30 @@ h1{
         </article>
 
         <div class="side-stack">
-          <article class="world-card furia" style="--img:url('images/foto2.webp')">
+          <a class="world-card furia" href="https://furia.revoria.online" target="_blank" style="--img:url('images/foto2.webp')">
             <div class="world-head">
-              <span class="badge green">Online</span>
+              <span class="badge online"><i class="fas fa-circle"></i> Online</span>
             </div>
             <div class="world-inner">
               <div class="world-name">FURIA</div>
-              <p class="world-desc">Testing and experimental world for live mechanics.</p>
+              <p class="world-desc">8.6 PVPE world focused on Thais only.</p>
+              <div class="world-meta">
+                <span class="meta-pill">8.6</span>
+                <span class="meta-pill">PVPE</span>
+                <span class="meta-pill">Thais only</span>
+              </div>
+              <span class="world-link">furia.revoria.online</span>
             </div>
-          </article>
+          </a>
 
-          <article class="world-card future" style="--img:url('images/foto5.webp')">
+          <article class="world-card discord-world" style="--img:url('images/foto5.webp')">
             <div class="world-head">
-              <span class="badge gray">Locked</span>
+              <span class="badge"><i class="fab fa-discord"></i> Community</span>
             </div>
             <div class="world-inner">
-              <div class="world-name">NETWORK</div>
-              <p class="world-desc">More worlds will appear when the network is ready.</p>
+              <div class="world-name">DISCORD</div>
+              <p class="world-desc">Development updates, testing discussions and announcements in one place.</p>
+              <a class="drawer-btn" href="https://discord.gg/73ADntPraM" target="_blank">Join Discord</a>
             </div>
           </article>
         </div>
@@ -529,14 +540,11 @@ h1{
   </main>
 </div>
 
-<aside class="discord-drawer" aria-label="Discord community">
-  <div class="drawer-handle"><i class="fab fa-discord"></i></div>
-  <div class="drawer-content">
-    <h2>Join Community</h2>
-    <p>Development updates, testing discussions and announcements in one place.</p>
-    <a class="drawer-btn" href="https://discord.gg/73ADntPraM" target="_blank">Join Discord</a>
-    <span class="drawer-note">Hover to open</span>
-  </div>
+<aside class="social-rail" aria-label="Social links">
+  <a class="social discord" href="https://discord.gg/73ADntPraM" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+  <a class="social tiktok" href="https://www.tiktok.com/@revoria_online" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  <a class="social instagram" href="https://www.instagram.com/revoria.online" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+  <a class="social youtube" href="https://www.youtube.com/@revoria.online" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
 </aside>
 
 <script>
