@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>REVORIA — Oldschool Tibia Network</title>
+<title>REVORIA — Choose Your World</title>
 <link rel="icon" type="image/png" href="/favicon.png" />
 <meta property="og:title" content="REVORIA" />
-<meta property="og:description" content="Oldschool Tibia Network" />
+<meta property="og:description" content="Choose your Revoria world" />
 <meta property="og:image" content="https://revoria.online/favicon.png" />
 <meta property="og:type" content="website" />
 
@@ -17,14 +17,13 @@
 <style>
 :root{
   --bg:#050606;
-  --panel:rgba(10,11,11,.88);
-  --line:rgba(255,255,255,.09);
   --gold:#d6b06b;
   --gold2:#f1d08d;
-  --text:#d9c8a6;
-  --muted:#9d9079;
+  --text:#ddcaa5;
+  --muted:#a79576;
   --green:#45d66b;
   --blue:#3b8cff;
+  --red:#d8432e;
   --discord:#5865F2;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -37,316 +36,313 @@ body{
 }
 a{color:inherit;text-decoration:none}
 button{font-family:inherit}
+
 .page{
   min-height:100vh;
-  display:grid;
-  grid-template-columns:320px 1fr;
-  background:
-    linear-gradient(90deg,rgba(0,0,0,.90),rgba(0,0,0,.55) 52%,rgba(0,0,0,.87)),
-    linear-gradient(to bottom,rgba(0,0,0,.24),rgba(0,0,0,.91)),
-    url('images/foto1.webp') center/cover no-repeat;
   position:relative;
+  background:#040505;
+  overflow:hidden;
 }
 .page:before{
   content:'';
   position:fixed;
   inset:0;
   pointer-events:none;
+  z-index:5;
   background:
-    radial-gradient(circle at 62% 18%,rgba(214,176,107,.10),transparent 30%),
-    radial-gradient(circle at 12% 86%,rgba(214,176,107,.07),transparent 28%),
+    radial-gradient(circle at 50% 12%,rgba(241,208,141,.15),transparent 26%),
+    radial-gradient(circle at 12% 70%,rgba(216,67,46,.13),transparent 30%),
+    radial-gradient(circle at 88% 70%,rgba(59,140,255,.13),transparent 30%),
+    linear-gradient(to bottom,rgba(0,0,0,.12),rgba(0,0,0,.48) 76%,rgba(0,0,0,.92));
+}
+.page:after{
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:6;
+  opacity:.27;
+  background:
     linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
     linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px);
-  background-size:auto,auto,48px 48px,48px 48px;
-  mask-image:linear-gradient(to bottom,rgba(0,0,0,.82),transparent 88%);
+  background-size:48px 48px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.8),transparent 86%);
 }
-.sidebar{
-  position:relative;
-  z-index:2;
-  height:100vh;
-  border-right:1px solid rgba(214,176,107,.18);
-  background:linear-gradient(180deg,rgba(8,8,8,.94),rgba(10,10,10,.80));
-  padding:36px 28px 24px;
-  display:flex;
-  flex-direction:column;
-}
-.logo{
+
+.brand{
+  position:fixed;
+  top:28px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:20;
+  width:min(820px,calc(100% - 32px));
   text-align:center;
-  padding-bottom:28px;
-  border-bottom:1px solid rgba(214,176,107,.17);
+  pointer-events:none;
 }
-.logo h1{
+.brand h1{
   font-family:'Cinzel',serif;
   color:var(--gold2);
-  letter-spacing:9px;
-  font-size:42px;
-  line-height:.95;
+  letter-spacing:13px;
+  font-size:64px;
+  line-height:.92;
   font-weight:700;
-  text-shadow:0 10px 35px rgba(0,0,0,.8);
+  text-shadow:0 10px 38px rgba(0,0,0,.95),0 0 32px rgba(214,176,107,.13);
 }
-.logo p{
-  margin-top:10px;
-  font-size:11px;
-  letter-spacing:2.6px;
-  color:#b79e70;
+.brand p{
+  margin-top:11px;
+  color:#c5a96f;
   text-transform:uppercase;
-}
-.side-title{
-  margin:28px 0 16px;
-  font-family:'Cinzel',serif;
-  color:#d7bf8c;
-  font-size:15px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-}
-.world-list{display:grid;gap:12px}
-.world-tab{
-  width:100%;
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(8,8,8,.66);
-  min-height:96px;
-  padding:17px;
-  display:grid;
-  grid-template-columns:44px 1fr;
-  gap:13px;
-  align-items:center;
-  color:var(--text);
-  cursor:pointer;
-  text-align:left;
-  transition:.18s;
-}
-.world-tab:hover{border-color:rgba(214,176,107,.30);transform:translateY(-1px)}
-.world-tab.active{
-  border-color:rgba(214,176,107,.78);
-  background:linear-gradient(135deg,rgba(214,176,107,.14),rgba(8,8,8,.74));
-  box-shadow:0 0 28px rgba(214,176,107,.08), inset 0 0 0 1px rgba(214,176,107,.08);
-}
-.emblem{
-  width:42px;height:42px;
-  border:1px solid rgba(214,176,107,.35);
-  display:grid;place-items:center;
-  background:radial-gradient(circle,rgba(214,176,107,.20),rgba(0,0,0,.4));
-  color:var(--gold2);
-  font-family:'Cinzel',serif;
-  font-weight:800;
-  font-size:18px;
-}
-.world-tab h3{
-  font-family:'Cinzel',serif;
-  letter-spacing:2.5px;
-  font-size:19px;
-  color:#ead19d;
-  margin-bottom:6px;
-}
-.status{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  text-transform:uppercase;
-  font-size:11px;
-  letter-spacing:1.4px;
-  font-weight:800;
-}
-.dot{width:9px;height:9px;border-radius:50%}
-.green{color:var(--green)} .green .dot{background:var(--green);box-shadow:0 0 14px rgba(69,214,107,.6)}
-.blue{color:var(--blue)} .blue .dot{background:var(--blue);box-shadow:0 0 14px rgba(59,140,255,.55)}
-.side-links{
-  margin-top:24px;
-  padding-top:22px;
-  border-top:1px solid rgba(214,176,107,.15);
-  display:grid;
-  gap:10px;
-}
-.side-link{
-  height:42px;
-  display:flex;align-items:center;gap:12px;
-  color:#bfae8d;
+  letter-spacing:5px;
   font-size:12px;
-  letter-spacing:1.4px;
-  text-transform:uppercase;
   font-weight:800;
-  background:none;
-  border:0;
-  cursor:pointer;
-  text-align:left;
 }
-.side-link:hover{color:var(--gold2)}
-.side-link i{width:18px;color:#bfae8d}
-.copyright{
-  margin-top:auto;
-  color:#776b56;
-  font-size:11px;
-  letter-spacing:1px;
+.brand .line{
+  margin:18px auto 0;
+  width:min(540px,80%);
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(214,176,107,.72),transparent);
 }
+
+.worlds{
+  min-height:100vh;
+  display:flex;
+  position:relative;
+}
+.world{
+  flex:1;
+  min-width:0;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding:190px 56px 118px;
+  transition:flex .55s cubic-bezier(.2,.8,.2,1), filter .45s ease;
+  border-right:1px solid rgba(214,176,107,.22);
+}
+.world:last-child{border-right:0}
+.world:hover{flex:1.35}
+.worlds:has(.world:hover) .world:not(:hover){filter:saturate(.62) brightness(.72)}
+.world:before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:var(--image) center/cover no-repeat;
+  transform:scale(1.04);
+  transition:transform .75s cubic-bezier(.2,.8,.2,1), filter .45s ease;
+}
+.world:hover:before{transform:scale(1.10)}
+.world:after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to bottom,rgba(0,0,0,.28),rgba(0,0,0,.18) 34%,rgba(0,0,0,.88)),
+    linear-gradient(90deg,rgba(0,0,0,.76),rgba(0,0,0,.18),rgba(0,0,0,.76));
+}
+.world.furia:after{
+  background:
+    radial-gradient(circle at 30% 68%,rgba(216,67,46,.30),transparent 35%),
+    linear-gradient(to bottom,rgba(0,0,0,.33),rgba(0,0,0,.18) 34%,rgba(0,0,0,.90)),
+    linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.20),rgba(0,0,0,.72));
+}
+.world.lumera:after{
+  background:
+    radial-gradient(circle at 70% 68%,rgba(59,140,255,.25),transparent 34%),
+    linear-gradient(to bottom,rgba(0,0,0,.33),rgba(0,0,0,.18) 34%,rgba(0,0,0,.90)),
+    linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.18),rgba(0,0,0,.78));
+}
+
 .content{
   position:relative;
-  z-index:2;
-  min-width:0;
-  height:100vh;
-  padding:28px 44px 34px;
-  display:grid;
-  grid-template-rows:auto 1fr;
-  gap:22px;
+  z-index:10;
+  width:min(560px,100%);
+  text-align:center;
+  transform:translateY(12px);
+  transition:transform .45s ease;
 }
-.topbar{
-  display:flex;
-  justify-content:flex-end;
+.world:hover .content{transform:translateY(0)}
+.kicker{
+  display:inline-flex;
   align-items:center;
-  gap:20px;
-}
-.socials{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:8px;
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(8,8,8,.62);
+  justify-content:center;
+  gap:8px;
+  margin-bottom:18px;
+  padding:8px 14px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.36);
   backdrop-filter:blur(8px);
+  text-transform:uppercase;
+  font-size:11px;
+  letter-spacing:2px;
+  font-weight:900;
+  color:#d8c39a;
 }
-.social{
-  width:38px;height:38px;
-  display:grid;place-items:center;
-  border:1px solid rgba(255,255,255,.09);
-  background:rgba(15,15,15,.74);
-  transition:.18s;
+.dot{width:9px;height:9px;border-radius:50%}
+.green .dot{background:var(--green);box-shadow:0 0 15px rgba(69,214,107,.7)}
+.blue .dot{background:var(--blue);box-shadow:0 0 15px rgba(59,140,255,.7)}
+
+.world h2{
+  font-family:'Cinzel',serif;
+  font-size:76px;
+  letter-spacing:12px;
+  line-height:.94;
+  font-weight:700;
+  text-shadow:0 12px 38px rgba(0,0,0,.92);
 }
-.social:hover{transform:translateY(-2px);border-color:rgba(214,176,107,.38)}
-.social.discord{background:var(--discord);color:white}
-.social.youtube i{color:#ff2a2a}.social.instagram i{color:#ff4f91}.social.tiktok i{color:#fff;text-shadow:1px 1px 0 #ff0050,-1px -1px 0 #00f2ea}
-.stage{
-  min-height:0;
+.furia h2{color:#ff755e}
+.lumera h2{color:#d7ecff}
+.role{
+  margin-top:12px;
+  font-family:'Cinzel',serif;
+  text-transform:uppercase;
+  letter-spacing:8px;
+  font-size:21px;
+  color:#f3dbad;
+}
+.desc{
+  margin:24px auto 0;
+  max-width:500px;
+  color:#c7baa0;
+  line-height:1.7;
+  font-size:14px;
+}
+
+.stats{
+  margin:30px auto 0;
   display:grid;
-  align-content:start;
-  justify-items:center;
-  padding-top:18px;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  max-width:520px;
+  opacity:.74;
+  transform:translateY(8px);
+  transition:.35s ease;
 }
-.stage-title{
-  width:min(1120px,100%);
+.world:hover .stats{opacity:1;transform:translateY(0)}
+.stat{
+  min-height:74px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(0,0,0,.42);
+  backdrop-filter:blur(8px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  box-shadow:0 14px 38px rgba(0,0,0,.20);
+}
+.stat i{font-size:15px;color:#c7aa72}
+.stat span{
+  color:#9f9279;
+  text-transform:uppercase;
+  letter-spacing:1.2px;
+  font-size:10px;
+  font-weight:900;
+}
+.stat strong{color:#f4e2bf;font-size:14px;font-weight:800}
+
+.cta{
+  margin:30px auto 0;
+  width:min(310px,100%);
+  height:56px;
   display:flex;
   align-items:center;
   justify-content:center;
   gap:16px;
-  font-family:'Cinzel',serif;
-  color:#d9bd82;
-  letter-spacing:5px;
-  text-transform:uppercase;
-  font-size:18px;
-  margin-bottom:22px;
-}
-.stage-title:before,.stage-title:after{
-  content:'';
-  flex:1;
-  height:1px;
-  max-width:260px;
-  background:linear-gradient(90deg,transparent,rgba(214,176,107,.58));
-}
-.stage-title:after{background:linear-gradient(90deg,rgba(214,176,107,.58),transparent)}
-.world-panel{
-  width:min(1120px,100%);
-  border:1px solid rgba(214,176,107,.24);
-  background:linear-gradient(135deg,rgba(10,10,10,.90),rgba(16,16,16,.72));
-  box-shadow:0 30px 90px rgba(0,0,0,.42);
-  overflow:hidden;
-}
-.world-main{
-  display:grid;
-  grid-template-columns:1.06fr 1.10fr .84fr;
-  min-height:470px;
-}
-.art{
-  position:relative;
-  background:var(--img) center/cover no-repeat;
-  min-height:470px;
-}
-.art:after{
-  content:'';
-  position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(0,0,0,.02),rgba(0,0,0,.55));
-}
-.info{
-  padding:44px 42px;
-  border-left:1px solid rgba(255,255,255,.08);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-.info h2{
-  font-family:'Cinzel',serif;
-  font-size:58px;
-  letter-spacing:9px;
-  color:var(--gold2);
-  line-height:1;
-  margin-bottom:14px;
-}
-.mode{
-  font-size:20px;
-  color:#f1dfbd;
-  margin:18px 0 14px;
-}
-.desc{
-  max-width:520px;
-  color:#bfb39d;
-  line-height:1.65;
-  font-size:14px;
-}
-.cta{
-  margin-top:28px;
-  width:250px;
-  height:50px;
-  border:1px solid rgba(214,176,107,.72);
-  background:linear-gradient(135deg,rgba(214,176,107,.14),rgba(0,0,0,.18));
+  border:1px solid rgba(214,176,107,.76);
+  background:linear-gradient(135deg,rgba(214,176,107,.18),rgba(0,0,0,.32));
   color:#fff0ca;
   text-transform:uppercase;
-  letter-spacing:2px;
+  letter-spacing:2.5px;
   font-size:12px;
-  font-weight:900;
-  display:flex;align-items:center;justify-content:center;gap:18px;
+  font-weight:950;
+  box-shadow:0 20px 50px rgba(0,0,0,.34), inset 0 0 0 1px rgba(214,176,107,.08);
+  transition:.2s ease;
 }
-.stats{
-  border-left:1px solid rgba(255,255,255,.08);
-  padding:34px 32px;
+.cta:hover{transform:translateY(-2px);background:linear-gradient(135deg,rgba(214,176,107,.28),rgba(0,0,0,.36))}
+.furia .cta{border-color:rgba(255,117,94,.70)}
+.lumera .cta{border-color:rgba(95,170,255,.68)}
+
+.versus{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:18;
+  width:82px;
+  height:82px;
   display:grid;
-  align-content:center;
-  gap:18px;
+  place-items:center;
+  border:1px solid rgba(214,176,107,.52);
+  background:radial-gradient(circle,rgba(28,23,14,.96),rgba(5,5,5,.88));
+  box-shadow:0 0 0 1px rgba(255,255,255,.05),0 20px 70px rgba(0,0,0,.8);
+  rotate:45deg;
 }
-.stat{
-  display:grid;
-  grid-template-columns:28px 1fr auto;
-  gap:12px;
-  align-items:center;
-  color:#b9ad96;
+.versus span{
+  rotate:-45deg;
+  font-family:'Cinzel',serif;
+  color:var(--gold2);
+  font-size:35px;
+  font-weight:700;
 }
-.stat i{color:#9f8e70;font-size:17px;text-align:center}
-.stat span{
-  text-transform:uppercase;
-  font-size:11px;
-  letter-spacing:1.4px;
-  font-weight:800;
-  color:#9f947f;
-}
-.stat strong{font-size:15px;color:#f0dfbf;font-weight:700;text-align:right}
-.stat strong.ok{color:var(--green)}.stat strong.dev{color:var(--blue)}
-.world-bottom{
-  border-top:1px solid rgba(255,255,255,.08);
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  min-height:86px;
-}
-.mini{
-  padding:20px 26px;
-  border-right:1px solid rgba(255,255,255,.08);
+
+.footer{
+  position:fixed;
+  left:50%;
+  bottom:24px;
+  transform:translateX(-50%);
+  z-index:22;
   display:flex;
-  flex-direction:column;
+  align-items:center;
   justify-content:center;
-  gap:9px;
+  gap:14px;
+  padding:9px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(5,5,5,.62);
+  backdrop-filter:blur(10px);
 }
-.mini:last-child{border-right:0}
-.label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#9f947f;font-weight:800}
-.mini strong{color:#ead8b6;font-size:15px;font-weight:700}
+.social{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(12,12,12,.72);
+  color:#e8d2a3;
+  transition:.18s ease;
+}
+.social:hover{transform:translateY(-2px);border-color:rgba(214,176,107,.45)}
+.social.discord{background:var(--discord);color:white}
+.social.youtube i{color:#ff2a2a}
+.social.instagram i{color:#ff4f91}
+.social.tiktok i{color:#fff;text-shadow:1px 1px 0 #ff0050,-1px -1px 0 #00f2ea}
+
+.about{
+  position:fixed;
+  top:30px;
+  right:30px;
+  z-index:24;
+  height:42px;
+  padding:0 16px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(5,5,5,.58);
+  backdrop-filter:blur(10px);
+  color:#d7c198;
+  text-transform:uppercase;
+  letter-spacing:1.6px;
+  font-size:11px;
+  font-weight:900;
+  cursor:pointer;
+}
+.about:hover{color:var(--gold2);border-color:rgba(214,176,107,.38)}
+
 .modal{
   position:fixed;
   inset:0;
-  z-index:50;
+  z-index:60;
   display:none;
   align-items:center;
   justify-content:center;
@@ -367,7 +363,8 @@ button{font-family:inherit}
   position:absolute;
   top:14px;
   right:14px;
-  width:38px;height:38px;
+  width:38px;
+  height:38px;
   border:1px solid rgba(255,255,255,.10);
   background:rgba(0,0,0,.35);
   color:#e8d2a3;
@@ -406,101 +403,95 @@ button{font-family:inherit}
   margin-bottom:7px;
 }
 .modal-point span{font-size:12px;color:#a99b82;line-height:1.45;display:block}
-@media(max-width:1180px){
-  body{overflow:auto}.page{grid-template-columns:1fr}.sidebar{height:auto}.content{height:auto;min-height:100vh}.world-main{grid-template-columns:1fr}.stats{border-left:0;border-top:1px solid rgba(255,255,255,.08)}.info{border-left:0}.world-bottom{grid-template-columns:1fr 1fr}.mini{border-bottom:1px solid rgba(255,255,255,.08)}
+
+@media(max-width:980px){
+  body{overflow:auto}
+  .brand{position:absolute;top:24px}
+  .brand h1{font-size:42px;letter-spacing:8px}
+  .brand p{font-size:10px;letter-spacing:3px}
+  .worlds{display:grid;grid-template-columns:1fr;min-height:100vh}
+  .world{min-height:720px;padding:180px 22px 110px;border-right:0;border-bottom:1px solid rgba(214,176,107,.22)}
+  .world:hover{flex:1}
+  .versus{display:none}
+  .about{top:auto;right:16px;bottom:92px}
+  .footer{bottom:18px;width:auto}
+  .world h2{font-size:52px;letter-spacing:8px}
+  .role{font-size:16px;letter-spacing:5px}
+  .stats{grid-template-columns:repeat(2,1fr)}
 }
-@media(max-width:700px){
-  .content{padding:18px 14px}.sidebar{padding:28px 18px}.topbar{justify-content:center}.stage-title{font-size:14px;letter-spacing:3px}.stage-title:before,.stage-title:after{max-width:44px}.logo h1{font-size:34px}.info h2{font-size:42px;letter-spacing:6px}.world-bottom{grid-template-columns:1fr}.art{min-height:260px}.info{padding:30px 24px}.stats{padding:26px 22px}.cta{width:100%}.modal-grid{grid-template-columns:1fr}
+@media(max-width:560px){
+  .brand h1{font-size:34px;letter-spacing:6px}
+  .world{min-height:680px;padding-top:160px}
+  .world h2{font-size:43px;letter-spacing:6px}
+  .desc{font-size:13px}
+  .stat{min-height:68px}
+  .modal-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 <div class="page">
-  <aside class="sidebar">
-    <div class="logo">
-      <h1>REVORIA</h1>
-      <p>Oldschool Tibia Network</p>
-    </div>
+  <header class="brand">
+    <h1>REVORIA</h1>
+    <p>Choose Your World</p>
+    <div class="line"></div>
+  </header>
 
-    <div class="side-title">World Selection</div>
-    <div class="world-list">
-      <button class="world-tab active" data-world="furia">
-        <span class="emblem">F</span>
-        <span>
-          <h3>FURIA</h3>
-          <span class="status green"><span class="dot"></span>Online</span>
-        </span>
-      </button>
+  <button class="about" id="aboutBtn" type="button"><i class="fas fa-circle-info"></i> About</button>
 
-      <button class="world-tab" data-world="lumera">
-        <span class="emblem">L</span>
-        <span>
-          <h3>LUMERA</h3>
-          <span class="status blue"><span class="dot"></span>Development</span>
-        </span>
-      </button>
-    </div>
+  <div class="worlds">
+    <section class="world furia" style="--image:url('images/foto2.webp')">
+      <div class="content">
+        <div class="kicker green"><span class="dot"></span> Online</div>
+        <h2>FURIA</h2>
+        <div class="role">War</div>
+        <p class="desc">Open PvP world with increased rates, unlimited runes, potions and ammunition. Explore, fight, test quests and discover Revoria from the first minute.</p>
 
-    <div class="side-links">
-      <button class="side-link" id="aboutBtn" type="button"><i class="fas fa-circle-info"></i> About Network</button>
-    </div>
-
-    <div class="copyright">© 2026 REVORIA NETWORK</div>
-  </aside>
-
-  <main class="content">
-    <header class="topbar">
-      <nav class="socials" aria-label="Social links">
-        <a class="social discord" href="https://discord.gg/73ADntPraM" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
-        <a class="social youtube" href="https://www.youtube.com/@revoria.online" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-        <a class="social instagram" href="https://www.instagram.com/revoria.online" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a class="social tiktok" href="https://www.tiktok.com/@revoria_online" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-      </nav>
-    </header>
-
-    <section class="stage">
-      <div class="stage-title">Choose Your World</div>
-
-      <article class="world-panel" id="worldPanel" style="--img:url('images/foto2.webp')">
-        <div class="world-main">
-          <div class="art" id="worldArt"></div>
-
-          <div class="info">
-            <h2 id="worldName">FURIA</h2>
-            <div class="status green" id="worldStatus"><span class="dot"></span>Online</div>
-            <div class="mode" id="worldMode">8.6 PvP Enforced • Thais Only</div>
-            <p class="desc" id="worldDesc">Battlefield server created to support testing and catching issues for other Revoria worlds. Start at level 80, ready to fight from the first minute.</p>
-            <a class="cta" id="worldCta" href="https://furia.revoria.online" target="_blank">Enter World <i class="fas fa-arrow-right"></i></a>
-          </div>
-
-          <div class="stats" id="statsBox">
-            <div class="stat"><i class="fas fa-server"></i><span>Status</span><strong class="ok" id="serverStatus">Online</strong></div>
-            <div class="stat" id="startLevelStat"><i class="fas fa-bolt"></i><span>Start Level</span><strong id="startLevel">80</strong></div>
-            <div class="stat"><i class="fas fa-star"></i><span>Experience</span><strong id="expRate">x10</strong></div>
-            <div class="stat" id="expPlayersStat"><i class="fas fa-user-group"></i><span>Exp From Players</span><strong id="expPlayers">x5</strong></div>
-            <div class="stat"><i class="fas fa-wand-sparkles"></i><span>Magic</span><strong id="magicRate">x1</strong></div>
-            <div class="stat"><i class="fas fa-sword"></i><span>Skill</span><strong id="skillRate">x1</strong></div>
-            <div class="stat"><i class="fas fa-coins"></i><span>Loot</span><strong id="lootRate">x5</strong></div>
-            <div class="stat"><i class="fas fa-skull-crossbones"></i><span>PvP Type</span><strong id="pvpType">PvP Enforced</strong></div>
-          </div>
+        <div class="stats">
+          <div class="stat"><i class="fas fa-star"></i><span>Exp</span><strong>x50</strong></div>
+          <div class="stat"><i class="fas fa-skull-crossbones"></i><span>PvP</span><strong>Open</strong></div>
+          <div class="stat"><i class="fas fa-bolt"></i><span>Start</span><strong>Level 8</strong></div>
+          <div class="stat"><i class="fas fa-coins"></i><span>Loot</span><strong>x5</strong></div>
         </div>
 
-        <div class="world-bottom">
-          <div class="mini"><span class="label" id="dateLabel">Created</span><strong id="dateValue">May 31, 2026</strong></div>
-          <div class="mini"><span class="label">Version</span><strong id="versionValue">8.6</strong></div>
-          <div class="mini"><span class="label" id="locationLabel">Location</span><strong id="locationValue">Europe</strong></div>
-          <div class="mini"><span class="label" id="extraLabel">Purpose</span><strong id="extraValue">Testing Battlefield</strong></div>
-        </div>
-      </article>
+        <a class="cta" href="https://furia.revoria.online" target="_blank">Enter The War <i class="fas fa-arrow-right"></i></a>
+      </div>
     </section>
-  </main>
+
+    <section class="world lumera" style="--image:url('images/foto3.webp')">
+      <div class="content">
+        <div class="kicker blue"><span class="dot"></span> Development</div>
+        <h2>LUMERA</h2>
+        <div class="role">RPG</div>
+        <p class="desc">Long-term RPG world focused on slower progression, quests, economy and a stable oldschool experience. Built for players who want the real journey.</p>
+
+        <div class="stats">
+          <div class="stat"><i class="fas fa-star"></i><span>Exp</span><strong>x1</strong></div>
+          <div class="stat"><i class="fas fa-skull-crossbones"></i><span>PvP</span><strong>Open</strong></div>
+          <div class="stat"><i class="fas fa-hourglass-half"></i><span>Launch</span><strong>Q4 2026</strong></div>
+          <div class="stat"><i class="fas fa-coins"></i><span>Loot</span><strong>x1</strong></div>
+        </div>
+
+        <a class="cta" href="#" target="_self">Discover Lumera <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </section>
+  </div>
+
+  <div class="versus"><span>R</span></div>
+
+  <nav class="footer" aria-label="Social links">
+    <a class="social discord" href="https://discord.gg/73ADntPraM" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+    <a class="social youtube" href="https://www.youtube.com/@revoria.online" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a class="social instagram" href="https://www.instagram.com/revoria.online" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a class="social tiktok" href="https://www.tiktok.com/@revoria_online" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  </nav>
 </div>
 
 <div class="modal" id="aboutModal" aria-hidden="true">
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
     <button class="modal-close" id="aboutClose" type="button" aria-label="Close">×</button>
-    <h2 id="aboutTitle">About Network</h2>
-    <p>Revoria is an oldschool Tibia network built around separate worlds with clear purpose: live servers, test environments and long-term RPG projects.</p>
+    <h2 id="aboutTitle">About Revoria</h2>
+    <p>Revoria is an oldschool Tibia network built around separate worlds with clear purpose: fast PvP testing, long-term RPG progression and community-driven development.</p>
     <p>The goal is simple: fair gameplay, stable worlds, controlled progression and updates based on real player testing instead of random changes.</p>
     <div class="modal-grid">
       <div class="modal-point"><h3>Fair Gameplay</h3><span>No pay-to-win direction. Progress should feel earned.</span></div>
@@ -511,124 +502,6 @@ button{font-family:inherit}
 </div>
 
 <script>
-const worlds = {
-furia: {
-    name: 'FURIA',
-    image: "url('images/foto2.webp')",
-    statusText: 'Online',
-    statusClass: 'green',
-    mode: '8.6 Open PvP • Exploration Phase',
-    desc: 'Furia is now open with increased rates, unlimited runes, potions and ammunition. Explore the world, test quests, check the map and discover all the content.',
-    cta: 'Enter World',
-    href: 'https://furia.revoria.online',
-    serverStatus: 'Online',
-    serverStatusClass: 'ok',
-    startLevel: '8',
-    exp: 'x50',
-    expPlayers: 'x5',
-    magic: 'x25',
-    skill: 'x40',
-    loot: 'x5',
-    pvpType: 'Open PvP',
-    dateLabel: 'Phase',
-    date: 'Exploration',
-    version: '8.6',
-    locationLabel: 'Location',
-    location: 'Europe',
-    extraLabel: 'Features',
-    extra: 'Unlimited Runes, Potions & Ammo'
-},
-  lumera: {
-    name: 'LUMERA',
-    image: "url('images/foto3.webp')",
-    statusText: 'Development',
-    statusClass: 'blue',
-    mode: '8.6 RPG x1 PvP • Classic Experience',
-    desc: 'A long-term RPG world in development, focused on slower progression, quests, economy and a stable oldschool experience.',
-    cta: 'View Project',
-    href: '#',
-    serverStatus: 'In Progress',
-    serverStatusClass: 'dev',
-    startLevel: null,
-    exp: 'x1',
-    expPlayers: null,
-    magic: 'x1',
-    skill: 'x1',
-    loot: 'x1',
-    pvpType: 'Open PvP',
-    dateLabel: 'Estimated Launch',
-    date: 'Q4 2026',
-    version: '8.6',
-    locationLabel: 'Location',
-    location: 'Europe',
-    extraLabel: 'Focus',
-    extra: 'Long-Term RPG'
-  }
-};
-
-const panel = document.getElementById('worldPanel');
-const tabs = document.querySelectorAll('.world-tab');
-const els = {
-  name: document.getElementById('worldName'),
-  status: document.getElementById('worldStatus'),
-  mode: document.getElementById('worldMode'),
-  desc: document.getElementById('worldDesc'),
-  cta: document.getElementById('worldCta'),
-  serverStatus: document.getElementById('serverStatus'),
-  startLevel: document.getElementById('startLevel'),
-  startLevelStat: document.getElementById('startLevelStat'),
-  exp: document.getElementById('expRate'),
-  expPlayers: document.getElementById('expPlayers'),
-  expPlayersStat: document.getElementById('expPlayersStat'),
-  magic: document.getElementById('magicRate'),
-  skill: document.getElementById('skillRate'),
-  loot: document.getElementById('lootRate'),
-  pvpType: document.getElementById('pvpType'),
-  dateLabel: document.getElementById('dateLabel'),
-  dateValue: document.getElementById('dateValue'),
-  versionValue: document.getElementById('versionValue'),
-  locationLabel: document.getElementById('locationLabel'),
-  locationValue: document.getElementById('locationValue'),
-  extraLabel: document.getElementById('extraLabel'),
-  extraValue: document.getElementById('extraValue')
-};
-
-function setWorld(key){
-  const w = worlds[key];
-  panel.style.setProperty('--img', w.image);
-
-  els.name.textContent = w.name;
-  els.status.className = `status ${w.statusClass}`;
-  els.status.innerHTML = '<span class="dot"></span>' + w.statusText;
-  els.mode.textContent = w.mode;
-  els.desc.textContent = w.desc;
-  els.cta.innerHTML = `${w.cta} <i class="fas fa-arrow-right"></i>`;
-  els.cta.href = w.href;
-  els.cta.target = w.href === '#' ? '_self' : '_blank';
-  els.serverStatus.textContent = w.serverStatus;
-  els.serverStatus.className = w.serverStatusClass;
-  els.startLevelStat.style.display = w.startLevel ? '' : 'none';
-  els.expPlayersStat.style.display = w.expPlayers ? '' : 'none';
-  els.startLevel.textContent = w.startLevel || '';
-  els.exp.textContent = w.exp;
-  els.expPlayers.textContent = w.expPlayers || '';
-  els.magic.textContent = w.magic;
-  els.skill.textContent = w.skill;
-  els.loot.textContent = w.loot;
-  els.pvpType.textContent = w.pvpType;
-  els.dateLabel.textContent = w.dateLabel;
-  els.dateValue.textContent = w.date;
-  els.versionValue.textContent = w.version;
-  els.locationLabel.textContent = w.locationLabel;
-  els.locationValue.textContent = w.location;
-  els.extraLabel.textContent = w.extraLabel;
-  els.extraValue.textContent = w.extra;
-
-  tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.world === key));
-}
-
-tabs.forEach(tab => tab.addEventListener('click', () => setWorld(tab.dataset.world)));
-
 const aboutModal = document.getElementById('aboutModal');
 const aboutBtn = document.getElementById('aboutBtn');
 const aboutClose = document.getElementById('aboutClose');
@@ -646,7 +519,6 @@ aboutBtn.addEventListener('click', openAbout);
 aboutClose.addEventListener('click', closeAbout);
 aboutModal.addEventListener('click', e => { if(e.target === aboutModal) closeAbout(); });
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closeAbout(); });
-  setWorld('furia');
 </script>
 </body>
 </html>
