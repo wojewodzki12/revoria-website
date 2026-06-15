@@ -105,7 +105,8 @@ button{font-family:inherit}
 
 .worlds{
   min-height:100vh;
-  display:flex;
+  display:grid;
+  grid-template-columns:1fr 1fr;
   position:relative;
 }
 .world{
@@ -117,21 +118,20 @@ button{font-family:inherit}
   align-items:flex-end;
   justify-content:center;
   padding:190px 56px 118px;
-  transition:flex .55s cubic-bezier(.2,.8,.2,1), filter .45s ease;
-  border-right:1px solid rgba(214,176,107,.22);
+  transition:filter .28s ease;
 }
-.world:last-child{border-right:0}
-.world:hover{flex:1.35}
-.worlds:has(.world:hover) .world:not(:hover){filter:saturate(.62) brightness(.72)}
+.world.furia{clip-path:polygon(0 0,100% 0,94% 100%,0 100%)}
+.world.lumera{clip-path:polygon(6% 0,100% 0,100% 100%,0 100%);margin-left:-6%}
+.worlds:has(.world:hover) .world:not(:hover){filter:saturate(.88) brightness(.92)}
 .world:before{
   content:'';
   position:absolute;
   inset:0;
   background:var(--image) center/cover no-repeat;
-  transform:scale(1.04);
-  transition:transform .75s cubic-bezier(.2,.8,.2,1), filter .45s ease;
+  transform:scale(1.035);
+  transition:transform .45s ease, filter .28s ease;
 }
-.world:hover:before{transform:scale(1.10)}
+.world:hover:before{transform:scale(1.055);filter:saturate(1.08) brightness(1.06)}
 .world:after{
   content:'';
   position:absolute;
@@ -158,10 +158,18 @@ button{font-family:inherit}
   z-index:10;
   width:min(560px,100%);
   text-align:center;
-  transform:translateY(12px);
-  transition:transform .45s ease;
+  padding:26px 24px 28px;
+  border:1px solid rgba(214,176,107,.13);
+  background:linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.40));
+  backdrop-filter:blur(3px);
+  box-shadow:0 18px 58px rgba(0,0,0,.22);
+  transition:border-color .25s ease, box-shadow .25s ease, background .25s ease;
 }
-.world:hover .content{transform:translateY(0)}
+.world:hover .content{
+  border-color:rgba(214,176,107,.42);
+  background:linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.50));
+  box-shadow:0 22px 70px rgba(0,0,0,.34),0 0 34px rgba(214,176,107,.08);
+}
 .kicker{
   display:inline-flex;
   align-items:center;
@@ -214,11 +222,10 @@ button{font-family:inherit}
   grid-template-columns:repeat(4,1fr);
   gap:10px;
   max-width:520px;
-  opacity:.74;
-  transform:translateY(8px);
-  transition:.35s ease;
+  opacity:.88;
+  transition:opacity .25s ease;
 }
-.world:hover .stats{opacity:1;transform:translateY(0)}
+.world:hover .stats{opacity:1}
 .stat{
   min-height:74px;
   border:1px solid rgba(255,255,255,.10);
@@ -263,27 +270,18 @@ button{font-family:inherit}
 .furia .cta{border-color:rgba(255,117,94,.70)}
 .lumera .cta{border-color:rgba(95,170,255,.68)}
 
-.versus{
-  position:fixed;
-  top:50%;
+.worlds:before{
+  content:'';
+  position:absolute;
   left:50%;
-  transform:translate(-50%,-50%);
-  z-index:18;
+  top:15%;
+  bottom:12%;
+  z-index:12;
   width:82px;
-  height:82px;
-  display:grid;
-  place-items:center;
-  border:1px solid rgba(214,176,107,.52);
-  background:radial-gradient(circle,rgba(28,23,14,.96),rgba(5,5,5,.88));
-  box-shadow:0 0 0 1px rgba(255,255,255,.05),0 20px 70px rgba(0,0,0,.8);
-  rotate:45deg;
-}
-.versus span{
-  rotate:-45deg;
-  font-family:'Cinzel',serif;
-  color:var(--gold2);
-  font-size:35px;
-  font-weight:700;
+  transform:translateX(-50%) skewX(-7deg);
+  pointer-events:none;
+  background:linear-gradient(180deg,transparent,rgba(214,176,107,.18),rgba(255,255,255,.045),rgba(214,176,107,.13),transparent);
+  mask-image:linear-gradient(to bottom,transparent,#000 18%,#000 82%,transparent);
 }
 
 .footer{
@@ -410,9 +408,9 @@ button{font-family:inherit}
   .brand h1{font-size:42px;letter-spacing:8px}
   .brand p{font-size:10px;letter-spacing:3px}
   .worlds{display:grid;grid-template-columns:1fr;min-height:100vh}
-  .world{min-height:720px;padding:180px 22px 110px;border-right:0;border-bottom:1px solid rgba(214,176,107,.22)}
-  .world:hover{flex:1}
-  .versus{display:none}
+  .world{min-height:720px;padding:180px 22px 110px;border-bottom:1px solid rgba(214,176,107,.18)}
+  .world.furia,.world.lumera{clip-path:none;margin-left:0}
+  .worlds:before{display:none}
   .about{top:auto;right:16px;bottom:92px}
   .footer{bottom:18px;width:auto}
   .world h2{font-size:52px;letter-spacing:8px}
@@ -477,7 +475,6 @@ button{font-family:inherit}
     </section>
   </div>
 
-  <div class="versus"><span>R</span></div>
 
   <nav class="footer" aria-label="Social links">
     <a class="social discord" href="https://discord.gg/73ADntPraM" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
