@@ -16,14 +16,14 @@
 
 <style>
 :root{
-  --bg:#050606;
+  --bg:#050505;
   --gold:#d6b06b;
   --gold2:#f1d08d;
-  --text:#ddcaa5;
-  --muted:#a79576;
-  --green:#45d66b;
-  --blue:#3b8cff;
-  --red:#d8432e;
+  --text:#dfc99f;
+  --muted:#97866a;
+  --green:#48d66d;
+  --blue:#4f9dff;
+  --red:#d94833;
   --discord:#5865F2;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -40,68 +40,89 @@ button{font-family:inherit}
 .page{
   min-height:100vh;
   position:relative;
-  background:#040505;
   overflow:hidden;
+  background:#030303;
 }
 .page:before{
   content:'';
   position:fixed;
   inset:0;
+  z-index:8;
   pointer-events:none;
-  z-index:5;
   background:
-    radial-gradient(circle at 50% 12%,rgba(241,208,141,.15),transparent 26%),
-    radial-gradient(circle at 12% 70%,rgba(216,67,46,.13),transparent 30%),
-    radial-gradient(circle at 88% 70%,rgba(59,140,255,.13),transparent 30%),
-    linear-gradient(to bottom,rgba(0,0,0,.12),rgba(0,0,0,.48) 76%,rgba(0,0,0,.92));
+    radial-gradient(circle at 50% 9%,rgba(241,208,141,.13),transparent 26%),
+    linear-gradient(to bottom,rgba(0,0,0,.08),rgba(0,0,0,.30) 48%,rgba(0,0,0,.90)),
+    linear-gradient(90deg,rgba(0,0,0,.72),transparent 34%,transparent 66%,rgba(0,0,0,.72));
 }
 .page:after{
   content:'';
   position:fixed;
   inset:0;
+  z-index:9;
   pointer-events:none;
-  z-index:6;
-  opacity:.27;
+  opacity:.18;
   background:
-    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px);
-  background-size:48px 48px;
-  mask-image:linear-gradient(to bottom,rgba(0,0,0,.8),transparent 86%);
+    linear-gradient(rgba(255,255,255,.020) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.8),transparent 88%);
 }
 
 .brand{
   position:fixed;
-  top:28px;
+  top:22px;
   left:50%;
   transform:translateX(-50%);
-  z-index:20;
-  width:min(820px,calc(100% - 32px));
+  z-index:30;
+  width:min(860px,calc(100% - 32px));
   text-align:center;
   pointer-events:none;
 }
 .brand h1{
   font-family:'Cinzel',serif;
   color:var(--gold2);
-  letter-spacing:13px;
+  letter-spacing:14px;
   font-size:64px;
   line-height:.92;
   font-weight:700;
-  text-shadow:0 10px 38px rgba(0,0,0,.95),0 0 32px rgba(214,176,107,.13);
+  text-shadow:0 12px 34px rgba(0,0,0,.96),0 0 26px rgba(214,176,107,.16);
 }
 .brand p{
-  margin-top:11px;
+  margin-top:10px;
   color:#c5a96f;
   text-transform:uppercase;
   letter-spacing:5px;
-  font-size:12px;
-  font-weight:800;
+  font-size:11px;
+  font-weight:900;
 }
 .brand .line{
-  margin:18px auto 0;
-  width:min(540px,80%);
+  margin:16px auto 0;
+  width:min(520px,80%);
   height:1px;
-  background:linear-gradient(90deg,transparent,rgba(214,176,107,.72),transparent);
+  background:linear-gradient(90deg,transparent,rgba(214,176,107,.65),transparent);
 }
+
+.about{
+  position:fixed;
+  top:30px;
+  right:30px;
+  z-index:34;
+  height:42px;
+  padding:0 16px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid rgba(214,176,107,.18);
+  background:rgba(5,5,5,.58);
+  backdrop-filter:blur(8px);
+  color:#d7c198;
+  text-transform:uppercase;
+  letter-spacing:1.6px;
+  font-size:11px;
+  font-weight:900;
+  cursor:pointer;
+}
+.about:hover{color:var(--gold2);border-color:rgba(214,176,107,.45)}
 
 .worlds{
   min-height:100vh;
@@ -110,198 +131,197 @@ button{font-family:inherit}
   position:relative;
 }
 .world{
-  flex:1;
   min-width:0;
   position:relative;
   overflow:hidden;
   display:flex;
   align-items:flex-end;
   justify-content:center;
-  padding:190px 56px 118px;
-  transition:filter .28s ease;
+  padding:170px 54px 116px;
 }
-.world.furia{clip-path:polygon(0 0,100% 0,94% 100%,0 100%)}
-.world.lumera{clip-path:polygon(6% 0,100% 0,100% 100%,0 100%);margin-left:-6%}
-.worlds:has(.world:hover) .world:not(:hover){filter:saturate(.88) brightness(.92)}
+.world.furia{clip-path:polygon(0 0,100% 0,94.5% 100%,0 100%)}
+.world.lumera{clip-path:polygon(5.5% 0,100% 0,100% 100%,0 100%);margin-left:-5.5%}
 .world:before{
   content:'';
   position:absolute;
   inset:0;
   background:var(--image) center/cover no-repeat;
-  transform:scale(1.035);
-  transition:transform .45s ease, filter .28s ease;
+  transform:scale(1.018);
+  transition:transform .45s ease, filter .35s ease;
 }
-.world:hover:before{transform:scale(1.055);filter:saturate(1.08) brightness(1.06)}
+.world.furia:before{filter:saturate(1.16) contrast(1.05) brightness(.92)}
+.world.lumera:before{filter:grayscale(.88) saturate(.35) contrast(.96) brightness(.64)}
+.world:hover:before{transform:scale(1.035)}
+.world.furia:hover:before{filter:saturate(1.28) contrast(1.08) brightness(1)}
+.world.lumera:hover:before{filter:grayscale(.55) saturate(.58) contrast(1) brightness(.76)}
 .world:after{
   content:'';
   position:absolute;
   inset:0;
-  background:
-    linear-gradient(to bottom,rgba(0,0,0,.28),rgba(0,0,0,.18) 34%,rgba(0,0,0,.88)),
-    linear-gradient(90deg,rgba(0,0,0,.76),rgba(0,0,0,.18),rgba(0,0,0,.76));
+  pointer-events:none;
 }
 .world.furia:after{
   background:
-    radial-gradient(circle at 30% 68%,rgba(216,67,46,.30),transparent 35%),
-    linear-gradient(to bottom,rgba(0,0,0,.33),rgba(0,0,0,.18) 34%,rgba(0,0,0,.90)),
-    linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.20),rgba(0,0,0,.72));
+    radial-gradient(circle at 28% 67%,rgba(216,67,46,.26),transparent 39%),
+    linear-gradient(to bottom,rgba(0,0,0,.14),rgba(0,0,0,.12) 38%,rgba(0,0,0,.82)),
+    linear-gradient(90deg,rgba(0,0,0,.70),rgba(0,0,0,.08),rgba(0,0,0,.55));
 }
 .world.lumera:after{
   background:
-    radial-gradient(circle at 70% 68%,rgba(59,140,255,.25),transparent 34%),
-    linear-gradient(to bottom,rgba(0,0,0,.33),rgba(0,0,0,.18) 34%,rgba(0,0,0,.90)),
-    linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.18),rgba(0,0,0,.78));
+    radial-gradient(circle at 72% 65%,rgba(80,120,160,.22),transparent 38%),
+    linear-gradient(to bottom,rgba(0,0,0,.20),rgba(0,0,0,.18) 38%,rgba(0,0,0,.86)),
+    linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,.10),rgba(0,0,0,.72));
 }
-
-.content{
-  position:relative;
-  z-index:10;
-  width:min(560px,100%);
-  text-align:center;
-  padding:26px 24px 28px;
-  border:1px solid rgba(214,176,107,.13);
-  background:linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.40));
-  backdrop-filter:blur(3px);
-  box-shadow:0 18px 58px rgba(0,0,0,.22);
-  transition:border-color .25s ease, box-shadow .25s ease, background .25s ease;
-}
-.world:hover .content{
-  border-color:rgba(214,176,107,.42);
-  background:linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.50));
-  box-shadow:0 22px 70px rgba(0,0,0,.34),0 0 34px rgba(214,176,107,.08);
-}
-.kicker{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  margin-bottom:18px;
-  padding:8px 14px;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(0,0,0,.36);
-  backdrop-filter:blur(8px);
-  text-transform:uppercase;
-  font-size:11px;
-  letter-spacing:2px;
-  font-weight:900;
-  color:#d8c39a;
-}
-.dot{width:9px;height:9px;border-radius:50%}
-.green .dot{background:var(--green);box-shadow:0 0 15px rgba(69,214,107,.7)}
-.blue .dot{background:var(--blue);box-shadow:0 0 15px rgba(59,140,255,.7)}
-
-.world h2{
-  font-family:'Cinzel',serif;
-  font-size:76px;
-  letter-spacing:12px;
-  line-height:.94;
-  font-weight:700;
-  text-shadow:0 12px 38px rgba(0,0,0,.92);
-}
-.furia h2{color:#ff755e}
-.lumera h2{color:#d7ecff}
-.role{
-  margin-top:12px;
-  font-family:'Cinzel',serif;
-  text-transform:uppercase;
-  letter-spacing:8px;
-  font-size:21px;
-  color:#f3dbad;
-}
-.desc{
-  margin:24px auto 0;
-  max-width:500px;
-  color:#c7baa0;
-  line-height:1.7;
-  font-size:14px;
-}
-
-.stats{
-  margin:30px auto 0;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-  max-width:520px;
-  opacity:.88;
-  transition:opacity .25s ease;
-}
-.world:hover .stats{opacity:1}
-.stat{
-  min-height:74px;
-  border:1px solid rgba(255,255,255,.10);
-  background:rgba(0,0,0,.42);
-  backdrop-filter:blur(8px);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:7px;
-  box-shadow:0 14px 38px rgba(0,0,0,.20);
-}
-.stat i{font-size:15px;color:#c7aa72}
-.stat span{
-  color:#9f9279;
-  text-transform:uppercase;
-  letter-spacing:1.2px;
-  font-size:10px;
-  font-weight:900;
-}
-.stat strong{color:#f4e2bf;font-size:14px;font-weight:800}
-
-.cta{
-  margin:30px auto 0;
-  width:min(310px,100%);
-  height:56px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:16px;
-  border:1px solid rgba(214,176,107,.76);
-  background:linear-gradient(135deg,rgba(214,176,107,.18),rgba(0,0,0,.32));
-  color:#fff0ca;
-  text-transform:uppercase;
-  letter-spacing:2.5px;
-  font-size:12px;
-  font-weight:950;
-  box-shadow:0 20px 50px rgba(0,0,0,.34), inset 0 0 0 1px rgba(214,176,107,.08);
-  transition:.2s ease;
-}
-.cta:hover{transform:translateY(-2px);background:linear-gradient(135deg,rgba(214,176,107,.28),rgba(0,0,0,.36))}
-.furia .cta{border-color:rgba(255,117,94,.70)}
-.lumera .cta{border-color:rgba(95,170,255,.68)}
-
 .worlds:before{
   content:'';
   position:absolute;
+  z-index:20;
   left:50%;
-  top:15%;
-  bottom:12%;
-  z-index:12;
-  width:82px;
+  top:16%;
+  bottom:13%;
+  width:70px;
   transform:translateX(-50%) skewX(-7deg);
   pointer-events:none;
-  background:linear-gradient(180deg,transparent,rgba(214,176,107,.18),rgba(255,255,255,.045),rgba(214,176,107,.13),transparent);
+  background:linear-gradient(180deg,transparent,rgba(214,176,107,.13),rgba(255,255,255,.04),rgba(214,176,107,.10),transparent);
   mask-image:linear-gradient(to bottom,transparent,#000 18%,#000 82%,transparent);
+}
+.worlds:has(.world:hover) .world:not(:hover):before{filter:grayscale(.55) saturate(.55) brightness(.68)}
+.worlds:has(.lumera:hover) .furia:not(:hover):before{filter:saturate(.75) brightness(.72)}
+
+.card{
+  position:relative;
+  z-index:22;
+  width:min(420px,100%);
+  text-align:left;
+  padding:24px 26px 26px;
+  border:1px solid rgba(214,176,107,.24);
+  background:linear-gradient(180deg,rgba(9,8,7,.74),rgba(3,3,3,.66));
+  box-shadow:0 22px 60px rgba(0,0,0,.44), inset 0 0 0 1px rgba(255,255,255,.035);
+  transition:border-color .24s ease, box-shadow .24s ease, transform .24s ease;
+}
+.card:before,.card:after{
+  content:'';
+  position:absolute;
+  width:26px;
+  height:26px;
+  pointer-events:none;
+}
+.card:before{left:-1px;top:-1px;border-left:2px solid rgba(214,176,107,.45);border-top:2px solid rgba(214,176,107,.45)}
+.card:after{right:-1px;bottom:-1px;border-right:2px solid rgba(214,176,107,.36);border-bottom:2px solid rgba(214,176,107,.36)}
+.world:hover .card{border-color:rgba(214,176,107,.46);box-shadow:0 26px 78px rgba(0,0,0,.55),0 0 34px rgba(214,176,107,.07);transform:translateY(-3px)}
+.furia .card{border-color:rgba(216,67,46,.32)}
+.furia:hover .card{border-color:rgba(216,67,46,.60);box-shadow:0 26px 78px rgba(0,0,0,.55),0 0 40px rgba(216,67,46,.12)}
+.lumera .card{border-color:rgba(180,190,195,.22);background:linear-gradient(180deg,rgba(14,14,14,.76),rgba(4,4,4,.70))}
+.lumera:hover .card{border-color:rgba(180,190,195,.40);box-shadow:0 26px 78px rgba(0,0,0,.58),0 0 34px rgba(120,150,170,.08)}
+
+.status{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 11px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(0,0,0,.42);
+  text-transform:uppercase;
+  font-size:10px;
+  letter-spacing:1.7px;
+  font-weight:950;
+  color:#cdbc9b;
+}
+.dot{width:8px;height:8px;border-radius:50%}
+.online .dot{background:var(--green);box-shadow:0 0 14px rgba(72,214,109,.7)}
+.dev .dot{background:#919191;box-shadow:0 0 12px rgba(170,170,170,.35)}
+
+.card h2{
+  margin-top:18px;
+  font-family:'Cinzel',serif;
+  font-size:54px;
+  letter-spacing:8px;
+  line-height:.95;
+  font-weight:700;
+  text-shadow:0 10px 34px rgba(0,0,0,.9);
+}
+.furia h2{color:#ff705a}
+.lumera h2{color:#b9bec1}
+
+.meta{
+  margin-top:18px;
+  display:grid;
+  gap:11px;
+}
+.row{
+  display:grid;
+  grid-template-columns:28px 1fr auto;
+  align-items:center;
+  gap:10px;
+  min-height:30px;
+  border-bottom:1px solid rgba(255,255,255,.055);
+  padding-bottom:9px;
+}
+.row:last-child{border-bottom:0;padding-bottom:0}
+.row i{font-size:14px;color:#c7a569;text-align:center}
+.furia .row i{color:#d99a5d}
+.lumera .row i{color:#8b8b8b}
+.row span{
+  color:#9f9279;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  font-size:10px;
+  font-weight:950;
+}
+.row strong{
+  color:#f2ddb2;
+  font-size:13px;
+  font-weight:900;
+  text-align:right;
+}
+.lumera .row strong{color:#c8c8c8}
+
+.cta{
+  margin-top:24px;
+  width:100%;
+  height:52px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  border:1px solid rgba(214,176,107,.62);
+  background:linear-gradient(135deg,rgba(214,176,107,.14),rgba(0,0,0,.25));
+  color:#fff0ca;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:12px;
+  font-weight:950;
+  transition:.2s ease;
+}
+.cta:hover{transform:translateY(-2px);background:linear-gradient(135deg,rgba(214,176,107,.24),rgba(0,0,0,.30))}
+.furia .cta{border-color:rgba(216,67,46,.68);background:linear-gradient(135deg,rgba(126,24,17,.62),rgba(0,0,0,.26))}
+.furia .cta:hover{background:linear-gradient(135deg,rgba(165,37,25,.72),rgba(0,0,0,.30))}
+.lumera .cta{
+  border-color:rgba(160,160,160,.30);
+  color:#bdbdbd;
+  background:linear-gradient(135deg,rgba(120,120,120,.14),rgba(0,0,0,.25));
+  cursor:default;
+  pointer-events:none;
 }
 
 .footer{
   position:fixed;
   left:50%;
-  bottom:24px;
+  bottom:22px;
   transform:translateX(-50%);
-  z-index:22;
+  z-index:34;
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:14px;
-  padding:9px;
-  border:1px solid rgba(255,255,255,.10);
+  gap:12px;
+  padding:8px 10px;
+  border:1px solid rgba(214,176,107,.18);
   background:rgba(5,5,5,.62);
-  backdrop-filter:blur(10px);
+  backdrop-filter:blur(8px);
 }
 .social{
-  width:42px;
-  height:42px;
+  width:39px;
+  height:39px;
   display:grid;
   place-items:center;
   border:1px solid rgba(255,255,255,.10);
@@ -315,42 +335,20 @@ button{font-family:inherit}
 .social.instagram i{color:#ff4f91}
 .social.tiktok i{color:#fff;text-shadow:1px 1px 0 #ff0050,-1px -1px 0 #00f2ea}
 
-.about{
-  position:fixed;
-  top:30px;
-  right:30px;
-  z-index:24;
-  height:42px;
-  padding:0 16px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  border:1px solid rgba(255,255,255,.10);
-  background:rgba(5,5,5,.58);
-  backdrop-filter:blur(10px);
-  color:#d7c198;
-  text-transform:uppercase;
-  letter-spacing:1.6px;
-  font-size:11px;
-  font-weight:900;
-  cursor:pointer;
-}
-.about:hover{color:var(--gold2);border-color:rgba(214,176,107,.38)}
-
 .modal{
   position:fixed;
   inset:0;
-  z-index:60;
+  z-index:70;
   display:none;
   align-items:center;
   justify-content:center;
   padding:24px;
-  background:rgba(0,0,0,.72);
+  background:rgba(0,0,0,.74);
   backdrop-filter:blur(8px);
 }
 .modal.open{display:flex}
 .modal-card{
-  width:min(660px,100%);
+  width:min(640px,100%);
   border:1px solid rgba(214,176,107,.32);
   background:linear-gradient(135deg,rgba(12,12,12,.98),rgba(20,18,15,.94));
   box-shadow:0 30px 100px rgba(0,0,0,.65);
@@ -376,53 +374,33 @@ button{font-family:inherit}
   font-size:28px;
   margin-bottom:14px;
 }
-.modal-card p{
-  color:#c5b799;
-  line-height:1.75;
-  font-size:14px;
-  margin-bottom:14px;
-}
-.modal-grid{
-  margin-top:20px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
-.modal-point{
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(0,0,0,.30);
-  padding:15px;
-}
-.modal-point h3{
-  font-family:'Cinzel',serif;
-  color:#ead19d;
-  font-size:13px;
-  letter-spacing:1.5px;
-  margin-bottom:7px;
-}
+.modal-card p{color:#c5b799;line-height:1.75;font-size:14px;margin-bottom:14px}
+.modal-grid{margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.modal-point{border:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.30);padding:15px}
+.modal-point h3{font-family:'Cinzel',serif;color:#ead19d;font-size:13px;letter-spacing:1.5px;margin-bottom:7px}
 .modal-point span{font-size:12px;color:#a99b82;line-height:1.45;display:block}
 
 @media(max-width:980px){
   body{overflow:auto}
-  .brand{position:absolute;top:24px}
+  .brand{position:absolute;top:22px}
   .brand h1{font-size:42px;letter-spacing:8px}
   .brand p{font-size:10px;letter-spacing:3px}
-  .worlds{display:grid;grid-template-columns:1fr;min-height:100vh}
-  .world{min-height:720px;padding:180px 22px 110px;border-bottom:1px solid rgba(214,176,107,.18)}
+  .worlds{grid-template-columns:1fr}
+  .world{min-height:690px;padding:160px 20px 106px;border-bottom:1px solid rgba(214,176,107,.16)}
   .world.furia,.world.lumera{clip-path:none;margin-left:0}
   .worlds:before{display:none}
-  .about{top:auto;right:16px;bottom:92px}
-  .footer{bottom:18px;width:auto}
-  .world h2{font-size:52px;letter-spacing:8px}
-  .role{font-size:16px;letter-spacing:5px}
-  .stats{grid-template-columns:repeat(2,1fr)}
+  .about{top:auto;right:16px;bottom:88px}
+  .footer{bottom:16px}
+  .card{width:min(410px,100%)}
+  .card h2{font-size:46px;letter-spacing:7px}
 }
 @media(max-width:560px){
   .brand h1{font-size:34px;letter-spacing:6px}
-  .world{min-height:680px;padding-top:160px}
-  .world h2{font-size:43px;letter-spacing:6px}
-  .desc{font-size:13px}
-  .stat{min-height:68px}
+  .brand p{letter-spacing:2.5px}
+  .world{min-height:650px;padding-top:145px}
+  .card{padding:21px 20px 23px}
+  .card h2{font-size:39px;letter-spacing:5px}
+  .row{grid-template-columns:24px 1fr auto}
   .modal-grid{grid-template-columns:1fr}
 }
 </style>
@@ -431,7 +409,7 @@ button{font-family:inherit}
 <div class="page">
   <header class="brand">
     <h1>REVORIA</h1>
-    <p>Choose Your World</p>
+    <p>Oldschool Tibia Network</p>
     <div class="line"></div>
   </header>
 
@@ -439,42 +417,35 @@ button{font-family:inherit}
 
   <div class="worlds">
     <section class="world furia" style="--image:url('images/foto2.jpg')">
-      <div class="content">
-        <div class="kicker green"><span class="dot"></span> Online</div>
+      <div class="card">
+        <div class="status online"><span class="dot"></span> Online</div>
         <h2>FURIA</h2>
-        <div class="role">War</div>
-        <p class="desc">Open PvP world with increased rates, unlimited runes, potions and ammunition. Explore, fight, test quests and discover Revoria from the first minute.</p>
-
-        <div class="stats">
-          <div class="stat"><i class="fas fa-star"></i><span>Exp</span><strong>x50</strong></div>
-          <div class="stat"><i class="fas fa-skull-crossbones"></i><span>PvP</span><strong>Open</strong></div>
-          <div class="stat"><i class="fas fa-bolt"></i><span>Start</span><strong>Level 8</strong></div>
-          <div class="stat"><i class="fas fa-coins"></i><span>Loot</span><strong>x5</strong></div>
+        <div class="meta">
+          <div class="row"><i class="fas fa-star"></i><span>Exp</span><strong>x50</strong></div>
+          <div class="row"><i class="fas fa-skull-crossbones"></i><span>PvP</span><strong>Open</strong></div>
+          <div class="row"><i class="fas fa-coins"></i><span>Loot</span><strong>x5</strong></div>
+          <div class="row"><i class="fas fa-bolt"></i><span>Start</span><strong>Level 8</strong></div>
+          <div class="row"><i class="fas fa-shield-halved"></i><span>Type</span><strong>War</strong></div>
         </div>
-
-        <a class="cta" href="https://furia.revoria.online" target="_blank">Enter The War <i class="fas fa-arrow-right"></i></a>
+        <a class="cta" href="https://furia.revoria.online" target="_blank">Enter World <i class="fas fa-arrow-right"></i></a>
       </div>
     </section>
 
     <section class="world lumera" style="--image:url('images/foto3.jpg')">
-      <div class="content">
-        <div class="kicker blue"><span class="dot"></span> Development</div>
+      <div class="card">
+        <div class="status dev"><span class="dot"></span> In Development</div>
         <h2>LUMERA</h2>
-        <div class="role">RPG</div>
-        <p class="desc">Long-term RPG world focused on slower progression, quests, economy and a stable oldschool experience. Built for players who want the real journey.</p>
-
-        <div class="stats">
-          <div class="stat"><i class="fas fa-star"></i><span>Exp</span><strong>x1</strong></div>
-          <div class="stat"><i class="fas fa-skull-crossbones"></i><span>PvP</span><strong>Open</strong></div>
-          <div class="stat"><i class="fas fa-hourglass-half"></i><span>Launch</span><strong>Q4 2026</strong></div>
-          <div class="stat"><i class="fas fa-coins"></i><span>Loot</span><strong>x1</strong></div>
+        <div class="meta">
+          <div class="row"><i class="fas fa-star"></i><span>Exp</span><strong>x1</strong></div>
+          <div class="row"><i class="fas fa-skull-crossbones"></i><span>PvP</span><strong>Open</strong></div>
+          <div class="row"><i class="fas fa-coins"></i><span>Loot</span><strong>x1</strong></div>
+          <div class="row"><i class="fas fa-hourglass-half"></i><span>Launch</span><strong>Q4 2026</strong></div>
+          <div class="row"><i class="fas fa-shield-halved"></i><span>Type</span><strong>RPG</strong></div>
         </div>
-
-        <a class="cta" href="#" target="_self">Discover Lumera <i class="fas fa-arrow-right"></i></a>
+        <span class="cta">Coming Soon <i class="fas fa-lock"></i></span>
       </div>
     </section>
   </div>
-
 
   <nav class="footer" aria-label="Social links">
     <a class="social discord" href="https://discord.gg/73ADntPraM" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
@@ -488,7 +459,7 @@ button{font-family:inherit}
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
     <button class="modal-close" id="aboutClose" type="button" aria-label="Close">×</button>
     <h2 id="aboutTitle">About Revoria</h2>
-    <p>Revoria is an oldschool Tibia network built around separate worlds with clear purpose: fast PvP testing, long-term RPG progression and community-driven development.</p>
+    <p>Revoria is an oldschool Tibia network built around separate worlds with clear purpose: fast PvP action, long-term RPG progression and community-driven development.</p>
     <p>The goal is simple: fair gameplay, stable worlds, controlled progression and updates based on real player testing instead of random changes.</p>
     <div class="modal-grid">
       <div class="modal-point"><h3>Fair Gameplay</h3><span>No pay-to-win direction. Progress should feel earned.</span></div>
