@@ -5,10 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>REVORIA — Choose Your World</title>
 <link rel="icon" type="image/png" href="/favicon.png" />
-<meta property="og:title" content="REVORIA" />
-<meta property="og:description" content="Choose your Revoria world" />
-<meta property="og:image" content="https://revoria.online/favicon.png" />
-<meta property="og:type" content="website" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -21,18 +17,20 @@
   --gold2:#f1d08d;
   --text:#ddcaa5;
   --muted:#a79576;
-  --green:#45d66b;
-  --blue:#3b8cff;
   --red:#d8432e;
+  --violet:#8b4dff;
+  --blue:#3b8cff;
+  --green:#45d66b;
   --discord:#5865F2;
 }
+
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{min-height:100%}
 body{
   font-family:'Inter',sans-serif;
   color:var(--text);
   background:var(--bg);
-  overflow:hidden;
+  overflow-x:hidden;
 }
 a{color:inherit;text-decoration:none}
 button{font-family:inherit}
@@ -40,50 +38,39 @@ button{font-family:inherit}
 .page{
   min-height:100vh;
   position:relative;
-  background:#040505;
-  overflow:hidden;
-}
-.page:before{
-  content:'';
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:5;
   background:
-    radial-gradient(circle at 50% 11%,rgba(241,208,141,.20),transparent 30%),
-    radial-gradient(circle at 18% 72%,rgba(216,67,46,.16),transparent 36%),
-    radial-gradient(circle at 84% 72%,rgba(59,140,255,.14),transparent 36%),
-    linear-gradient(to bottom,rgba(0,0,0,.06),rgba(0,0,0,.25) 70%,rgba(0,0,0,.70));
+    radial-gradient(circle at 50% 10%,rgba(214,176,107,.16),transparent 34%),
+    radial-gradient(circle at 15% 70%,rgba(216,67,46,.13),transparent 34%),
+    radial-gradient(circle at 50% 72%,rgba(139,77,255,.13),transparent 34%),
+    radial-gradient(circle at 85% 70%,rgba(59,140,255,.13),transparent 34%),
+    #040505;
+  overflow:hidden;
 }
 .page:after{
   content:'';
   position:fixed;
   inset:0;
   pointer-events:none;
-  z-index:6;
-  opacity:.16;
+  z-index:5;
+  opacity:.12;
   background:
     linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
     linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px);
   background-size:48px 48px;
-  mask-image:linear-gradient(to bottom,rgba(0,0,0,.7),transparent 88%);
+  mask-image:linear-gradient(to bottom,#000,transparent 88%);
 }
 
 .brand{
-  position:fixed;
-  top:24px;
-  left:50%;
-  transform:translateX(-50%);
+  position:relative;
   z-index:20;
-  width:min(820px,calc(100% - 32px));
   text-align:center;
-  pointer-events:none;
+  padding:34px 20px 22px;
 }
 .brand h1{
   font-family:'Cinzel',serif;
   color:var(--gold2);
   letter-spacing:13px;
-  font-size:62px;
+  font-size:60px;
   line-height:.92;
   font-weight:700;
   text-shadow:0 10px 34px rgba(0,0,0,.92),0 0 30px rgba(214,176,107,.20);
@@ -107,7 +94,7 @@ button{font-family:inherit}
   position:fixed;
   top:28px;
   right:28px;
-  z-index:24;
+  z-index:30;
   height:42px;
   padding:0 16px;
   display:flex;
@@ -126,153 +113,157 @@ button{font-family:inherit}
 .about:hover{color:var(--gold2);border-color:rgba(214,176,107,.42)}
 
 .worlds{
-  min-height:100vh;
+  position:relative;
+  z-index:10;
+  width:min(1320px,calc(100% - 48px));
+  margin:24px auto 110px;
   display:grid;
-  grid-template-columns:1fr 1fr;
-  position:relative;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
 }
+
 .world{
-  min-width:0;
   position:relative;
+  min-height:590px;
+  border:1px solid rgba(214,176,107,.20);
+  background:#080808;
   overflow:hidden;
   display:flex;
   align-items:flex-end;
-  justify-content:center;
-  padding:180px 54px 116px;
+  box-shadow:0 30px 90px rgba(0,0,0,.42);
 }
-.world.furia{clip-path:polygon(0 0,100% 0,94% 100%,0 100%)}
-.world.lumera{clip-path:polygon(6% 0,100% 0,100% 100%,0 100%);margin-left:-6%}
 .world:before{
   content:'';
   position:absolute;
   inset:0;
   background:var(--image) center/cover no-repeat;
-  transform:scale(1.025);
+  transform:scale(1.04);
+  transition:.35s ease;
 }
-.world.furia:before{
-  filter:saturate(1.14) contrast(1.05) brightness(1.04);
-}
-.world.lumera:before{
-  filter:grayscale(.82) saturate(.45) contrast(1.02) brightness(.94);
-}
+.world:hover:before{transform:scale(1.09)}
 .world:after{
   content:'';
   position:absolute;
   inset:0;
   background:
-    linear-gradient(to bottom,rgba(0,0,0,.10),rgba(0,0,0,.04) 32%,rgba(0,0,0,.58)),
-    linear-gradient(90deg,rgba(0,0,0,.50),rgba(0,0,0,.08),rgba(0,0,0,.45));
+    linear-gradient(to bottom,rgba(0,0,0,.05),rgba(0,0,0,.24) 34%,rgba(0,0,0,.84)),
+    linear-gradient(90deg,rgba(0,0,0,.48),rgba(0,0,0,.10),rgba(0,0,0,.48));
 }
+
+.world.furia{border-color:rgba(216,67,46,.36)}
+.world.nebula{border-color:rgba(139,77,255,.42)}
+.world.lumera{border-color:rgba(59,140,255,.32)}
+
 .world.furia:after{
   background:
-    radial-gradient(circle at 28% 68%,rgba(216,67,46,.22),transparent 38%),
-    linear-gradient(to bottom,rgba(0,0,0,.12),rgba(0,0,0,.04) 34%,rgba(0,0,0,.60)),
-    linear-gradient(90deg,rgba(0,0,0,.50),rgba(0,0,0,.08),rgba(0,0,0,.38));
+    radial-gradient(circle at 50% 45%,rgba(216,67,46,.24),transparent 42%),
+    linear-gradient(to bottom,rgba(0,0,0,.06),rgba(0,0,0,.25) 38%,rgba(0,0,0,.86));
+}
+.world.nebula:after{
+  background:
+    radial-gradient(circle at 50% 43%,rgba(139,77,255,.32),transparent 44%),
+    linear-gradient(to bottom,rgba(0,0,0,.04),rgba(0,0,0,.22) 38%,rgba(0,0,0,.86));
 }
 .world.lumera:after{
   background:
-    radial-gradient(circle at 72% 68%,rgba(90,125,155,.18),transparent 38%),
-    linear-gradient(to bottom,rgba(0,0,0,.15),rgba(0,0,0,.08) 34%,rgba(0,0,0,.64)),
-    linear-gradient(90deg,rgba(0,0,0,.42),rgba(0,0,0,.08),rgba(0,0,0,.52));
-}
-
-.worlds:before{
-  content:'';
-  position:absolute;
-  left:50%;
-  top:13%;
-  bottom:11%;
-  z-index:12;
-  width:70px;
-  transform:translateX(-50%) skewX(-7deg);
-  pointer-events:none;
-  background:linear-gradient(180deg,transparent,rgba(214,176,107,.16),rgba(255,255,255,.05),rgba(214,176,107,.11),transparent);
-  mask-image:linear-gradient(to bottom,transparent,#000 18%,#000 82%,transparent);
+    radial-gradient(circle at 50% 45%,rgba(59,140,255,.22),transparent 42%),
+    linear-gradient(to bottom,rgba(0,0,0,.08),rgba(0,0,0,.28) 38%,rgba(0,0,0,.88));
 }
 
 .content{
   position:relative;
-  z-index:10;
-  width:min(440px,100%);
+  z-index:3;
+  width:100%;
+  padding:28px;
   text-align:center;
-  padding:22px 22px 24px;
-  border:1px solid rgba(214,176,107,.20);
-  background:linear-gradient(180deg,rgba(7,7,7,.40),rgba(7,7,7,.56));
-  box-shadow:0 18px 54px rgba(0,0,0,.26), inset 0 0 0 1px rgba(255,255,255,.025);
 }
-.furia .content{border-color:rgba(216,67,46,.34)}
-.lumera .content{border-color:rgba(190,190,190,.22);background:linear-gradient(180deg,rgba(8,8,8,.46),rgba(8,8,8,.62))}
 
-.kicker{
+.badge{
   display:inline-flex;
   align-items:center;
   justify-content:center;
   gap:8px;
-  margin-bottom:16px;
+  margin-bottom:14px;
   padding:7px 13px;
-  border:1px solid rgba(255,255,255,.13);
-  background:rgba(0,0,0,.34);
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(0,0,0,.44);
   text-transform:uppercase;
   font-size:10px;
   letter-spacing:2px;
   font-weight:900;
-  color:#d8c39a;
 }
-.dot{width:8px;height:8px;border-radius:50%}
-.green .dot{background:var(--green);box-shadow:0 0 14px rgba(69,214,107,.7)}
-.blue .dot{background:#9aa3ad;box-shadow:0 0 14px rgba(180,190,200,.42)}
+.dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 14px rgba(69,214,107,.75);
+}
 
 .world h2{
   font-family:'Cinzel',serif;
-  font-size:66px;
-  letter-spacing:11px;
-  line-height:.94;
+  font-size:46px;
+  letter-spacing:7px;
+  line-height:.95;
   font-weight:700;
   text-shadow:0 12px 34px rgba(0,0,0,.92);
 }
 .furia h2{color:#ff755e}
-.lumera h2{color:#c9d1d8}
+.nebula h2{color:#c19aff}
+.lumera h2{color:#9ecbff}
+
+.subtitle{
+  margin-top:9px;
+  color:#c9b990;
+  text-transform:uppercase;
+  letter-spacing:2.6px;
+  font-size:10px;
+  font-weight:900;
+}
 
 .stats{
-  margin:22px auto 0;
+  margin:24px auto 0;
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:8px;
-  max-width:380px;
 }
 .stat{
   min-height:48px;
   border:1px solid rgba(255,255,255,.10);
-  background:rgba(0,0,0,.38);
+  background:rgba(0,0,0,.46);
   display:grid;
   grid-template-columns:22px 1fr auto;
   align-items:center;
   gap:8px;
-  padding:10px 12px;
+  padding:10px 11px;
   text-align:left;
 }
-.stat i{font-size:13px;color:#c7aa72;text-align:center}
-.lumera .stat i{color:#9ba3aa}
+.stat i{
+  font-size:13px;
+  text-align:center;
+  color:#c7aa72;
+}
+.furia .stat i{color:#ff755e}
+.nebula .stat i{color:#b887ff}
+.lumera .stat i{color:#80bdff}
 .stat span{
   color:#9f9279;
   text-transform:uppercase;
   letter-spacing:1.1px;
-  font-size:10px;
+  font-size:9px;
   font-weight:900;
 }
-.lumera .stat span{color:#929292}
 .stat strong{
   color:#f4e2bf;
-  font-size:13px;
+  font-size:12px;
   font-weight:850;
   text-align:right;
   white-space:nowrap;
 }
-.lumera .stat strong{color:#d1d1d1}
 
 .cta{
   margin:24px auto 0;
-  width:min(290px,100%);
+  width:min(270px,100%);
   height:52px;
   display:flex;
   align-items:center;
@@ -285,19 +276,15 @@ button{font-family:inherit}
   letter-spacing:2.3px;
   font-size:12px;
   font-weight:950;
-  box-shadow:0 18px 44px rgba(0,0,0,.30), inset 0 0 0 1px rgba(214,176,107,.07);
-  transition:transform .16s ease, background .16s ease, border-color .16s ease;
+  transition:.16s ease;
 }
-.cta:hover{transform:translateY(-1px);background:linear-gradient(135deg,rgba(214,176,107,.22),rgba(0,0,0,.30))}
-.furia .cta{border-color:rgba(255,117,94,.66)}
-.lumera .cta{
-  pointer-events:none;
-  cursor:default;
-  color:#cfcfcf;
-  border-color:rgba(190,190,190,.28);
-  background:linear-gradient(135deg,rgba(180,180,180,.08),rgba(0,0,0,.26));
-  opacity:.78;
+.cta:hover{
+  transform:translateY(-2px);
+  background:linear-gradient(135deg,rgba(214,176,107,.24),rgba(0,0,0,.30));
 }
+.furia .cta{border-color:rgba(255,117,94,.68)}
+.nebula .cta{border-color:rgba(177,122,255,.72)}
+.lumera .cta{border-color:rgba(110,180,255,.56)}
 
 .footer{
   position:fixed;
@@ -393,32 +380,41 @@ button{font-family:inherit}
   letter-spacing:1.5px;
   margin-bottom:7px;
 }
-.modal-point span{font-size:12px;color:#a99b82;line-height:1.45;display:block}
-
-@media(max-width:980px){
-  body{overflow:auto}
-  .brand{position:absolute;top:24px}
-  .brand h1{font-size:42px;letter-spacing:8px}
-  .brand p{font-size:10px;letter-spacing:3px}
-  .worlds{display:grid;grid-template-columns:1fr;min-height:100vh}
-  .world{min-height:700px;padding:165px 22px 110px;border-bottom:1px solid rgba(214,176,107,.18)}
-  .world.furia,.world.lumera{clip-path:none;margin-left:0}
-  .worlds:before{display:none}
-  .about{top:auto;right:16px;bottom:90px}
-  .footer{bottom:18px;width:auto}
-  .world h2{font-size:50px;letter-spacing:8px}
-  .stats{grid-template-columns:1fr 1fr}
+.modal-point span{
+  font-size:12px;
+  color:#a99b82;
+  line-height:1.45;
+  display:block;
 }
+
+@media(max-width:1100px){
+  .worlds{
+    grid-template-columns:1fr;
+    width:min(620px,calc(100% - 32px));
+    margin-bottom:120px;
+  }
+  .world{min-height:620px}
+  .brand h1{font-size:44px;letter-spacing:8px}
+}
+
 @media(max-width:560px){
+  .brand{padding-top:28px}
   .brand h1{font-size:34px;letter-spacing:6px}
-  .world{min-height:660px;padding-top:150px}
-  .world h2{font-size:40px;letter-spacing:6px}
+  .brand p{font-size:10px;letter-spacing:3px}
+  .about{
+    top:auto;
+    right:16px;
+    bottom:90px;
+  }
+  .world{min-height:590px}
+  .content{padding:22px}
+  .world h2{font-size:38px;letter-spacing:5px}
   .stats{grid-template-columns:1fr}
-  .stat{min-height:46px}
   .modal-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
+
 <body>
 <div class="page">
   <header class="brand">
@@ -427,13 +423,17 @@ button{font-family:inherit}
     <div class="line"></div>
   </header>
 
-  <button class="about" id="aboutBtn" type="button"><i class="fas fa-circle-info"></i> About</button>
+  <button class="about" id="aboutBtn" type="button">
+    <i class="fas fa-circle-info"></i> About
+  </button>
 
-  <div class="worlds">
+  <main class="worlds">
+
     <section class="world furia" style="--image:url('images/foto2.jpg')">
       <div class="content">
-        <div class="kicker green"><span class="dot"></span> Online</div>
+        <div class="badge"><span class="dot"></span> Online</div>
         <h2>FURIA</h2>
+        <div class="subtitle">Fast War World</div>
 
         <div class="stats">
           <div class="stat"><i class="fas fa-desktop"></i><span>Client</span><strong>8.6</strong></div>
@@ -444,28 +444,55 @@ button{font-family:inherit}
           <div class="stat"><i class="fas fa-coins"></i><span>Loot</span><strong>x5</strong></div>
         </div>
 
-        <a class="cta" href="https://furia.revoria.online" target="_blank">Enter World <i class="fas fa-arrow-right"></i></a>
+        <a class="cta" href="https://furia.revoria.online" target="_blank">
+          Enter World <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </section>
+
+    <section class="world nebula" style="--image:url('images/foto4.jpg')">
+      <div class="content">
+        <div class="badge"><span class="dot"></span> Online</div>
+        <h2>NEBULA</h2>
+        <div class="subtitle">Medium Rate Stage</div>
+
+        <div class="stats">
+          <div class="stat"><i class="fas fa-desktop"></i><span>Client</span><strong>8.6</strong></div>
+          <div class="stat"><i class="fas fa-meteor"></i><span>Type</span><strong>Medium</strong></div>
+          <div class="stat"><i class="fas fa-star"></i><span>Exp</span><strong>Stage</strong></div>
+          <div class="stat"><i class="fas fa-skull-crossbones"></i><span>PvP</span><strong>Open</strong></div>
+          <div class="stat"><i class="fas fa-bolt"></i><span>Start</span><strong>Level 8</strong></div>
+          <div class="stat"><i class="fas fa-coins"></i><span>Loot</span><strong>x3</strong></div>
+        </div>
+
+        <a class="cta" href="https://nebula.revoria.online" target="_blank">
+          Enter World <i class="fas fa-arrow-right"></i>
+        </a>
       </div>
     </section>
 
     <section class="world lumera" style="--image:url('images/foto3.jpg')">
       <div class="content">
-        <div class="kicker blue"><span class="dot"></span> In Development</div>
+        <div class="badge"><span class="dot"></span> Online</div>
         <h2>LUMERA</h2>
+        <div class="subtitle">Low Rate RPG</div>
 
         <div class="stats">
           <div class="stat"><i class="fas fa-desktop"></i><span>Client</span><strong>8.6</strong></div>
           <div class="stat"><i class="fas fa-book-open"></i><span>Type</span><strong>RPG</strong></div>
           <div class="stat"><i class="fas fa-star"></i><span>Exp</span><strong>x1</strong></div>
           <div class="stat"><i class="fas fa-skull-crossbones"></i><span>PvP</span><strong>Open</strong></div>
-          <div class="stat"><i class="fas fa-hourglass-half"></i><span>Launch</span><strong>Q4 2026</strong></div>
+          <div class="stat"><i class="fas fa-bolt"></i><span>Start</span><strong>Level 8</strong></div>
           <div class="stat"><i class="fas fa-coins"></i><span>Loot</span><strong>x1</strong></div>
         </div>
 
-        <span class="cta">Coming Soon <i class="fas fa-lock"></i></span>
+        <a class="cta" href="https://lumera.revoria.online" target="_blank">
+          Enter World <i class="fas fa-arrow-right"></i>
+        </a>
       </div>
     </section>
-  </div>
+
+  </main>
 
   <nav class="footer" aria-label="Social links">
     <a class="social discord" href="https://discord.gg/73ADntPraM" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
@@ -479,11 +506,12 @@ button{font-family:inherit}
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
     <button class="modal-close" id="aboutClose" type="button" aria-label="Close">×</button>
     <h2 id="aboutTitle">About Revoria</h2>
-    <p>Revoria is an oldschool Tibia network built around separate worlds with clear purpose: fast PvP testing, long-term RPG progression and community-driven development.</p>
+    <p>Revoria is an oldschool Tibia network built around separate worlds with clear purpose: fast PvP testing, medium-rate progression and long-term RPG gameplay.</p>
     <p>The goal is simple: fair gameplay, stable worlds, controlled progression and updates based on real player testing instead of random changes.</p>
+
     <div class="modal-grid">
       <div class="modal-point"><h3>Fair Gameplay</h3><span>No pay-to-win direction. Progress should feel earned.</span></div>
-      <div class="modal-point"><h3>Long-Term Worlds</h3><span>Built around stability, economy and retention.</span></div>
+      <div class="modal-point"><h3>Stable Worlds</h3><span>Built around economy, retention and long-term balance.</span></div>
       <div class="modal-point"><h3>Community Testing</h3><span>Feedback and live testing help improve every world.</span></div>
     </div>
   </div>
@@ -498,6 +526,7 @@ function openAbout(){
   aboutModal.classList.add('open');
   aboutModal.setAttribute('aria-hidden','false');
 }
+
 function closeAbout(){
   aboutModal.classList.remove('open');
   aboutModal.setAttribute('aria-hidden','true');
@@ -505,8 +534,12 @@ function closeAbout(){
 
 aboutBtn.addEventListener('click', openAbout);
 aboutClose.addEventListener('click', closeAbout);
-aboutModal.addEventListener('click', e => { if(e.target === aboutModal) closeAbout(); });
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closeAbout(); });
+aboutModal.addEventListener('click', e => {
+  if(e.target === aboutModal) closeAbout();
+});
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') closeAbout();
+});
 </script>
 </body>
 </html>
