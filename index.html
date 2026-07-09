@@ -16,21 +16,24 @@
   --gold:#d6b06b;
   --gold2:#f1d08d;
   --text:#ddcaa5;
-  --red:#d8432e;
+  --muted:#9d927b;
+  --green:#45d66b;
   --violet:#8b4dff;
   --blue:#3b8cff;
-  --green:#45d66b;
   --discord:#5865F2;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
+
 html,body{min-height:100%}
+
 body{
   font-family:'Inter',sans-serif;
   color:var(--text);
   background:var(--bg);
   overflow-x:hidden;
 }
+
 a{color:inherit;text-decoration:none}
 button{font-family:inherit}
 
@@ -38,21 +41,31 @@ button{font-family:inherit}
   min-height:100vh;
   position:relative;
   background:
-    radial-gradient(circle at 50% 8%,rgba(214,176,107,.15),transparent 34%),
-    radial-gradient(circle at 15% 72%,rgba(216,67,46,.12),transparent 34%),
-    radial-gradient(circle at 50% 75%,rgba(139,77,255,.13),transparent 34%),
-    radial-gradient(circle at 85% 72%,rgba(59,140,255,.12),transparent 34%),
-    #040505;
+    radial-gradient(circle at 50% 9%,rgba(214,176,107,.16),transparent 34%),
+    radial-gradient(circle at 36% 68%,rgba(139,77,255,.16),transparent 32%),
+    radial-gradient(circle at 68% 70%,rgba(120,130,145,.12),transparent 34%),
+    linear-gradient(to bottom,#050606,#030404 72%,#020202);
   overflow:hidden;
+}
+
+.page:before{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 50%,transparent 0%,rgba(0,0,0,.38) 72%,rgba(0,0,0,.78) 100%),
+    linear-gradient(to bottom,rgba(0,0,0,.12),rgba(0,0,0,.54));
 }
 
 .page:after{
   content:'';
   position:fixed;
   inset:0;
+  z-index:2;
   pointer-events:none;
-  z-index:5;
-  opacity:.12;
+  opacity:.11;
   background:
     linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
     linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px);
@@ -62,9 +75,9 @@ button{font-family:inherit}
 
 .brand{
   position:relative;
-  z-index:20;
+  z-index:10;
   text-align:center;
-  padding:34px 20px 22px;
+  padding:36px 20px 14px;
 }
 
 .brand h1{
@@ -122,41 +135,57 @@ button{font-family:inherit}
 .worlds{
   position:relative;
   z-index:10;
-  width:min(1320px,calc(100% - 48px));
-  margin:24px auto 110px;
+  width:min(1120px,calc(100% - 48px));
+  margin:56px auto 112px;
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
+  grid-template-columns:repeat(2,1fr);
+  gap:34px;
 }
 
 .world{
   position:relative;
-  min-height:590px;
-  border:1px solid rgba(214,176,107,.18);
-  background:#080808;
+  min-height:620px;
   overflow:hidden;
+  isolation:isolate;
   display:flex;
   align-items:flex-end;
-  box-shadow:0 30px 90px rgba(0,0,0,.48);
-  isolation:isolate;
+  justify-content:center;
+  border:1px solid rgba(214,176,107,.16);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01)),
+    rgba(8,8,8,.42);
+  box-shadow:
+    0 28px 88px rgba(0,0,0,.48),
+    inset 0 0 0 1px rgba(255,255,255,.025);
 }
 
 .world:before{
   content:'';
   position:absolute;
-  inset:-18px;
+  left:50%;
+  top:43%;
   z-index:0;
+  width:520px;
+  height:520px;
+  transform:translate(-50%,-50%) scale(.92);
   background:var(--image) center/cover no-repeat;
-  transform:scale(1.04);
-  filter:blur(3px) brightness(.45) saturate(.82) contrast(1.06);
-  opacity:.74;
-  transition:filter .35s ease, opacity .35s ease, transform .35s ease;
+  border-radius:46% 54% 52% 48% / 44% 42% 58% 56%;
+  filter:blur(9px) brightness(.46) saturate(.78) contrast(1.05);
+  opacity:.56;
+  transition:
+    transform .45s ease,
+    filter .45s ease,
+    opacity .45s ease,
+    border-radius .45s ease;
+  mask-image:radial-gradient(circle at center,#000 0%,#000 52%,rgba(0,0,0,.72) 66%,transparent 82%);
 }
 
 .world:hover:before{
-  transform:scale(1.08);
-  filter:blur(0) brightness(.92) saturate(1.12) contrast(1.08);
-  opacity:1;
+  transform:translate(-50%,-50%) scale(1.08);
+  filter:blur(0) brightness(.96) saturate(1.08) contrast(1.08);
+  opacity:.96;
+  border-radius:38% 62% 45% 55% / 52% 38% 62% 48%;
+  mask-image:radial-gradient(circle at center,#000 0%,#000 64%,rgba(0,0,0,.82) 76%,transparent 92%);
 }
 
 .world:after{
@@ -166,95 +195,64 @@ button{font-family:inherit}
   z-index:1;
   pointer-events:none;
   background:
-    linear-gradient(90deg,
-      rgba(4,5,5,.96) 0%,
-      rgba(4,5,5,.72) 15%,
-      rgba(4,5,5,.22) 50%,
-      rgba(4,5,5,.72) 85%,
-      rgba(4,5,5,.96) 100%
-    ),
-    linear-gradient(to bottom,
-      rgba(4,5,5,.42) 0%,
-      rgba(4,5,5,.18) 32%,
-      rgba(4,5,5,.82) 78%,
-      rgba(4,5,5,.96) 100%
-    );
-  transition:background .35s ease;
+    radial-gradient(circle at 50% 42%,transparent 0%,rgba(5,6,6,.08) 25%,rgba(5,6,6,.66) 66%,rgba(5,6,6,.94) 100%),
+    linear-gradient(to bottom,rgba(5,6,6,.10),rgba(5,6,6,.30) 45%,rgba(5,6,6,.90));
+  transition:background .45s ease;
 }
 
 .world:hover:after{
   background:
-    linear-gradient(90deg,
-      rgba(4,5,5,.88) 0%,
-      rgba(4,5,5,.56) 14%,
-      rgba(4,5,5,.08) 50%,
-      rgba(4,5,5,.56) 86%,
-      rgba(4,5,5,.88) 100%
-    ),
-    linear-gradient(to bottom,
-      rgba(4,5,5,.24) 0%,
-      rgba(4,5,5,.08) 34%,
-      rgba(4,5,5,.70) 78%,
-      rgba(4,5,5,.94) 100%
-    );
+    radial-gradient(circle at 50% 42%,transparent 0%,rgba(5,6,6,.02) 36%,rgba(5,6,6,.48) 72%,rgba(5,6,6,.90) 100%),
+    linear-gradient(to bottom,rgba(5,6,6,.04),rgba(5,6,6,.18) 45%,rgba(5,6,6,.84));
 }
 
-.world .side-blur{
+.orb-shadow{
   position:absolute;
-  inset:0;
-  z-index:2;
+  left:50%;
+  top:43%;
+  z-index:0;
+  width:620px;
+  height:620px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
   pointer-events:none;
-  backdrop-filter:blur(6px);
-  mask-image:linear-gradient(90deg,#000 0%,transparent 25%,transparent 75%,#000 100%);
-  opacity:.72;
-  transition:opacity .35s ease, backdrop-filter .35s ease;
+  filter:blur(28px);
+  opacity:.42;
 }
 
-.world:hover .side-blur{
-  opacity:0;
-  backdrop-filter:blur(0);
+.nebula .orb-shadow{
+  background:radial-gradient(circle,rgba(139,77,255,.46),transparent 64%);
 }
 
-.world.furia{
-  border-color:rgba(216,67,46,.34);
-}
-.world.nebula{
-  border-color:rgba(139,77,255,.42);
-}
-.world.lumera{
-  border-color:rgba(59,140,255,.32);
+.lumera .orb-shadow{
+  background:radial-gradient(circle,rgba(180,190,200,.24),transparent 64%);
 }
 
-.world.furia .glow{
-  background:radial-gradient(circle at 50% 48%,rgba(216,67,46,.24),transparent 48%);
-}
-.world.nebula .glow{
-  background:radial-gradient(circle at 50% 48%,rgba(139,77,255,.30),transparent 50%);
-}
-.world.lumera .glow{
-  background:radial-gradient(circle at 50% 48%,rgba(59,140,255,.22),transparent 48%);
+.nebula{
+  border-color:rgba(139,77,255,.34);
 }
 
-.glow{
-  position:absolute;
-  inset:0;
-  z-index:2;
-  pointer-events:none;
-  opacity:.9;
-  transition:opacity .35s ease;
+.lumera{
+  border-color:rgba(180,190,200,.22);
+  filter:grayscale(.28);
 }
 
-.world:hover .glow{
-  opacity:1.15;
+.lumera:before{
+  filter:blur(10px) brightness(.38) saturate(.28) contrast(1.02);
+  opacity:.42;
+}
+
+.lumera:hover:before{
+  filter:blur(0) brightness(.72) saturate(.38) contrast(1.04);
+  opacity:.76;
 }
 
 .content{
   position:relative;
   z-index:4;
   width:100%;
-  padding:28px;
+  padding:34px 34px 36px;
   text-align:center;
-  background:linear-gradient(to top,rgba(0,0,0,.30),transparent);
 }
 
 .badge{
@@ -265,73 +263,93 @@ button{font-family:inherit}
   margin-bottom:14px;
   padding:7px 13px;
   border:1px solid rgba(255,255,255,.14);
-  background:rgba(0,0,0,.44);
+  background:rgba(0,0,0,.48);
+  backdrop-filter:blur(8px);
   text-transform:uppercase;
   font-size:10px;
   letter-spacing:2px;
   font-weight:900;
-  backdrop-filter:blur(6px);
 }
 
 .dot{
   width:8px;
   height:8px;
   border-radius:50%;
+}
+
+.online .dot{
   background:var(--green);
   box-shadow:0 0 14px rgba(69,214,107,.75);
 }
 
-.world h2{
-  font-family:'Cinzel',serif;
-  font-size:46px;
-  letter-spacing:7px;
-  line-height:.95;
-  font-weight:700;
-  text-shadow:0 12px 34px rgba(0,0,0,.92);
+.dev .dot{
+  background:#a8a8a8;
+  box-shadow:0 0 14px rgba(190,190,190,.34);
 }
 
-.furia h2{color:#ff755e}
-.nebula h2{color:#c19aff}
-.lumera h2{color:#9ecbff}
+.world h2{
+  font-family:'Cinzel',serif;
+  font-size:58px;
+  letter-spacing:9px;
+  line-height:.95;
+  font-weight:700;
+  text-shadow:0 14px 40px rgba(0,0,0,.94);
+}
+
+.nebula h2{
+  color:#c19aff;
+}
+
+.lumera h2{
+  color:#cfd3d6;
+}
 
 .subtitle{
-  margin-top:9px;
+  margin-top:10px;
   color:#c9b990;
   text-transform:uppercase;
-  letter-spacing:2.6px;
+  letter-spacing:2.8px;
   font-size:10px;
   font-weight:900;
 }
 
+.lumera .subtitle{
+  color:#a9a9a9;
+}
+
 .stats{
-  margin:24px auto 0;
+  margin:26px auto 0;
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:8px;
+  gap:9px;
+  max-width:430px;
 }
 
 .stat{
-  min-height:48px;
+  min-height:50px;
   border:1px solid rgba(255,255,255,.10);
-  background:rgba(0,0,0,.52);
-  backdrop-filter:blur(8px);
+  background:rgba(0,0,0,.54);
+  backdrop-filter:blur(10px);
   display:grid;
-  grid-template-columns:22px 1fr auto;
+  grid-template-columns:24px 1fr auto;
   align-items:center;
   gap:8px;
-  padding:10px 11px;
+  padding:10px 12px;
   text-align:left;
 }
 
 .stat i{
   font-size:13px;
   text-align:center;
-  color:#c7aa72;
 }
 
-.furia .stat i{color:#ff755e}
-.nebula .stat i{color:#b887ff}
-.lumera .stat i{color:#80bdff}
+.nebula .stat i{
+  color:#b887ff;
+}
+
+.lumera .stat i{
+  color:#aeb4b8;
+}
 
 .stat span{
   color:#9f9279;
@@ -339,6 +357,10 @@ button{font-family:inherit}
   letter-spacing:1.1px;
   font-size:9px;
   font-weight:900;
+}
+
+.lumera .stat span{
+  color:#888;
 }
 
 .stat strong{
@@ -349,16 +371,20 @@ button{font-family:inherit}
   white-space:nowrap;
 }
 
+.lumera .stat strong{
+  color:#d0d0d0;
+}
+
 .cta{
-  margin:24px auto 0;
-  width:min(270px,100%);
-  height:52px;
+  margin:26px auto 0;
+  width:min(290px,100%);
+  height:54px;
   display:flex;
   align-items:center;
   justify-content:center;
   gap:14px;
   border:1px solid rgba(214,176,107,.68);
-  background:linear-gradient(135deg,rgba(214,176,107,.14),rgba(0,0,0,.28));
+  background:linear-gradient(135deg,rgba(214,176,107,.14),rgba(0,0,0,.30));
   color:#fff0ca;
   text-transform:uppercase;
   letter-spacing:2.3px;
@@ -370,12 +396,21 @@ button{font-family:inherit}
 
 .cta:hover{
   transform:translateY(-2px);
-  background:linear-gradient(135deg,rgba(214,176,107,.24),rgba(0,0,0,.30));
+  background:linear-gradient(135deg,rgba(214,176,107,.24),rgba(0,0,0,.34));
 }
 
-.furia .cta{border-color:rgba(255,117,94,.68)}
-.nebula .cta{border-color:rgba(177,122,255,.72)}
-.lumera .cta{border-color:rgba(110,180,255,.56)}
+.nebula .cta{
+  border-color:rgba(177,122,255,.72);
+}
+
+.lumera .cta{
+  pointer-events:none;
+  cursor:default;
+  color:#cfcfcf;
+  border-color:rgba(190,190,190,.28);
+  background:linear-gradient(135deg,rgba(180,180,180,.08),rgba(0,0,0,.28));
+  opacity:.78;
+}
 
 .footer{
   position:fixed;
@@ -496,11 +531,12 @@ button{font-family:inherit}
   display:block;
 }
 
-@media(max-width:1100px){
+@media(max-width:980px){
   .worlds{
     grid-template-columns:1fr;
     width:min(620px,calc(100% - 32px));
-    margin-bottom:120px;
+    margin-top:36px;
+    margin-bottom:122px;
   }
 
   .world{
@@ -538,13 +574,23 @@ button{font-family:inherit}
     min-height:590px;
   }
 
+  .world:before{
+    width:430px;
+    height:430px;
+  }
+
+  .orb-shadow{
+    width:500px;
+    height:500px;
+  }
+
   .content{
-    padding:22px;
+    padding:24px;
   }
 
   .world h2{
-    font-size:38px;
-    letter-spacing:5px;
+    font-size:42px;
+    letter-spacing:6px;
   }
 
   .stats{
@@ -572,36 +618,11 @@ button{font-family:inherit}
 
   <main class="worlds">
 
-    <section class="world furia" style="--image:url('images/foto2.jpg')">
-      <div class="side-blur"></div>
-      <div class="glow"></div>
-
-      <div class="content">
-        <div class="badge"><span class="dot"></span> Online</div>
-        <h2>FURIA</h2>
-        <div class="subtitle">Fast War World</div>
-
-        <div class="stats">
-          <div class="stat"><i class="fas fa-desktop"></i><span>Client</span><strong>8.6</strong></div>
-          <div class="stat"><i class="fas fa-fire"></i><span>Type</span><strong>War</strong></div>
-          <div class="stat"><i class="fas fa-star"></i><span>Exp</span><strong>x50</strong></div>
-          <div class="stat"><i class="fas fa-skull-crossbones"></i><span>PvP</span><strong>Open</strong></div>
-          <div class="stat"><i class="fas fa-bolt"></i><span>Start</span><strong>Level 8</strong></div>
-          <div class="stat"><i class="fas fa-coins"></i><span>Loot</span><strong>x5</strong></div>
-        </div>
-
-        <a class="cta" href="https://furia.revoria.online" target="_blank">
-          Enter World <i class="fas fa-arrow-right"></i>
-        </a>
-      </div>
-    </section>
-
     <section class="world nebula" style="--image:url('images/foto4.jpg')">
-      <div class="side-blur"></div>
-      <div class="glow"></div>
+      <div class="orb-shadow"></div>
 
       <div class="content">
-        <div class="badge"><span class="dot"></span> Online</div>
+        <div class="badge online"><span class="dot"></span> Online</div>
         <h2>NEBULA</h2>
         <div class="subtitle">Medium Rate Stage</div>
 
@@ -610,8 +631,8 @@ button{font-family:inherit}
           <div class="stat"><i class="fas fa-meteor"></i><span>Type</span><strong>Medium</strong></div>
           <div class="stat"><i class="fas fa-star"></i><span>Exp</span><strong>Stage</strong></div>
           <div class="stat"><i class="fas fa-skull-crossbones"></i><span>PvP</span><strong>Open</strong></div>
-          <div class="stat"><i class="fas fa-bolt"></i><span>Start</span><strong>Level 8</strong></div>
           <div class="stat"><i class="fas fa-coins"></i><span>Loot</span><strong>x3</strong></div>
+          <div class="stat"><i class="fas fa-users"></i><span>Status</span><strong>Live</strong></div>
         </div>
 
         <a class="cta" href="https://nebula.revoria.online" target="_blank">
@@ -621,26 +642,25 @@ button{font-family:inherit}
     </section>
 
     <section class="world lumera" style="--image:url('images/foto3.jpg')">
-      <div class="side-blur"></div>
-      <div class="glow"></div>
+      <div class="orb-shadow"></div>
 
       <div class="content">
-        <div class="badge"><span class="dot"></span> Online</div>
+        <div class="badge dev"><span class="dot"></span> In Development</div>
         <h2>LUMERA</h2>
-        <div class="subtitle">Low Rate RPG</div>
+        <div class="subtitle">Long-Term RPG World</div>
 
         <div class="stats">
           <div class="stat"><i class="fas fa-desktop"></i><span>Client</span><strong>8.6</strong></div>
           <div class="stat"><i class="fas fa-book-open"></i><span>Type</span><strong>RPG</strong></div>
           <div class="stat"><i class="fas fa-star"></i><span>Exp</span><strong>x1</strong></div>
           <div class="stat"><i class="fas fa-skull-crossbones"></i><span>PvP</span><strong>Open</strong></div>
-          <div class="stat"><i class="fas fa-bolt"></i><span>Start</span><strong>Level 8</strong></div>
           <div class="stat"><i class="fas fa-coins"></i><span>Loot</span><strong>x1</strong></div>
+          <div class="stat"><i class="fas fa-hammer"></i><span>Status</span><strong>Building</strong></div>
         </div>
 
-        <a class="cta" href="https://lumera.revoria.online" target="_blank">
-          Enter World <i class="fas fa-arrow-right"></i>
-        </a>
+        <span class="cta">
+          Coming Soon <i class="fas fa-lock"></i>
+        </span>
       </div>
     </section>
 
@@ -657,14 +677,26 @@ button{font-family:inherit}
 <div class="modal" id="aboutModal" aria-hidden="true">
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
     <button class="modal-close" id="aboutClose" type="button" aria-label="Close">×</button>
+
     <h2 id="aboutTitle">About Revoria</h2>
-    <p>Revoria is an oldschool Tibia network built around separate worlds with clear purpose: fast PvP testing, medium-rate progression and long-term RPG gameplay.</p>
+    <p>Revoria is an oldschool Tibia network built around separate worlds with clear purpose: medium-rate progression and long-term RPG gameplay.</p>
     <p>The goal is simple: fair gameplay, stable worlds, controlled progression and updates based on real player testing instead of random changes.</p>
 
     <div class="modal-grid">
-      <div class="modal-point"><h3>Fair Gameplay</h3><span>No pay-to-win direction. Progress should feel earned.</span></div>
-      <div class="modal-point"><h3>Stable Worlds</h3><span>Built around economy, retention and long-term balance.</span></div>
-      <div class="modal-point"><h3>Community Testing</h3><span>Feedback and live testing help improve every world.</span></div>
+      <div class="modal-point">
+        <h3>Fair Gameplay</h3>
+        <span>No pay-to-win direction. Progress should feel earned.</span>
+      </div>
+
+      <div class="modal-point">
+        <h3>Stable Worlds</h3>
+        <span>Built around economy, retention and long-term balance.</span>
+      </div>
+
+      <div class="modal-point">
+        <h3>Community Testing</h3>
+        <span>Feedback and live testing help improve every world.</span>
+      </div>
     </div>
   </div>
 </div>
@@ -686,9 +718,11 @@ function closeAbout(){
 
 aboutBtn.addEventListener('click', openAbout);
 aboutClose.addEventListener('click', closeAbout);
+
 aboutModal.addEventListener('click', e => {
   if(e.target === aboutModal) closeAbout();
 });
+
 document.addEventListener('keydown', e => {
   if(e.key === 'Escape') closeAbout();
 });
